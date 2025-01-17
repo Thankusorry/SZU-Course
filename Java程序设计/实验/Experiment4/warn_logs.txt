@@ -1,0 +1,15 @@
+[2024-11-16 140318] [WARN] Disk space running low 85% used.
+[2024-11-16 140758] [WARN] High memory usage detected 75% used.
+[2024-11-16 141012] [WARN] User 'guest' attempted unauthorized access.
+[2024-11-16 141450] [WARN] Slow response from server 3000ms.
+[2024-11-16 141709] [WARN] Unusual activity detected in logs.
+[2024-11-16 142119] [WARN] Application update delayed due to dependency issue.
+[2024-11-16 142543] [WARN] Deprecated API 'v1data' accessed.
+[2024-11-16 142818] [WARN] Excessive login attempts from IP 192.168.1.100.
+[2024-11-16 143134] [WARN] Outdated browser detected for user 'admin'.
+[2024-11-16 143423] [WARN] High CPU usage detected 95% used.
+[2024-11-16 143759] [WARN] Slow query detected SELECT  FROM large_table.
+[2024-11-16 144005] [WARN] Unstable network connection detected.
+[2024-11-16 144312] [WARN] User 'bob' entered incorrect password 3 times.
+[2024-11-16 144640] [WARN] Insecure HTTP connection detected for API call.
+[2024-11-16 144915] [WARN] System clock out of sync with NTP server.
