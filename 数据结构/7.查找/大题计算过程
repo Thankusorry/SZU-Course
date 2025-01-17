@@ -1,0 +1,50 @@
+### 1.折半查找
+
+##### ！！！计算过程：
+
+![image-20241208213809796](https://liwenjunpictures.oss-cn-shenzhen.aliyuncs.com/202412082138917.png)
+
+![image-20241208213820549](https://liwenjunpictures.oss-cn-shenzhen.aliyuncs.com/202412082138597.png)
+
+![image-20241208213832400](https://liwenjunpictures.oss-cn-shenzhen.aliyuncs.com/202412082138448.png)
+
+##### 查找不成功ASL计算：
+
+![image-20241208223733171](https://liwenjunpictures.oss-cn-shenzhen.aliyuncs.com/202412082237213.png)
+
+**内部结点都能查找成功，而查找不成功的就是那些空的外部结点**
+
+ASL=(4* 3+8* 4) /12 
+
+##### 习题：
+
+**假设序列7、12、15、18、27、32、41、92、100。采用折半查找。**
+
+**(1)**  **写出查找93的计算过程。（middle取中间值的下界） //6分**
+
+**(2)**  **计算查找成功的平均查找长度。 //2分**
+
+**(3)**  **计算查找不成功的平均查找长度。//2分**
+
+### 2.二叉排序树
+
+**依次插入，依次删除！**
+
+**<font color='CornflowerBlue'>一步一图</font>**
+
+![image-20241209235921578](https://liwenjunpictures.oss-cn-shenzhen.aliyuncs.com/202412092359670.png)
+
+<font color='red'>**删除第三种情况！！！掌握**</font>
+
+**被删除结点p既有左子树，又有右子树**
+<font color='#EE82EE'>**以中序遍历时的直接前驱s替代被删除结点p，然后再删除该直接前驱（只可能有左孩子**</font>
+
+### ![image-20241210000037221](https://liwenjunpictures.oss-cn-shenzhen.aliyuncs.com/202412100000287.png)
+
+13的直接前驱是5，5替代13，删除5
+56的直接前驱是37，37替代56，删除37
+
+
+
+### 3.平衡二叉树旋转
+

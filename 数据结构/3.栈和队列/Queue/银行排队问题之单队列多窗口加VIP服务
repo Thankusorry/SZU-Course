@@ -1,0 +1,224 @@
+### 银行排队问题之单队列多窗口加VIP服务
+
+
+
+## 题目描述
+
+假设银行有*K*个窗口提供服务，窗口前设一条黄线，所有顾客按到达时间在黄线后排成一条长龙。当有窗口空闲时，下一位顾客即去该窗口处理事务。当有多个窗口可选择时，假设顾客总是选择编号最小的窗口。
+
+有些银行会给VIP客户以各种优惠服务，例如专门开辟VIP窗口。为了最大限度地利用资源，VIP窗口的服务机制定义为：当队列中没有VIP客户时，该窗口为普通顾客服务；当该窗口空闲并且队列中有VIP客户在等待时，排在最前面的VIP客户享受该窗口的服务。同时，当轮到某VIP客户出列时，若VIP窗口非空，该客户可以选择空闲的普通窗口；**否则一定选择VIP窗口**。
+
+本题要求输出前来等待服务的*N*位顾客的平均等待时间、最长等待时间、最后完成时间，并且统计每个窗口服务了多少名顾客。
+
+## 输入
+
+输入第1行给出正整数*N*（≤1000），为顾客总人数；随后*N*行，每行给出一位顾客的到达时间`T`、事务处理时间`P`和是否VIP的标志（1是VIP，0则不是），并且假设输入数据已经按到达时间先后排好了顺序；最后一行给出正整数*K*（≤10）—— 为开设的营业窗口数，以及VIP窗口的编号（从0到*K*−1）。这里假设每位顾客事务被处理的最长时间为60分钟。
+
+10
+0 20 0
+0 20 0
+1 68 1
+1 12 1
+2 15 0
+2 10 0
+3 15 1
+10 12 1
+30 15 0
+62 5 1
+3 1
+
+输出
+
+在第一行中输出**平均等待时间**（输出到小数点后1位）、**最长等待时间**、**最后完成时间**，之间用1个空格分隔，行末不能有多余空格。
+
+在第二行中按编号递增顺序输出每个窗口服务了多少名顾客，数字之间用1个空格分隔，行末不能有多余空格。
+
+15.1 35 67
+4 5 1
+
++++
+
+## Hint from teacher:
+
+1.第五题初始所有窗口完成时间为0 , 按时间t循环，对VIP窗口检查是否空闲
+
+2.空闲，取VIP队列头，判是否可以服务。
+
+3.然后对所有窗口循环，判是否空闲，窗口空闲，取VIP队列和普通客户队列头，比较谁先到谁可以服务
+
+
+
+窗口空闲后叫下一个号。这里判窗口可用，取vip队列或普通队列的队首服务。
+
+第五题就是一个模拟过程，每时间哪个窗口可用，找队首客户，更新值
+
+
+
++++
+
+1.怎么理解对 t 循环？
+
+类比时钟！！
+
+
+
+
+
++++
+
+Code：
+
+```c++
+#include <iostream>
+#include <queue>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+struct customer
+{
+    int T;     // arrival time
+    int P;     // processing time
+    bool type; // true for VIP, false for normal
+    int index;
+};
+struct Windows
+{
+    int endTime;
+    int count;
+    Windows(int entTime = 0, int count = 0) : endTime(0), count(0) {}
+};
+
+int main()
+{
+    int N;
+    cin >> N;
+    queue<customer> q1, q2;
+    customer c[N];
+    for (int i = 0; i < N; i++)
+    {
+        cin >> c[i].T >> c[i].P >> c[i].type;
+        c[i].index = i;
+        if (c[i].P > 60)
+            c[i].P = 60;
+        /*         if (c[i].type == true)
+                {
+                    q1.push(c[i]);
+                }
+                else
+                {
+                    q2.push(c[i]);
+                } */
+    }
+    int currentTime = 0;
+    int K, M;
+    cin >> K >> M;
+    Windows windows[K];
+    int sum = 0, max = 0, waitTime = 0, index = 0;
+    // for (; index < N || !q1.empty() || !q2.empty(); currentTime++)
+    while (index < N || !q1.empty() || !q2.empty())
+    {
+        // 根据到达时间入列
+        while (index < N && c[index].T <= currentTime)
+        {
+            if (c[index].type == 1)
+                q1.push(c[index]);
+            else
+                q2.push(c[index]);
+            index++;
+        }
+        // 先判断VIP用户去VIP窗口
+        if (windows[M].endTime <= currentTime && !q1.empty())
+        {
+            windows[M].endTime = currentTime + q1.front().P;
+            waitTime = currentTime - q1.front().T;
+            sum += waitTime;
+            if (waitTime > max)
+                max = waitTime;
+            q1.pop();
+            windows[M].count++;
+        }
+
+        for (int i = 0; i < K; i++)
+        {
+            int flag = 0;
+            if (windows[i].endTime <= currentTime)
+            {
+                if (!q1.empty() && !q2.empty())
+                {
+                    if (q1.front().T < q2.front().T)
+                    {
+                        flag = 1;
+                    }
+                    else if (q1.front().T > q2.front().T)
+                    {
+                        flag = 2;
+                    }
+                    else
+                    {
+                        int index1, index2;
+                        for (int j = 0; j < N; j++)
+                        {
+                            if (q1.front().index < q2.front().index)
+                                flag = 1;
+                            else
+                                flag = 2;
+                        }
+                    }
+                }
+                else if (q1.empty() && !q2.empty())
+                {
+                    flag = 2;
+                }
+                else if (!q1.empty() && q2.empty())
+                {
+                    flag = 1;
+                }
+
+                if (flag == 1)
+                {
+                    windows[i].endTime = currentTime + q1.front().P;
+                    waitTime = currentTime - q1.front().T;
+                    sum += waitTime;
+                    if (waitTime > max)
+                        max = waitTime;
+                    q1.pop();
+                    windows[i].count++;
+                }
+                else if (flag == 2)
+                {
+                    windows[i].endTime = currentTime + q2.front().P;
+                    waitTime = currentTime - q2.front().T;
+                    sum += waitTime;
+                    if (waitTime > max)
+                        max = waitTime;
+                    q2.pop();
+                    windows[i].count++;
+                }
+            }
+        }
+        currentTime++;
+    }
+    int extratime = 0, max2 = 0;
+    for (int i = 0; i < K; i++)
+    {
+        extratime = windows[i].endTime - currentTime;
+        max2 = extratime > max2 ? extratime : max2;
+    }
+    currentTime += max2;
+    double avg = 1.0 * sum / N;
+    cout << fixed << setprecision(1) << avg << " " << max << " " << currentTime << endl;
+    for (int i = 0; i < K; i++)
+    {
+        if (i != 0)
+            cout << " ";
+        cout << windows[i].count;
+    }
+
+    return 0;
+}
+```
+
+
+
+`借助GPT提示！`

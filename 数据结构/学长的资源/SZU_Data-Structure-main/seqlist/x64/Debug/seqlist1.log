@@ -1,0 +1,3 @@
+﻿  seqlist1.c
+F:\seqlist1\seqlist1.c(112,9): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  seqlist1.vcxproj -> F:\seqlist1\x64\Debug\seqlist1.exe

@@ -1,0 +1,105 @@
+#  String 
+
+## 长度 
+
+`s.size() / s.length()`
+
+## 读取有空格 
+
+`#include<string>` ——`getline(cin,s)`
+
+## <font color='yellow'>求子串</font>
+
+1. `s.substr(index1,n) ` n不写就是到末尾 
+
+## <font color='red'>查找</font>
+
+String查找返回的是下标 `int` ，vector查找返回迭代器 `vector<int>::iterator it`
+
+String 查找对象调用，vector查找`直接find`
+
+`int pos=s1.find(String s / char ch)`
+
+`s1.find(stirng s,int index)` **<font color='red'>先string s ，在 int index</font>**
+
+#### <font color='red'>判断</font>  成功返回第一个字符的位置下标，失败返回string::npos(非常大的一个数字)
+
+`if(pos!=string::npos)` **<font color='red'>查找成功</font>**
+
+##### 应用：找最长重复子串
+
+```cpp
+string s,s1,s2;
+cin >> s;
+int max = -1;
+for (int n = 1; n <= s.size() / 2;n++){
+    for(int j=0;j<s.size()-n;j++){
+        s1 = s.substr(j, n);
+        if (s.find(s1, j + n) != string::npos)
+        {
+            max = n;
+            s2 = s1;
+        }
+    }
+}
+cout << max << endl;
+```
+
+#### 2.可重叠子串
+
+```cpp
+for (int i = 0; i < N; i++) {
+    string s1;
+    cin >> s1;
+    int cnt = 0;
+    int pos = s.find(s1);
+    while (pos != string::npos) {
+        cnt++;
+        pos = s.find(s1, pos + 1);
+    }
+    cout << s1 << ":" << cnt << endl;
+}
+```
+
+## <font color='red'>删除</font>
+
+**<font color='CornflowerBlue'>特殊：String 的删除一个参数，是删除index及之后所有字符</font>**
+
+`s1.erase(index)`
+
+`s1.erase(index,n)`
+
+## <font color='red'>替换</font>replace
+
+`s.replace (index,int n ,string s2)`
+
+```cpp
+int pos = 0;
+pos = s.find(s1, pos);
+// 多次替换
+while (pos != string::npos)
+{
+    s.replace(pos, s1.size(), s2);
+    pos = s.find(s1, pos+s1.size());
+}
+// 一次替换
+if (pos != string::npos)
+{
+    s.replace(pos, s1.size(), s2);
+}
+cout << s << endl;
+```
+
+
+
+## 插入insert
+
+`s.insert(index,string s)` 
+
+
+
+## <font color='pink'>Remeber :</font>
+
+**string的第一个参数都是index，第二个参数才是n**
+
+**<font color='CornflowerBlue'>查找特殊，先输入字符串，第二个才是位置</font>**

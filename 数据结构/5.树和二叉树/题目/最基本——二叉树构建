@@ -1,0 +1,93 @@
+# 先序构建二叉树——递归
+
+### 题目描述
+
+给定一颗二叉树的逻辑结构如下图，（**先序遍历的结果，空树用字符‘#’表示，例如AB#C##D##**），建立该二叉树的二叉链式存储结构，并输出该二叉树的先序遍历、中序遍历和后序遍历结果。
+
+### 输入
+
+第一行输入一个整数t，表示有t个二叉树
+
+第二行起输入每个二叉树的先序遍历结果，空树用字符‘#’表示，连续输入t行。
+
+2
+AB#C##D##
+AB##C##
+
+### 输出
+
+输出每个二叉树的先序遍历、中序遍历和后序遍历结果。
+
+ABCD
+BCAD
+CBDA
+ABC
+BAC
+BCA
+
++++
+
+Code：
+
+```c++
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+struct BiTNode {
+    char data;
+    BiTNode* lchild;
+    BiTNode* rchild;
+    BiTNode(int d, BiTNode* a, BiTNode* b) {
+        data = d; lchild = a; rchild = b;
+    }
+};
+BiTNode* CreateTree(string s, int& i) {
+    if (s[i] == '#') return nullptr;
+    BiTNode* T = new BiTNode(s[i], nullptr, nullptr);
+    T->lchild = CreateTree(s, ++i);
+    T->rchild = CreateTree(s, ++i);
+    return T;
+}
+void PreOrder(BiTNode *T) {
+    if (!T) return;
+    cout << T->data;
+    PreOrder(T->lchild);
+    PreOrder(T->rchild);
+}
+
+void InOrder(BiTNode* T) {
+    if (!T) return;
+    InOrder(T->lchild);
+    cout << T->data;
+    InOrder(T->rchild);
+}
+void PostOrder(BiTNode* T) {
+    if (!T) return;
+    PostOrder(T->lchild);
+    PostOrder(T->rchild);
+    cout << T->data;
+}
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string s;
+        cin >> s;
+        int i = 0;
+        BiTNode* T = CreateTree(s, i);
+        PreOrder(T);
+        cout << endl;
+        InOrder(T);
+        cout << endl;
+        PostOrder(T);
+        cout << endl;
+    }
+    return 0;
+}
+```
+
+
+
+思考：为什么CreateTree( )中的i必须是引用？
+

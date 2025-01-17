@@ -1,0 +1,6 @@
+"D:\APP\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/APP/CLion 2022.2.4/bin/ninja/win/ninja.exe" -G Ninja -S C:\Users\Yezi\Desktop\DataStructure\CourseDesign\Stage0-文件读写 -B C:\Users\Yezi\Desktop\DataStructure\CourseDesign\Stage0-文件读写\cmake-build-debug
+CMake Error at CMakeLists.txt:2 (project):
+  project PROJECT called with incorrect number of arguments
+
+
+-- Configuring incomplete, errors occurred!

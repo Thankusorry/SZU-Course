@@ -1,0 +1,91 @@
+**<font color='green'>初始化、插入、删除、访问、求表长、清空表、有序表合并</font>**
+
+# <font color='red'>判断下标是否合法</font>
+
+### 初始化
+
+`vector<E> A (n, value);`
+
+**没定义初始容量时 ：**`A.resize(n)`
+
+## 函数
+`push_back(value)` 
+`begin（）` 数组头指针
+**`end（）`数组最后一个元素+1的指针**
+`clear（）`清空
+
+### 查找：
+**find（头地址，尾地址，查找的数）**
+**`find(a.begin(),a.end(),target)`**
+**查找成功 <font color='yellow'>返回第一次出现的地址</font>**
+**不成功 <font color='yellow'>返回尾地址</font>**
+
+##### <font color='red'>**判断**</font>
+
+`vector<int>::iterator num=find(a.begin(),a.end(),target);`
+**直接find，不用A.调用**
+**`if(num!=a.end())` 查找成功**
+
+### 迭代器遍历 
+
+`vector<int> ::iterator it`
+
+```cpp
+for(it=a.begin();it!=a.end();it++) {
+	cout<<*it<<" ";
+}
+```
+
+### for遍历
+
+```cpp
+for(auto num:arr)
+	cout<<num<<" ";
+```
+
+##### 二维
+
+```cpp
+for (auto nums : arr)
+{
+    for (auto num : nums)
+    {
+        cout << num << endl;
+    }
+}
+
+```
+
+
+
+## 插入insert
+**在迭代器位置之前插入，返回值是<font color='red'>指向新元素的迭代器 </font>** `vector<int>::iterator it;`
+**1.指定位置插入1个** `it=a.insert(a.end(),value)`
+**2.指定位置插入n个** `it=a.insert(a.end(),n,value)`
+**3.指定位置插入区间** `it=a.insert(a.begin(),b.begin(),b.end())`
+<font color='red'>**注意：end（）插入就是直接插到最后，begin直接插到最前**</font>
+
+## **删除erase**
+
+`vector<int>::iterator it` 
+
+**1.删除位置** `it=a.erase(a.begin()+index)`
+
+**2.删除区间** `it=a.erase(a.begin()+index1,a.begin()+index2)`
+
+删除最后一个元素 `pop_back()`
+
+## 其他
+
+**翻转** `reverse(a.begin(),a.end())`
+
+**升序排序** `sort(a.begin(),a.end(),greater<int>())`
+
+**降序排序** `sort(a.begin(),a.end(),less<int>())`
+
+
+
+#### 关于迭代器：
+
+**迭代器指向的是<font color='yellow'>新元素</font>** ，**除了遍历最好不用这玩意**
+

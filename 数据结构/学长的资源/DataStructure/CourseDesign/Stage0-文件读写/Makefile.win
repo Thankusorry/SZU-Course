@@ -1,0 +1,32 @@
+# Project: 小作业
+# Makefile created by Dev-C++ 6.5
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o file_handler.o
+LINKOBJ  = main.o file_handler.o
+LIBS     = -L"D:/APP/Dev-Cpp/MinGW32/lib" -L"D:/APP/Dev-Cpp/MinGW32/i686-w64-mingw32/lib" -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic -g3
+INCS     = -I"D:/APP/Dev-Cpp/MinGW32/include" -I"D:/APP/Dev-Cpp/MinGW32/i686-w64-mingw32/include" -I"D:/APP/Dev-Cpp/MinGW32/lib/gcc/i686-w64-mingw32/10.2.0/include" -I"D:/APP/Dev-Cpp/MinGW32/lib/gcc/i686-w64-mingw32/10.2.0/include-fixed"
+CXXINCS  = -I"D:/APP/Dev-Cpp/MinGW32/include" -I"D:/APP/Dev-Cpp/MinGW32/i686-w64-mingw32/include" -I"D:/APP/Dev-Cpp/MinGW32/lib/gcc/i686-w64-mingw32/10.2.0/include" -I"D:/APP/Dev-Cpp/MinGW32/lib/gcc/i686-w64-mingw32/10.2.0/include-fixed" -I"D:/APP/Dev-Cpp/MinGW32/include/c++/10.2.0" -I"D:/APP/Dev-Cpp/MinGW32/include/c++/10.2.0/i686-w64-mingw32" -I"D:/APP/Dev-Cpp/MinGW32/include/c++/10.2.0/backward"
+BIN      = 小作业.exe
+CXXFLAGS = $(CXXINCS) -Wall -Wextra -g3
+ENCODINGS = -finput-charset=utf-8 -fexec-charset=gbk
+CFLAGS   = $(INCS) -Wall -Wextra -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp file_handler.h
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)  $(ENCODINGS) 
+
+file_handler.o: file_handler.cpp file_handler.h
+	$(CPP) -c file_handler.cpp -o file_handler.o $(CXXFLAGS) 

@@ -1,0 +1,486 @@
+## <font color='yellow'>1.邻接表</font>
+
+0 A-1-3-4-^
+1 B-3-^
+2 C-1-4-^
+3 D-^
+4 E-3-^
+
+<font color='#EE82EE'>**结构体Graph存data和kids的下标（类似树的孩子表示法）**</font>
+
+#### map STL：
+
+通过map映射String 到int，更方便下标的插入
+
+```cpp
+struct graph {
+    string data;
+    vector<int> kids;
+};
+vector<graph> A(n);
+map<string, int>M;
+for (int i = 0; i < n; i++) {
+    cin >> A[i].data;
+    //m.insert(pair<string, int>(A[i].data, i));
+    M[A[i].data] = i;
+}
+for (int i = 0; i < m; i++) {
+    string s1, s2; cin >> s1 >> s2;
+    A[M[s1]].kids.push_back(M[s2]);
+}
+for (int i = 0; i < n; i++) {
+    cout << i << " " << A[i].data;
+    for (int j = 0; j < A[i].kids.size(); j++)
+        cout <<"-" << A[i].kids[j];
+    cout << "-^\n";
+}
+```
+
+
+
+## <font color='yellow'>2.邻接矩阵</font>
+
+#### （太经典了）
+
+```cpp
+vector<string>S(n);
+vector<vector<int>>adj(n, vector<int>(n, 0));
+for (int i = 0; i < n; i++) {
+    cin >> S[i];
+    M[S[i]] = i;
+}
+for (int i = 0; i < m; i++) {
+    string s1, s2; cin >> s1 >> s2;
+    if (type == 'U') {
+        adj[M[s1]][M[s2]] = adj[M[s2]][M[s1]] = 1;
+        d[M[s1]]++; d[M[s2]]++;
+    }
+    else {
+        adj[M[s1]][M[s2]] = 1;
+        d2[M[s1]]++; d1[M[s2]]++;
+
+    }
+}
+```
+
+
+
+## <font color='red'>**!!!3.深度优先搜索**</font>
+
+**DFS：逐步深入，递归实现** <font color='red'> **注意可能存在不联通的点 ，主函数每个调用一次dfs**</font>
+
+```cpp
+void dfs(vector<vector<int>>adj, int n,int i, vector<bool>&visited) {
+    visited[i] = true;
+    cout << i<<" ";
+    for (int j = 0; j < n; j++) {
+        if (adj[i][j] && !visited[j]) {
+            dfs(adj, n, j, visited);
+        }
+    }
+}
+////////////////////////////
+for (int i = 0; i < n; i++) {
+    if(!vis[i])
+        bfs(adj, n, vis, i);
+}
+```
+
+#### <font color='yellow'>栈实现</font>：
+
+类似队列：压入一个，输出，弹出，根据top压入
+
+```cpp
+stack<int> s;
+s.push(start);  // 将起始节点压入栈
+while (!s.empty()) {
+    int current = s.top();  // 获取栈顶元素
+    s.pop();  // 弹出栈顶元素
+
+    if (!visited[current]) { // 同一个元素会压入多次，必须限制
+        visited[current] = true;  // 标记该节点为已访问
+        cout << current << " ";  // 打印当前节点
+
+        // 按照从右到左的顺序将未访问的邻居节点压入栈（为了保持按从左到右的顺序输出）
+        for (int j = n - 1; j >= 0; j--) {
+            if (adj[current][j] == 1 && !visited[j]) {
+                s.push(j);
+            }
+        }
+    }
+}
+```
+
+## <font color='red'>4.广度优先搜索</font>
+
+**<font color='yellow'>队列实现输出：广度搞完再深入</font>**
+
+```cpp
+void bfs(vector<vector<int>>adj, int n,int i, vector<bool>&visited) {
+    queue<int>q;
+    q.push(i);
+    while (!q.empty()) {
+        int curr = q.front();
+        q.pop();
+        if (!visited[curr]) {
+            cout << curr << " ";
+            visited[curr] = true;
+        }
+        for (int j = 0; j < n; j++) {
+            if (adj[curr][j] && !visited[j])
+                q.push(j);
+        }
+    }
+}
+```
+
+##### `if (!visited[curr])`  必须加，靠后的节点会多次压入
+
+
+
+## <font color='red'>5.图的连通性</font>
+
+### **1.并查集——判断导通性**
+
+**<font color='yellow'>不能判断具体方向，比如强连通</font>**
+
+### 2.Floyd算法——得到距离
+
+```cpp
+int adj[100][100];
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+        cin >> adj[i][j]; 
+        if (!adj[i][j]) adj[i][j] = 0x3f3f3f3f;
+    }
+}
+for (int k = 0; k < n; k++) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            adj[i][j] = min(adj[i][j], adj[i][k] + adj[k][j]);
+        }
+    }
+}
+```
+
+
+
+## <font color='red'>6.最小生成树</font> <font color='#EE82EE'>起始距离为inf</font>
+
+### 1.Prim算法：邻接矩阵
+
+**起始节点-> 从已有的节点找到最小权值，这个节点加入<font color='yellow'>节点集（需要vis数组）</font>，每加入一个节点都要找到当前到已知节点权值最小的节点（<font color='CornflowerBlue'>更新当前节点到其他节点距离——数组dis</font>）** —— 最后**<font color='#EE82EE'>输出需要节点的前置节点</font>**，需要一个东西存起来，**<font color='#EE82EE'>pre数组</font>**
+
+##### 艹！和Huffman搞混了
+
+```cpp
+void prim(vector<string> S, vector<vector<int>> adj, int n, int v)
+{
+    vector<int> vis(n, -1);
+    vector<int> dis(n, INF);
+    vector<int> pre(n, -1);
+    vis[v] = 1;
+    dis[v] = 0;
+    queue<edge> q;
+    for (int k = 0; k < n; k++)
+    {
+        if (vis[k] < 0 && dis[k] > adj[v][k])
+        {
+            dis[k] = adj[v][k];
+            pre[k] = v;
+        }
+    }
+    for (int i = 1; i < n; i++)
+    {
+        int index = 0, min1 = INF;
+        for (int j = 0; j < n; j++)
+        {
+            if (vis[j] < 0 && dis[j] < min1)
+            {
+                min1 = dis[j];
+                index = j;
+            }
+        }
+        if (dis[index] == INF)
+        {
+            break;
+        }
+        vis[index] = 1;
+        dis[index] = min1;
+        sum += min1;
+        q.push(edge(pre[index], index, min1));
+        for (int k = 0; k < n; k++)
+        {
+            if (vis[k] < 0)
+                if (dis[k] > adj[index][k])
+                {
+                    dis[k] = adj[index][k];
+                    pre[k] = index;
+                }
+        }
+    }
+```
+
+
+
+### 2.Kruskal：
+
+思想：权值排序（<font color='#EE82EE'>存储边的数组）</font>，从最小开始选，导通的不选<font color='#EE82EE'>（并查集）</font>，**<font color='red'>通过find ，而不是直接pre比较</font>** 直到选满
+
+```cpp
+bool cmp(edge a, edge b)
+{
+    return a.w < b.w;
+}
+int find(int x, vector<int> pre)
+{
+    while (pre[x] != -1)
+        x = pre[x];
+    return x;
+}
+void Union(int x, int y, vector<int> &pre)
+{
+    int xx = find(x, pre), yy = find(y, pre);
+    if (xx != yy)
+        pre[xx] = yy;
+}
+void kruskal(vector<string> S, vector<edge> &E, int n, vector<int> pre)
+{
+    sort(E.begin(), E.end(), cmp);
+    int m = E.size();
+    int index = 0;
+    for (int i = 0; i < m; i++)
+    {
+        int v1 = E[i].v1, v2 = E[i].v2;
+        if (find(v1, pre) != find(v2, pre) || (pre[v1] == -1 && pre[v2] == -1))// 
+        {
+            if (v1 < v2)
+                cout << S[E[i].v1] << " " << S[E[i].v2] << " " << E[i].w << endl;
+            else
+                cout << S[E[i].v2] << " " << S[E[i].v1] << " " << E[i].w << endl;
+            Union(v1, v2, pre);
+        }
+    }
+}
+```
+
+
+
+## <font color='red'>7.最短路径</font>
+
+### 1.Floyd 算法
+
+**<font color='yellow'>每个点通过所有中间节点到另外一个点的最小距离——O(n^3)</font>**
+
+```cpp
+vector<vector<int>> adj(n, vector<int>(n, inf));
+vector<vector<string>> path(n, vector<string>(n, ""));
+for (int k = 0; k < n; k++)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (adj[i][j] >= adj[i][k] + adj[k][j])
+            {
+                adj[i][j] = adj[i][k] + adj[k][j];
+                path[i][j] = path[i][k] + path[k][j].substr(S[k].size());
+            }
+        }
+    }
+}
+```
+
+### 2.Dijkstra 算法  <font color='CornflowerBlue'>不联通点距离是inf</font>
+
+**选当前距离最小的节点**，**更新最短距离** 
+
+**<font color='yellow'>! 最短距离：</font>**存的是**<font color='#EE82EE'>根节点到目标节点的距离</font>** ，所以 **比大小**的时候是 `dis[i] > dis[v]+adj[v][i]` ，这个不要和Floyd和 Prim算法的搞混
+
+```cpp
+void Dijkstra(vector<string> S, vector<vector<int>> adj, int n, int v)
+{
+    vector<bool> vis(n, false);
+    vector<int> dis(n, inf);
+    vector<int> pre(n, -1);
+    dis[v] = 0;
+    vis[v] = true;
+    for (int i = 0; i < n; i++)
+    {
+        if (dis[i] >adj[v][i])
+        {
+            dis[i] = adj[v][i];
+            pre[i] = v;
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        int index = 0, mini = inf;
+        for (int j = 0; j < n; j++)
+        {
+            if (!vis[j] && dis[j] < mini)
+            {
+                index = j;
+                mini = dis[j];
+            }
+        }
+        if (mini == inf)
+            break;
+        vis[index] = true;
+        for (int k = 0; k < n; k++)
+        {
+            if (dis[k] > dis[index]+adj[index][k])
+            {
+                dis[k] = dis[index] + adj[index][k];
+                pre[k] = index;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        if (i == v)
+            continue;
+        cout << S[v] << "-" << S[i] << "-";
+        if (dis[i] == inf)
+        {
+            cout << "-1\n";
+            continue;
+        }
+        cout << dis[i] << "----["<<S[v];
+        string s;
+        int j = i;
+        while (pre[j] != -1) {
+            s = " " + S[j] + s;
+            j = pre[j];
+        }
+        cout << s << " ]\n";
+    }
+}
+```
+
+
+
+## <font color='red'>8.拓扑排序(不唯一！）</font>
+
+**1.**找出**<font color='red'>入度为0（统计入度数组）</font>**且**<font color='red'>编号最小</font>**的顶点v
+
+**把矩阵第v行全清0** ，**<font color='#EE82EE'>重复找（一次只找一个)</font>**—— 得到的拓扑排序序列是**唯一的（升序）**
+
+`ind[i]=-1` **<font color='red'>不能省略！</font>**
+
+```cpp
+ for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+    {
+        cin >> adj[i][j];
+        if (adj[i][j])
+            ind[j]++;
+    }
+queue<int> q;
+for (int k = 0; k < n; k++)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (!ind[i])
+        {
+            cout << i << " ";
+            ind[i] = -1;
+            for (int j = 0; j < n; j++)
+            {
+                if (adj[i][j])
+                {
+                    ind[j]--;
+                }
+            }
+            break;
+        }
+    }
+}
+```
+
+### 2.队列存储——一次存多个（不保证从小到大)
+
+```cpp
+queue<int> q;
+for (int i = 0; i < n; i++)
+{
+    if (!ind[i])
+    {
+        q.push(i);
+        ind[i] = -1;
+    }
+}
+vector<int> tp;
+while (!q.empty())
+{
+    int curr = q.front();
+    q.pop();
+    tp.push_back(curr);
+    for (int i = 0; i < n; i++)
+    {
+        if (adj[curr][i])
+            ind[i]--;
+        if (!ind[i])
+        {
+            q.push(i);
+            ind[i] = -1; // 不能省
+        }
+    }
+}
+```
+
+
+
+## <font color='red'>9.关键路径</font>
+
+1. ##### 最早开始时间：
+
+   **拓扑排序往后推，起点为零，求节点的最大距离——最大版的Dijkstra**
+
+   ```cpp
+   vector<int> vetime(n, 0);
+   int start = tp[0];
+   vetime[start] = 0;
+   for (int i = 1; i < tp.size(); i++)
+   {
+       int v = tp[i];
+       for (int j = 0; j < n; j++)
+       {
+           if (adj[j][v])
+               vetime[v] = max(vetime[v], adj[j][v] + vetime[j]);
+       }
+   }
+   ```
+
+   
+
+2. ##### 最晚开始时间
+
+   逆拓扑排序往前推，`vltime[end] = vetime[end];` , 求**节点的最小距离**
+
+   ```cpp
+   vector<int> vltime(n, 0x3f3f3f3f);
+   int end = tp[n - 1];
+   vltime[end] = vetime[end];
+   for (int i = n - 2; i >= 0; i--)
+   {
+       int v = tp[i];
+       for (int j = 0; j < n; j++)
+       {
+           if (adj[v][j])
+           {
+               vltime[v] = min(vltime[v], vltime[j] - adj[v][j]);
+           }
+       }
+   }
+   ```
+
+
+### <font color='red'>易错点：</font>
+
+1.
+
+## 10.实际练习
+
+
+

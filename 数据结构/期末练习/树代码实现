@@ -1,0 +1,480 @@
+## 1.二叉树数组存储
+
+最重要 **从0开始节点 i** 的**<font color='#EE82EE'>左子树 是 2 * i +1 ，右子树 2 * i +2</font>**
+
+根据`i` 建树
+
+## 2.建树->递归
+
+```cpp
+struct BT
+{
+    char data;
+    BT *left, *right;
+    BT(char a, BT *b, BT *c) : data(a), left(b), right(c) {}
+};
+BT *createTree(string A, int n, int &i)
+{
+    if (A[i] == '#' || i >= n)
+        return nullptr;
+    BT *root = new BT(A[i], nullptr, nullptr);
+    root->left = createTree(A, n, ++i);
+    root->right = createTree(A, n, ++i);
+    return root;
+}
+```
+
+#### <font color='red'>**最后记得返回root** </font>
+
+## 3.三个遍历
+
+先序遍历：中左右
+
+中序遍历：左中右
+
+后序遍历：左右中
+
+**递归实现**
+
+```cpp
+void preorder(BT * root)
+{
+    if(!root)
+        return;
+    cout << root->data;
+    preorder(root->left);
+    preorder(root->right);
+}
+void inorder(BT *root)
+{
+    if(!root)
+        return;
+    inorder(root->left);
+    cout<<root->data;
+    inorder(root->right);
+}
+void postorder(BT *root){
+    if(!root)
+        return;
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->data;
+}
+```
+
+
+
+## 3.层次遍历
+
+**队列实现:左子树入队列，右子树入队列（队列先进先出，保证顺序）**
+
+```cpp
+void levelorder(BT *root)
+{
+    if (!root)
+        return;
+    BT *curr;
+    queue<BT *> q;
+    q.push(root);
+    while (!q.empty())
+    {
+        curr = q.front();
+        q.pop();
+        cout << curr->data;
+        if (curr->left)
+            q.push(curr->left);
+        if (curr->right)
+            q.push(curr->right);
+    }
+}
+```
+
+
+
+## 4.二叉树高度
+
+**递归**，二叉树高度**等于左子树高度和右子树高度最大值加1（从1开始）**
+
+<font color='CornflowerBlue'>**空树为0**</font>
+
+```cpp
+int getheight(BT *root)
+{
+    if (!root)
+        return 0;
+    return max(getheight(root->left), getheight(root->right)) + 1;
+}
+```
+
+
+
+## 5.叶子数量
+
+**只需建树时判断左右子树是否为空，计数**
+
+```cpp
+if (!root->left && !root->right)
+    cnt++;
+```
+
+**函数方法**
+
+```cpp
+int leaf(BT *root){
+    if(!root) return 0;
+    if(!root->left && !root->right) return 1;
+    else return leaf(root->left)+leaf(root->right);
+}
+```
+
+
+
+## 6.父子节点
+
+**方法：**1. **<font color='CornflowerBlue'>加入双亲指针</font>**，建树的时候存起来，然后两次遍历
+
+**2.直接遍历**，**<font color='CornflowerBlue'>第二次遍历时通过双亲判断孩子是否叶子结点</font>**
+
+```cpp
+struct BT
+{
+    char data;
+    BT *left, *right, *parent;
+    BT(char a, BT *b, BT *c, BT *p) : data(a), left(b), right(c), parent(p) {}
+};
+BT *createTree(string A, int n, int &i, BT *parent)
+{
+    if (A[i] == '0' || i >= n)
+        return nullptr;
+    BT *root = new BT(A[i], nullptr, nullptr, parent);
+    root->left = createTree(A, n, ++i, root);
+    root->right = createTree(A, n, ++i, root);
+    return root;
+}
+```
+
+
+
+## <font color='red'>**7.判断同一个二叉树**</font>
+
+**输入：**
+
+**第一行：二叉树的<font color='#EE82EE'>数组存储</font>（英文字母表示树结点，#表示空树）**
+
+**第二行：二叉树的<font color='#EE82EE'>先序遍历结果</font>(英文字母表示树结点，#表示空树）**
+
+递归，判断i j 然后判断左子树，右子树
+
+抓住<font color='#EE82EE'> **数组存储左子树 2*i+1 右子树 2 * i+2**</font> 
+<font color='#EE82EE'>**先序遍历先左子树后右子树 ++j**</font>
+
+**<font color='orange'>数组存储会多# , 从先序遍历角度判断</font>**
+
+```cpp
+bool issame(string s1, string s2, int i, int& j) {
+	if (i >= s1.length() || j >= s2.length()) return true;
+    // 数组存储会多# , 从先序遍历角度判断
+	if (s2[j] == '#') {
+		if (s1[i] == '#') return true;
+		else return false;
+	}
+	if (s1[i] != s2[j]) return false;
+	bool left = issame(s1, s2, 2 * i + 1, ++j);
+	bool right =issame(s1, s2, 2 * i + 2, ++j);
+	return left && right;
+}
+```
+
+
+
+## <font color='red'>8.Huffman 树</font>——静态链表
+
+<font color='yellow'>**n个叶子结点的Huffman树共2n-1个结点。(两两合并，直至一个，共生成n-1个结点）**</font>
+
+**<font color='#EE82EE'>Data，权值，左孩子，右孩子，编码code，双亲</font>****
+
+**1.初始化 ：** **设置权值，Data，双亲为-1，孩子为nullptr，code为空串**
+
+```cpp
+struct HF {
+    int w, parent, left, right;
+    string code;
+    char data;
+    HF() {
+        parent = left = right = -1;
+    }
+};
+```
+
+**<font color='red'>2.建树</font>：** **从第n个开始，从0~n-1中选取parent为-1，权值最小的两个结点** ——>
+
+select 函数从无双亲的节点集合中找出两个最小的，
+
+ 先找最小，如果找到最小，把当前最小给次小，**还要判断是否有比次小最小的（两个较小相等情况）**
+
+```cpp
+void select(HF hf[100], int n, int& s1, int& s2) {
+	int min1, min2;
+	min1 = min2 = MAX;
+	for (int i = 0; i < n; i++) {
+		if (hf[i].parent <0 && min1>hf[i].w) {
+			min2 = min1;
+			s2 = s1;
+			min1 = hf[i].w;
+			s1 = i;
+		}
+		else if (hf[i].parent<0 && min2>hf[i].w) {
+			min2 = hf[i].w;
+			s2 = i;
+		}
+	}
+}
+```
+
+建树：**<font color='yellow'>注意每次n的值要增加，所以是 i </font>** **一般左边比右边小** <font color='#EE82EE'>**注意新增的节点双亲为-1；**</font>
+
+```cpp
+void makeTree(HF hf[100], int n) {
+	int s1, s2;
+	for (int i = n; i < 2 * n - 1; i++) {
+		select(hf, i, s1, s2); // i
+		hf[s1].parent = hf[s2].parent = i;
+		hf[i].left = s1; hf[i].right = s2;
+		hf[i].w = hf[s1].w + hf[s2].w;
+		hf[i].parent = -1;
+	}
+	coding(hf, n);
+}
+```
+
+<font color='red'>**3.编码：**</font> **双亲节点信息已知，递推到根节点**
+
+```cpp
+void coding(HF hf[100], int n) {
+	for (int i = 0; i < n; i++) {
+		int j = i, parent = hf[j].parent;
+		while (parent != -1) {
+			if (hf[parent].left == j) hf[i].code = "0" + hf[i].code;
+			else if (hf[parent].right == j) hf[i].code = "1" + hf[i].code;
+			j = parent;
+			parent = hf[j].parent;
+		}
+		cout << hf[i].data << " :" << hf[i].code << endl;
+	}
+}
+```
+
+<font color='red'>**4.解码：**</font>
+
+**0左1右走到根节点** **<font color='pink'>编码成功：最后是根节点</font>**
+
+```cpp
+void decode(HF hf[100], int n, string s2) {
+	string str = "";
+	int j = 2 * n - 2;
+	for (int i = 0; i < s2.length(); i++) {
+		if (s2[i] == '0') {
+			j = hf[j].left;
+		}
+		else if (s2[i] == '1')
+			j = hf[j].right;
+		if (hf[j].left < 0 && hf[j].right < 0) {
+			str += hf[j].data;
+			j = 2 * n - 2;
+		}
+	}
+	if (j == 2 * n - 2) cout << str << endl;
+	else cout << "error!\n";
+}
+```
+
+
+
+## 9.深度
+
+属性加上**level**，建树时加一即可
+
+```cpp
+BT *root = new BT(A[i], nullptr, nullptr,level);
+root->left = createTree(A, n, ++i,level+1);
+root->right = createTree(A, n, ++i,level+1);
+```
+
+## 10.带权路径和
+
+深度 × 权值 
+
+妙处：**<font color='#EE82EE'>权值可以用队列存储，取队头然后弹出，就相当于顺序遍历，但又不需要辅助变量 i</font>**，妙啊
+
+## <font color='red'>11.先序和中序还原二叉树</font>
+
+后序加中序 也可以 
+
+**<font color='CornflowerBlue'>先序/ 后序 可以确定根</font>， <font color='CornflowerBlue'>中序可以确定左右子树</font>，提取左右子数不断递归**
+
+#### 易错点：
+
+1. **String 提取子串函数  和 查找函数**   查找s1[0]在s2中的位置
+2. s1 和 s2 怎么分别提取左右子串 ——s2就是左右两边 
+   <font color='red'>**查找到的index就是长度（从零开始刚刚好不算s1[0] )**</font>
+
+```cpp
+BT *createTree(string s1, string s2)
+{
+    if (s1.empty())
+        return nullptr; 
+    BT *root = new BT(s1[0], nullptr, nullptr);
+    int index = s2.find(s1[0]);
+    string lefts1 = s1.substr(1, index);
+    string lefts2 = s2.substr(0, index);
+    string rights1 = s1.substr(index + 1);
+    string rights2 = s2.substr(index + 1);
+    root->left = createTree(lefts1, lefts2);
+    root->right = createTree(rights1, rights2);
+    return root;
+}
+```
+
+
+
+## <font color='red'>12.二叉树结点的最大距离</font>
+
+最大距离的两个节点：<font color='red'>**必存在一个根节点，最大距离=左子树高度+右子树高度**</font>
+
+**<font color='CornflowerBlue'>1.求最大距离： </font>** **遍历所有节点，找到最大的左子树高度+右子树高度 的根节点**
+
+```cpp
+int max1 = 0, h1 = 0, h2 = 0;
+BT *temp;
+void MaxDistance(BT *root)
+{
+    if (!root)
+        return;
+    int lefth = getheight(root->left);
+    int righth = getheight(root->right);
+    int distance = lefth + righth;
+    if (distance > max1)
+    {
+        max1 = distance;
+        h1 = lefth;
+        h2 = righth;
+        temp = root;
+    }
+    MaxDistance(root->left);
+    MaxDistance(root->right);
+}
+
+/////////////////////////////
+max1 = h1 = h2 = 0;
+temp = root;
+MaxDistance(root);
+```
+
+**<font color='yellow'>2.找到最远的两个节点：根据存储的高度+叶子结点 找到对应的节点</font>**
+
+```cpp
+void inorder(BT *root)
+{
+    if (!root)
+        return;
+    inorder(root->left);
+    if (!root->left && !root->right && max1 != 0)
+    {
+        if (root->level - temp->level == h1)
+        {
+            cout << root->data;
+            h1 = 0;
+        }
+        else if (root->level - temp->level == h2)
+        {
+            cout << " " << root->data;
+        }
+    }
+     inorder(root->right);
+}
+```
+
+
+
+##### 特殊情况：
+
+**1.只有单边树**的情况：**根据情况输出根节点 **  **2.其他——正常遍历**
+
+```cpp
+if (!temp->left && temp->right)
+{
+    cout << root->data;
+    inorder(temp);
+}
+else if (!temp->right && temp->left)
+{
+    inorder(temp);
+    cout << " " << root->data;
+}
+else
+    inorder(temp);
+```
+
+****
+
+# 树
+
+## 1.双亲表示法
+
+**二叉树：加属性 int parent;** 
+
+##### 存储：
+
+```cpp
+struct T {
+	char data;
+	int parent;
+	T (char a ,int p):data(a),parent(p){}
+};
+```
+
+<font color='red'>**树的先根遍历同对应二叉树的先序遍历**</font>
+
+**<font color='red'>树的后根遍历同对应二叉树的中序遍历</font>**
+
+#### 先序遍历转双亲表示法（下标层次遍历）：
+
+**parent ：双亲下标**
+
+**index：数组下标——进入队列就递增一次**
+
+<font color='CornflowerBlue'>**关键怎么结合这两个——入队完index再++**</font>
+
+```cpp
+void levelorder(BT* root) {
+    vector<T> A;
+    if (!root) return;
+    BT* curr = root;
+    queue<BT*>q;
+    root->parentindex = -1;
+    int index = 0;
+    q.push(root);
+    while (!q.empty()) {
+        curr = q.front();
+        q.pop();
+        A.push_back(T(curr->data, curr->parentindex));
+
+        if (curr->lchild) {
+            q.push(curr->lchild);
+            curr->lchild->parentindex = index;
+        }
+        if (curr->rchild) {
+            q.push(curr->rchild);
+            curr->rchild->parentindex = index;
+        }
+        index++;
+    }
+```
+
+
+
+## 2.孩子链表表示法
+
+##### <font color='#EE82EE'>双亲结构转孩子链表结构</font>
+
+**找到孩子就输出呗** **<font color='yellow'>[需要存储就多开一个vector<int> kids ]</font>**
