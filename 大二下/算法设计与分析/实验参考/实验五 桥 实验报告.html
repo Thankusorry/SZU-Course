@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head>
+  <meta charset="utf-8"/>
+  <link href="https://blog.csdn.net/m0_74268508/article/details/140523557" rel="canonical"/>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+  <meta content="webkit" name="renderer">
+   <meta content="webkit" name="force-rendering">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+    <meta content="always" name="referrer"/>
+    <meta content="no-siteapp" http-equiv="Cache-Control">
+     <link href="#" media="handheld" rel="alternate"/>
+     <meta content="pc" name="applicable-device"/>
+     <link href="https://g.csdnimg.cn/static/logo/favicon32.ico" rel="shortcut icon" type="image/x-icon"/>
+     <title>
+      【深大算法设计与分析】实验五 桥 实验报告 附代码、数据集_深圳大学 算法设计与分析 实验-CSDN博客
+     </title>
+     <meta content="深圳大学 算法设计与分析 实验" name="keywords"/>
+     <meta content='{"autorun":true,"install":true,"keyword":"深圳大学算法设计与分析"}' name="csdn-baidu-search"/>
+     <meta content="文章浏览阅读1k次，点赞16次，收藏14次。【内附代码与数据集】【深大算法设计与分析】实验五 寻找图的桥边_深圳大学 算法设计与分析 实验" name="description"/>
+     <link href="https://csdnimg.cn/release/blogv2/dist/pc/css/detail_enter-d4fc849858.min.css" rel="stylesheet" type="text/css"/>
+     <link href="https://csdnimg.cn/release/blogv2/dist/pc/themesSkin/skin-1024/skin-1024-ecd36efea2.min.css" rel="stylesheet" type="text/css"/>
+     <meta content='{"type":"0","fixModel":"1"}' name="toolbar"/>
+     <link href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css" rel="stylesheet" type="text/css"/>
+     <style>
+      .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+     </style>
+    </meta>
+   </meta>
+  </meta>
+  <style type="text/css">
+   * { user-select: text; } pre{max-height: none!important; overflow-y: hidden;}
+  </style>
+ </head>
+ <body class="nodata" style="">
+  <link href="https://csdnimg.cn/release/blogv2/dist/pc/css/blog_code-01256533b5.min.css" rel="stylesheet"/>
+  <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/chart-3456820cac.css" rel="stylesheet">
+   <link href="https://g.csdnimg.cn/lib/swiper/6.0.4/css/swiper.css" rel="stylesheet">
+    <div class="main_father clearfix d-flex justify-content-center mainfather-concision" style="height:100%;">
+     <div class="container clearfix container-concision" id="mainBox">
+      <main>
+       <div class="blog-content-box">
+        <div class="article-header-box">
+         <div class="article-header">
+          <div class="article-title-box">
+           <h1 class="title-article" id="articleContentId">
+            【深大算法设计与分析】实验五 桥 实验报告 附代码、数据集
+           </h1>
+          </div>
+          <div class="article-info-box">
+           <div class="article-bar-top">
+            <img alt="" class="article-type-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/original.png"/>
+            <div class="bar-content">
+             <a class="article-vip-box" data-report-click='{"spm":"3001.10404"}' data-report-query="spm=3001.10404" data-report-view='{"spm":"3001.10404"}' href="https://mall.csdn.net/vip" target="_blank">
+              <img alt="" class="article-vip-img-new" src="https://csdnimg.cn/release/blogv2/dist/pc/img/identityVipNew.png"/>
+             </a>
+             <a class="follow-nickName" href="https://blog.csdn.net/m0_74268508" rel="noopener" target="_blank" title="Ra1__n">
+              Ra1__n
+             </a>
+             <img alt="" class="article-time-img article-heard-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newUpTime2.png"/>
+             <span class="time">
+              已于 2024-07-20 02:24:07 修改
+             </span>
+             <div class="read-count-box">
+              <img alt="" class="article-read-img article-heard-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/articleReadEyes2.png"/>
+              <span class="read-count">
+               阅读量1k
+              </span>
+              <a class="un-collection" data-report-click='{"mod":"popu_823","spm":"1001.2101.3001.4232","ab":"new"}' id="blog_detail_zk_collection">
+               <img alt="" class="article-collect-img article-heard-img un-collect-status isdefault" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollect2.png" style="display:inline-block"/>
+               <img alt="" class="article-collect-img article-heard-img collect-status isactive" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollectionActive2.png" style="display:none"/>
+               <span class="name">
+                收藏
+               </span>
+               <span class="get-collection">
+                14
+               </span>
+              </a>
+              <div class="read-count-box is-like" data-type="top">
+               <img alt="" class="article-read-img article-heard-img" id="is-like-imgactive-new" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newHeart2023Active.png" style="display:none"/>
+               <img alt="" class="article-read-img article-heard-img" id="is-like-img-new" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newHeart2023Black.png" style="display:block"/>
+               <span class="read-count" id="blog-digg-num">
+                点赞数
+                            16
+               </span>
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="blog-tags-box">
+            <div class="tags-box artic-tag-box">
+             <span class="label">
+              文章标签：
+             </span>
+             <a class="tag-link" data-report-click='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"算法","ab":"new","extra":"{\"searchword\":\"算法\"}"}' data-report-query="spm=1001.2101.3001.4223" data-report-view='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"算法","ab":"new","extra":"{\"searchword\":\"算法\"}"}' href="https://so.csdn.net/so/search/s.do?q=%E7%AE%97%E6%B3%95&amp;t=all&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=&amp;from_tracking_code=tag_word&amp;from_code=app_blog_art" rel="noopener" target="_blank">
+              算法
+             </a>
+             <a class="tag-link" data-report-click='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"c++","ab":"new","extra":"{\"searchword\":\"c++\"}"}' data-report-query="spm=1001.2101.3001.4223" data-report-view='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"c++","ab":"new","extra":"{\"searchword\":\"c++\"}"}' href="https://so.csdn.net/so/search/s.do?q=c%2B%2B&amp;t=all&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=&amp;from_tracking_code=tag_word&amp;from_code=app_blog_art" rel="noopener" target="_blank">
+              c++
+             </a>
+             <a class="tag-link" data-report-click='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"数据结构","ab":"new","extra":"{\"searchword\":\"数据结构\"}"}' data-report-query="spm=1001.2101.3001.4223" data-report-view='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"数据结构","ab":"new","extra":"{\"searchword\":\"数据结构\"}"}' href="https://so.csdn.net/so/search/s.do?q=%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&amp;t=all&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=&amp;from_tracking_code=tag_word&amp;from_code=app_blog_art" rel="noopener" target="_blank">
+              数据结构
+             </a>
+             <a class="tag-link" data-report-click='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"图论","ab":"new","extra":"{\"searchword\":\"图论\"}"}' data-report-query="spm=1001.2101.3001.4223" data-report-view='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"图论","ab":"new","extra":"{\"searchword\":\"图论\"}"}' href="https://so.csdn.net/so/search/s.do?q=%E5%9B%BE%E8%AE%BA&amp;t=all&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=&amp;from_tracking_code=tag_word&amp;from_code=app_blog_art" rel="noopener" target="_blank">
+              图论
+             </a>
+             <a class="tag-link" data-report-click='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"剪枝","ab":"new","extra":"{\"searchword\":\"剪枝\"}"}' data-report-query="spm=1001.2101.3001.4223" data-report-view='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"剪枝","ab":"new","extra":"{\"searchword\":\"剪枝\"}"}' href="https://so.csdn.net/so/search/s.do?q=%E5%89%AA%E6%9E%9D&amp;t=all&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=&amp;from_tracking_code=tag_word&amp;from_code=app_blog_art" rel="noopener" target="_blank">
+              剪枝
+             </a>
+             <a class="tag-link" data-report-click='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"宽度优先","ab":"new","extra":"{\"searchword\":\"宽度优先\"}"}' data-report-query="spm=1001.2101.3001.4223" data-report-view='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"宽度优先","ab":"new","extra":"{\"searchword\":\"宽度优先\"}"}' href="https://so.csdn.net/so/search/s.do?q=%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88&amp;t=all&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=&amp;from_tracking_code=tag_word&amp;from_code=app_blog_art" rel="noopener" target="_blank">
+              宽度优先
+             </a>
+             <a class="tag-link" data-report-click='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"深度优先","ab":"new","extra":"{\"searchword\":\"深度优先\"}"}' data-report-query="spm=1001.2101.3001.4223" data-report-view='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"深度优先","ab":"new","extra":"{\"searchword\":\"深度优先\"}"}' href="https://so.csdn.net/so/search/s.do?q=%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88&amp;t=all&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=&amp;from_tracking_code=tag_word&amp;from_code=app_blog_art" rel="noopener" target="_blank">
+              深度优先
+             </a>
+            </div>
+           </div>
+           <div class="up-time">
+            <span>
+             于 2024-07-18 15:38:59 首次发布
+            </span>
+           </div>
+           <div class="slide-content-box">
+            <div class="article-copyright">
+             <div class="creativecommons">
+              版权声明：本文为博主原创文章，遵循
+              <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="noopener" target="_blank">
+               CC 4.0 BY-SA
+              </a>
+              版权协议，转载请附上原文出处链接和本声明。
+             </div>
+             <div class="article-source-link">
+              本文链接：
+              <a href="https://blog.csdn.net/m0_74268508/article/details/140523557" target="_blank">
+               https://blog.csdn.net/m0_74268508/article/details/140523557
+              </a>
+             </div>
+            </div>
+           </div>
+           <div class="operating">
+            <a class="href-article-edit slide-toggle">
+             版权
+            </a>
+           </div>
+          </div>
+          <div class="article-resource-info-box">
+          </div>
+         </div>
+        </div>
+        <div id="blogHuaweiyunAdvert">
+        </div>
+        <article class="baidu_pl">
+         <div class="article_content clearfix" id="article_content">
+          <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/kdoc_html_views-1a98987dfd.css" rel="stylesheet"/>
+          <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-704d5b9767.css" rel="stylesheet"/>
+          <div class="htmledit_views atom-one-dark" id="content_views">
+           <div>
+            <p id="main-toc">
+             <strong>
+              目录
+             </strong>
+            </p>
+            <p id="-toc" style="margin-left:0px;">
+            </p>
+            <p id="%E4%B8%80%E3%80%81%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84%E4%B8%8E%E8%A6%81%E6%B1%82-toc" style="margin-left:0px;">
+             <a href="#%E4%B8%80%E3%80%81%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84%E4%B8%8E%E8%A6%81%E6%B1%82" rel="nofollow">
+              一、实验目的与要求
+             </a>
+            </p>
+            <p id="%E4%BA%8C%E3%80%81%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9%E4%B8%8E%E6%96%B9%E6%B3%95-toc" style="margin-left:0px;">
+             <a href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9%E4%B8%8E%E6%96%B9%E6%B3%95" rel="nofollow">
+              二、实验内容与方法
+             </a>
+            </p>
+            <p id="%E4%B8%89%E3%80%81%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%BF%87%E7%A8%8B-toc" style="margin-left:0px;">
+             <a href="#%E4%B8%89%E3%80%81%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%BF%87%E7%A8%8B" rel="nofollow">
+              三、实验步骤与过程
+             </a>
+            </p>
+            <p id="%E5%9B%9B%E3%80%81%E5%AE%9E%E9%AA%8C%E7%BB%93%E8%AE%BA%E4%B8%8E%E4%BD%93%E4%BC%9A-toc" style="margin-left:0px;">
+             <a href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E9%AA%8C%E7%BB%93%E8%AE%BA%E4%B8%8E%E4%BD%93%E4%BC%9A" rel="nofollow">
+              四、实验结论与体会
+             </a>
+            </p>
+            <p id="%E5%B0%BE%E6%B3%A8%EF%BC%9A-toc" style="margin-left:0px;">
+             <a href="#%E5%B0%BE%E6%B3%A8%EF%BC%9A" rel="nofollow">
+              尾注：
+             </a>
+            </p>
+            <hr id="hr-toc"/>
+            <p>
+            </p>
+            <h2 id="%E4%B8%80%E3%80%81%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84%E4%B8%8E%E8%A6%81%E6%B1%82">
+             一、实验目的与要求
+            </h2>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              实验目的：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              1.
+             </strong>
+             <strong>
+              掌握图的连通性。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              2.
+             </strong>
+             <strong>
+              掌握并查集的基本原理和应用。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              实验要求：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              1.
+             </strong>
+             <strong>
+              实现基准算法。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              2.
+             </strong>
+             <strong>
+              设计的高效算法中必须使用并查集，如有需要，可以配合使用其他任何数据结构。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              3.
+             </strong>
+             <strong>
+              验证算法正确性。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              4.
+             </strong>
+             <strong>
+              使用文件
+             </strong>
+             <strong>
+              mediumG.txt
+             </strong>
+             <strong>
+              和
+             </strong>
+             <strong>
+              largeG.txt
+             </strong>
+             <strong>
+              中的无向图测试基准算法和高效算法的性能，记录两个算法的运行时间。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              5.
+             </strong>
+             <strong>
+              设计的高效算法的运行时间作为评分标准之一。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              6.
+             </strong>
+             <strong>
+              提交程序源代码。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              7.
+             </strong>
+             <strong>
+              实验报告中要详细描述算法设计的思想，核心步骤，使用的数据结构。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+            </p>
+            <h2 id="%E4%BA%8C%E3%80%81%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9%E4%B8%8E%E6%96%B9%E6%B3%95" style="margin-left:0;">
+             二、实验内容与方法
+            </h2>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              1.
+             </strong>
+             <strong>
+              桥的定义
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              在图论中，一条边被称为“桥”代表这条边一旦被删除，这张图的连通块数量会增加。等价地说，一条边是一座桥当且仅当这条边不在任何环上。一张图可以有零或多座桥。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <img alt="" height="194" src="https://i-blog.csdnimg.cn/direct/9f2daf4092bb4c56bee4a7cac0973cdc.png" width="214">
+              <strong>
+              </strong>
+              <img alt="" height="200" src="https://i-blog.csdnimg.cn/direct/b412212e12004ba09e6159044307a678.png" width="200"/>
+             </img>
+            </p>
+            <p style="margin-left:.0001pt;text-align:center;">
+             <strong>
+              图 1 没有桥的无向连通图               图 2 有16
+             </strong>
+             <strong>
+              个顶点和6
+             </strong>
+             <strong>
+              个桥的图
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:center;">
+             <strong>
+              （桥以红色线段标示）
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              2.
+             </strong>
+             <strong>
+              求解问题
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              找出一个无向图中所有的桥。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              3.
+             </strong>
+             <strong>
+              算法
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              （1
+             </strong>
+             <strong>
+              ）基准算法
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              For every edge (u, v), do following
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              a) Remove (u, v) from graph
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              b) See if the graph remains connected (We can either use BFS or DFS)
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              c) Add (u, v) back to the graph.
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              （2
+             </strong>
+             <strong>
+              ）应用并查集设计一个比基准算法更高效的算法。不要使用Tarjan
+             </strong>
+             <strong>
+              算法，如果使用Tarjan
+             </strong>
+             <strong>
+              算法，仍然需要利用并查集设计一个比基准算法更高效的算法。
+             </strong>
+            </p>
+            <h2 id="%E4%B8%89%E3%80%81%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%BF%87%E7%A8%8B" style="margin-left:0;">
+             三、实验步骤与过程
+            </h2>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              （1
+             </strong>
+             <strong>
+              ）数据预处理：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              此阶段需要从本地文件中读取图的信息，并定义数据结构存储图，而由于我们需要使用深度优先或宽度优先算法遍历整张图，使用邻接表会比使用邻接矩阵有更高的效率。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              （2
+             </strong>
+             <strong>
+              ）基准算法：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              根据实验文档中给出的伪代码进行代码的编写：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              首先需要对图进行深度优先或者广度优先搜索，以此判断图中连通分量的数量：每次遍历结束则说明找到一个连通分量，如果还有点未被遍历则选取新的起点进行遍历，最后有多少次遍历就说明图中有多少个连通分量。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              接着进行循环，遍历每一条边：在循环中，尝试删除当前遍历的边，并进行深度优先或广度优先搜索，如果发现图的连通分量数量改变，说明当前删除的这条边是图的桥，反之不是。接下来还原删除的这条边，继续循环即可。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              时间复杂度：假设图中有v个节点，e
+             </strong>
+             <strong>
+              条边。开始时进行深度优先遍历的时间复杂度为
+             </strong>
+             <strong>
+              <em>
+               O(v+e)
+              </em>
+             </strong>
+             <strong>
+              ，接下来进行了e次循环，每次循环都需要遍历整张图，因此此部分的时间复杂度为
+             </strong>
+             <strong>
+              <em>
+               O(e(v+e))
+              </em>
+             </strong>
+             <strong>
+              ，综上所述，本算法的时间复杂度为\(
+              <em>
+               O(ev^2)\)
+              </em>
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              在此基准算法的基础上也可以进行优化：我们在删除每条边之后其实并不需要去遍历整张图，计算整张图的连通分量数量。我们可以直接以删除的边的某一个节点出发进行深度优先搜索，看是否能到达另一个节点，如果可以，则说明删除这条边并没有改变连通分量数量（因为两个点仍然连通），如果不行，即可说明这条边是桥。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:center;">
+             <img alt="" height="197" src="https://i-blog.csdnimg.cn/direct/2b2b94fb678a42fe960b5861f8be1f20.png" width="418"/>
+            </p>
+            <p style="margin-left:.0001pt;text-align:center;">
+             <strong>
+              图：简单数据集上的演示
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              如图所示：边（2，3
+             </strong>
+             <strong>
+              ）为图中唯一的桥，如果去掉这条边，节点2
+             </strong>
+             <strong>
+              和3
+             </strong>
+             <strong>
+              将不能通过单次深度优先遍历同时经过。使用这种方法能避免直接统计整张图中的连通分量个数。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              这样一来，每次循环所需进行的遍历就从整张图变成了某个点的连通分量，所用时间会根据图中连通分量的大小而改变：一般而言，图中的连通分量越多（也即每个连通分量的平均大小越小），这种优化就有越显著的效果。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              （3
+             </strong>
+             <strong>
+              ）并查集：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              首先介绍并查集本身：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              并查集是一种树形的数据结构，可以用于：①查找两个元素是否属于一个集合；②将两个集合合并为一个。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              具体来讲，并查集是使用树的方式来维护集合的：初始时所有节点都是根节点，每棵树都只有一个节点，每个节点都有一个指针，初始为空，但是与常规的树不同，此处的指针指向的是此节点的父节点。接下来，如果进行了查找的操作，就只需寻找这两个点的根节点，如果根节点相同，就说明了两个点在同一个集合，反之则不在；如果进行了合并的操作，就将其中一个集合的根节点的指针指向另一个集合的根节点。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              接下来将并查集运用到本题中：本题中的“集合”即连通分量，最开始时，每个点都是一个连通分量。接下来需要遍历所有的边，对于一个边的两个顶点，如果他们不在一个连通分量中，就使用上述的方法将他们合并到一个集合中，如果已经在一个集合，就继续遍历。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              接下来遍历每条边，同样进行删去边的操作，再使用并查集的方式统计连通分量的个数，如果统计出的连通分量个数变多，则说明这条边就是桥。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              时间复杂度：假设图中有v个节点，e
+             </strong>
+             <strong>
+              条边。本算法中，每次计算连通分量的个数时，需要遍历每条边，对于遍历到的每条边，需要判断两个顶点是否在同一个集合中，并可能进行合并集合的操作，此步骤的用时与树的高度相关，但树的高度会随数据集的变化而变化，我们假设树是平衡二叉树，且假设为最坏情况：只有一颗树，此时的树最高，那么树的高度为
+             </strong>
+             <strong>
+              log
+             </strong>
+             <strong>
+              <em>
+               v
+              </em>
+              ，此步骤的时间复杂度为
+              <em>
+               O(e
+              </em>
+             </strong>
+             <strong>
+              log
+             </strong>
+             <strong>
+              <em>
+               v
+              </em>
+             </strong>
+             <strong>
+              <em>
+               )
+              </em>
+              ，而后续的删除边操作又需要遍历所有的边，因此算法的时间复杂度为\(
+              <em>
+               O(
+              </em>
+             </strong>
+             <strong>
+              <em>
+               e^
+              </em>
+             </strong>
+             <strong>
+              <em>
+               2
+              </em>
+             </strong>
+             <strong>
+              log
+              <em>
+               v
+              </em>
+              <em>
+               )\)
+              </em>
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              （4
+             </strong>
+             <strong>
+              ）寻找环边思路：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              从图论的角度分析“桥”的性质：桥可以表示为：去掉之后就会增加连通分量的个数的边；而一条边如果不是“桥”，则去掉它就不会改变连通分量的个数，它就一定是环边。
+             </strong>
+            </p>
+            <p style="text-align:center;">
+             <img alt="" height="251" src="https://i-blog.csdnimg.cn/direct/5b1c531ce1464b72bc7eba1af890a8c4.png" width="671"/>
+            </p>
+            <p style="margin-left:.0001pt;text-align:center;">
+             <strong>
+              图：环边一定不是桥
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:left;">
+             <strong>
+              如图所示，去掉环边之后环依然可以连成一条“线”，因此不会增加连通分量个数。具体的证明如下：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              反证法：如果一条边既不是桥，又不是环边，那么移除这条边之后图中的连通分量数量并不会增加，但是由于这条边不是环边，这条边的两个顶点没有另一条路径可以互相到达，这两个点将会处在不同的连通分量，连通分量数量增加，与前提条件矛盾，故得证。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              这样一来，我们只需要计算图中的环边数量，再用边的总数减去这个数量，就可以计算出桥的数量了。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              接下来问题转化为：如何找出图中的所有环边？
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              以某一个节点为起点的（此处是为了与可变起点的深度优先区分）深度优先遍历中，记录每一个节点的前驱节点和遍历深度，以此构建出图的生成树。所有不在生成树中的边必然是图的环边，这是因为在树中加入任意一条边是一定可以构成环的，且这条边本身就是环边。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              构建出生成树之后，接下来的操作就是判断生成树中的那些边是环边：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              ①遍历所有不在树中的边；
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              ②对于遍历到的每一条边，将其添加到树中，则必定会形成一个环，找出此环中的所有边，将其记录为环边。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              ③最后，仍然判定为非环边的边就是桥。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:center;">
+             <img alt="" height="245" src="https://i-blog.csdnimg.cn/direct/7d17233c20f84949ac5eb0801b4deca2.png" width="230">
+              <img alt="" height="244" src="https://i-blog.csdnimg.cn/direct/c9020eaaa928487b852b9eedf8581bbf.png" width="230"/>
+             </img>
+            </p>
+            <p style="margin-left:.0001pt;text-align:center;">
+             <strong>
+              图1
+             </strong>
+             <strong>
+              ：生成树
+             </strong>
+             <strong>
+              图2
+             </strong>
+             <strong>
+              ：完整的图
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              如图所示：完成第一次遍历构建的生成树如图1。而当前有一条边（3
+             </strong>
+             <strong>
+              ，5
+             </strong>
+             <strong>
+              ）不在树中，我们需要尝试将这条边“添加”到树中形成一个环，并找到这个环具体由边（1
+             </strong>
+             <strong>
+              ，2
+             </strong>
+             <strong>
+              ）、（2
+             </strong>
+             <strong>
+              ，3
+             </strong>
+             <strong>
+              ）、（1
+             </strong>
+             <strong>
+              ，5
+             </strong>
+             <strong>
+              ）和（3
+             </strong>
+             <strong>
+              ，5
+             </strong>
+             <strong>
+              ）构成。最后，未被发现构成了环的边：（0
+             </strong>
+             <strong>
+              ，1
+             </strong>
+             <strong>
+              ）、（0
+             </strong>
+             <strong>
+              ，6
+             </strong>
+             <strong>
+              ）和（3
+             </strong>
+             <strong>
+              ，4
+             </strong>
+             <strong>
+              ）即为此图的桥。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              实际代码编写的思路如下：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              首先需要进行一部分所用数组的定义和初始化：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              由于我们需要记录下那些边在树中而哪些边不在，所以需要创建一个pair类型的数组，用于记录所有不在树中的边，方便遍历。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              对于上述的步骤②：程序实际上并不会将这条边“添加”到树中，而是会找出这条边的两个顶点，向上寻找树中这两个节点的最近公共祖先节点，并将过程中的所有边全部记为环边。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:center;">
+             <img alt="" height="296" src="https://i-blog.csdnimg.cn/direct/99de99cd30f9452da817e28a32362dac.png" width="282"/>
+            </p>
+            <p style="margin-left:.0001pt;text-align:center;">
+             <strong>
+              图：寻找最近公共祖先节点
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              最后统计树中记为环边的边数，桥的数量即是树的总边数-树中的环边数。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              （5
+             </strong>
+             <strong>
+              ）并查集+
+             </strong>
+             <strong>
+              寻找环边优化+
+             </strong>
+             <strong>
+              压缩路径：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              上述的寻找环边的方法依然不够高效，问题出在回溯上：每次回溯需要进行的步数等同于环的大小，而面对较大的数据集，环有可能很多且很大，且多个环共享了一些边。这样一来，很多不需再次判断的边还是被遍历到了，算法的运行效率就会被极大地拖慢。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              为了优化回溯的过程，可以结合使用图的生成树和并查集的方法：在上个算法的基础上，每次寻找到某两个节点的最近公共祖先节点，就将寻找过程中所经过的所有节点全部直接连接到这个祖先节点上。在上图的例子中，我们在找到节点3和5
+             </strong>
+             <strong>
+              的最近公共祖先节点后，会将节点3
+             </strong>
+             <strong>
+              直接连到5
+             </strong>
+             <strong>
+              上面：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:center;">
+             <img alt="" height="333" src="https://i-blog.csdnimg.cn/direct/0eeb98db09a448eea97dbc2627c0e03a.png" width="684"/>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              如果图中原本还存在边（5，4
+             </strong>
+             <strong>
+              ），路径压缩之前就需要遍历节点2~5
+             </strong>
+             <strong>
+              ，但是压缩之后无需再遍历节点2
+             </strong>
+             <strong>
+              。对于更加稠密、复杂的图，路径压缩会有更好的效果。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              实际代码编写的思路如下：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              由于存在并查集的优化，可能会生成一些原本不存在的边（如上图中的边（1，3
+             </strong>
+             <strong>
+              ）），因此不好使用保存边的方式保存所有环边。我们使用的是记录节点的方式：为每个节点维护一个状态，一般情况下，如果节点是桥的一个顶点，将其置为1
+             </strong>
+             <strong>
+              ，反之将其置为0
+             </strong>
+             <strong>
+              。（特殊情况见下文）
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              构建完生成树时所有的节点都有可能是桥的一部分，我们需要将状态初始化为1，但由于树的节点数比边数多1
+             </strong>
+             <strong>
+              ，将每棵树的根节点状态都置为0
+             </strong>
+             <strong>
+              。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              在找到两个节点的最近公共祖先后，我们将路程中经过的每一个节点都直接连接到此祖先节点下，也就是将路径中所有节点的父节点指针指向此祖先节点。并将路径中除此祖先节点的所有节点的状态值置为0。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              为什么要除开此祖先节点的补充说明：当我们找到一个这样的环，我们实际上找到的环边数量是此环的边数-1（新加进来的这条边早已确定是环边），但是构成环的节点数等于环的边数，因此我们不能将环中所有节点的状态都置为0
+             </strong>
+             <strong>
+              ，需要除开一个点。具体是哪个点其实并没有必定的规定，但是为了方便输出我们找到的所有桥边，选择了此祖先节点。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:center;">
+             <img alt="" height="321" src="https://i-blog.csdnimg.cn/direct/e77066fa1de7445ea39a667f633e0140.png" width="264"/>
+            </p>
+            <p style="margin-left:.0001pt;text-align:center;">
+             <strong>
+              图：最终每个节点的状态（绿色表示1
+             </strong>
+             <strong>
+              ，橙色表示0
+             </strong>
+             <strong>
+              ）
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              最后是进行输出，如果我们只需要得到桥的数量，那么直接统计状态为1的节点的数量即可，如图，最终只剩三个状态为1
+             </strong>
+             <strong>
+              的节点，桥的数量为3
+             </strong>
+             <strong>
+              。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              由于我们只记录了哪些节点是桥的顶点，想要真正输出桥边是哪些并不是一个显而易见的问题。回顾步骤②的实现，如果一个节点的状态值为1，此节点要么不是环边的节点，要么是某个环边的祖先节点。而由于我们对最近公共祖先节点的寻找是从下往上的，此结点一定会与其父节点构成桥，将其输出。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              （6
+             </strong>
+             <strong>
+              ）算法运行测试：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              在给出的两个数据集上进行算法的测试，各个版本算法的运行时间如图（单位为秒）：
+             </strong>
+            </p>
+            <p class="img-center">
+             <img alt="" height="115" src="https://i-blog.csdnimg.cn/direct/5c812a7737b344a5a5019a7252e64bc7.png" width="518"/>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              其中，midG数据集不存在桥，largeG
+             </strong>
+             <strong>
+              数据集有8
+             </strong>
+             <strong>
+              条桥边。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              实验所用代码如下：
+             </strong>
+            </p>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;chrono&gt;
+#include &lt;fstream&gt;
+
+using namespace std;
+using namespace std::chrono;
+
+//基准算法
+//对每一条边尝试去除，看块的数量是否会增多，如果增多则说明该边是桥
+class Force_Bridges {
+protected:
+    vector&lt;pair&lt;int, int&gt;&gt; bridges;
+    vector&lt;vector&lt;int&gt;&gt; map;
+    vector&lt;bool&gt; visited;
+    vector&lt;pair&lt;int, int&gt;&gt; edges;
+    int edgeNumber;
+    int vertexNumber;
+    int blocks; //块的数目
+    int count;
+public:
+    Force_Bridges(int edgeNumber, int vertexNumber) : edgeNumber(edgeNumber), vertexNumber(vertexNumber) {
+        map.resize(vertexNumber);
+    }
+    void AddEdge(int head, int tail, bool init = false) {
+        map[head].push_back(tail);
+        map[tail].push_back(head);
+        if (init) {
+            edges.emplace_back(head, tail);
+        }
+    }
+    void DeleteEdge(int head, int tail) {
+        for (auto it = map[head].begin(); it != map[head].end(); it++) {
+            if (*it == tail) {
+                map[head].erase(it);
+                break;
+            }
+        }
+        for (auto it = map[tail].begin(); it != map[tail].end(); it++) {
+            if (*it == head) {
+                map[tail].erase(it);
+                break;
+            }
+        }
+    }
+
+    //本算法在找块时用到的是DFS，DFS搜索时保存变量count，只要count不为零，就说明找到块了
+    void DFS(int&amp; current) {
+        if (visited[current])
+            return;
+        visited[current] = true;
+        count++;
+        for (auto next : map[current]) {
+            DFS(next);
+        }
+    }
+    int CountBlocks() {
+        int component = 0;
+        visited.assign(vertexNumber, false);
+        for (int i = 0; i &lt; vertexNumber; i++) {
+            count = 0;
+            DFS(i);
+            if (count) {
+                component++;
+            }
+        }
+        return component;
+    }
+
+    //算法核心
+    //记录原始块数，并尝试删除边，看当前边数是否超过原始边数，如果是，则删除的边为桥
+    void Force_findBridge() {
+        blocks = CountBlocks();
+        for (auto&amp; edge : edges) {
+            DeleteEdge(edge.first, edge.second);
+            if (blocks &lt; CountBlocks()) {
+                bridges.emplace_back(edge.first, edge.second);
+            }
+            AddEdge(edge.first, edge.second);
+        }
+    }
+    void printfBridge() {
+        int ans = 0;
+        for (auto&amp; bridge : bridges) {
+            //cout &lt;&lt; bridge.first &lt;&lt; '-' &lt;&lt; bridge.second &lt;&lt; endl;
+            ans++;
+        }
+        cout &lt;&lt; "桥的数量为" &lt;&lt; ans &lt;&lt; endl;
+    }
+};
+
+//并查集优化
+//对于上面的基准算法，用并查集代替DFS进行数块，从而优化
+class Disjoint :public Force_Bridges {
+protected:
+    vector&lt;pair&lt;int, int&gt;&gt;edgesTemp;
+    vector&lt;int&gt; root;
+public:
+    Disjoint(int edgeNumber, int vertexNumber) : Force_Bridges(edgeNumber, vertexNumber) {
+        root.resize(vertexNumber);
+    }
+    void AddEdge(int head, int tail, bool init = false) {
+        if (init) {
+            edges.emplace_back(head, tail);
+        }
+        else {
+            edgesTemp.emplace_back(head, tail);
+        }
+    }
+
+    //优化的核心算法
+    //首先将每一个点都当作块
+    //然后根据边来连接他们，即连接到并查集
+    //然后再数有多少个并查集
+    int CountBlocks() {
+        int component = 0;
+        for (int i = 0; i &lt; vertexNumber; i++) {
+            root[i] = i;
+        }
+        for (auto&amp; edge : edgesTemp) {
+            merge(edge.first, edge.second);
+        }
+        for (int i = 0; i &lt; vertexNumber; i++) {
+            if (root[i] == i) {
+                component++;
+            }
+        }
+        return component;
+    }
+
+    //并查集的实现
+    int findRoot(int&amp; vertex) {
+        if (root[vertex] == vertex) {
+            return vertex;
+        }
+        return root[vertex] = findRoot(root[vertex]);
+    }
+    void merge(int&amp; u, int&amp; v) {
+        int uRoot = findRoot(u);
+        int vRoot = findRoot(v);
+        if (uRoot != vRoot) {
+            root[vRoot] = uRoot;
+        }
+    }
+
+    void DeleteEdge(pair&lt;int, int&gt;edge) {
+        for (auto it = edgesTemp.begin(); it != edgesTemp.end(); it++) {
+            if (*it == edge) {
+                edgesTemp.erase(it);
+                break;
+            }
+        }
+    }
+
+    void Disjoint_findBridge() {
+        edgesTemp = edges;
+        blocks = CountBlocks();
+        for (auto&amp; edge : edges) {
+            DeleteEdge(edge);
+            if (blocks &lt; CountBlocks()) {
+                bridges.emplace_back(edge.first, edge.second);
+            }
+            AddEdge(edge.first, edge.second);
+        }
+    }
+};
+
+//逆序找桥
+//桥边一定是非环边，环边一定不是桥，故我们可以先找环边，其他的一定是桥边
+class LCA :public Force_Bridges {
+protected:
+    vector&lt;pair&lt;int, int&gt;&gt; notTreeEdges;
+    vector&lt;bool&gt; notLoopNode;
+    vector&lt;int&gt; depth;
+    vector&lt;int&gt; father;
+public:
+    LCA(int edgeNumber, int vertexNumber) :Force_Bridges(edgeNumber, vertexNumber) {
+        map.resize(vertexNumber);
+        depth.resize(vertexNumber);
+        notLoopNode.assign(vertexNumber, false);
+        visited.assign(vertexNumber, false);
+        father.resize(vertexNumber);
+        for (int i = 0; i &lt; vertexNumber; i++) {
+            father[i] = i;
+        }
+    }
+
+    //通过边创建树，但不是每一个边都一定会在树里面的
+    void BuildTree(int&amp; current, int deep, int&amp; currentFather) {
+        depth[current] = deep;
+        father[current] = currentFather;
+        visited[current] = true;
+        for (auto&amp; son : map[current]) {
+            if (!visited[son]) {
+                notLoopNode[son] = true;
+                BuildTree(son, deep + 1, current);
+            }
+        }
+    }
+    void CreateTree() {
+        for (int i = 0; i &lt; vertexNumber; i++) {
+            if (!visited[i]) {
+                BuildTree(i, 0, i);
+            }
+        }
+    }
+
+    //找非环边
+    void FindNotTreeEdge() {
+        for (auto&amp; edge : edges) {
+            if (father[edge.first] != edge.second &amp;&amp; father[edge.second] != edge.first) {
+                notTreeEdges.emplace_back(edge.first, edge.second);
+            }
+        }
+    }
+
+    //根据已知的非树边，运用LCA找到路途上所有的环边
+    void FindLoopEdge(pair&lt;int, int&gt;&amp; edge) {
+        int u = edge.first;
+        int v = edge.second;
+        while (true) {
+            if (depth[u] &gt; depth[v]) {
+                notLoopNode[u] = false;
+                u = father[u];
+            }
+            else if (depth[u] &lt; depth[v]) {
+                notLoopNode[v] = false;
+                v = father[v];
+            }
+            else if (u != v) {
+                notLoopNode[u] = false;
+                u = father[u];
+                notLoopNode[v] = false;
+                v = father[v];
+            }
+            else {
+                break;
+            }
+        }
+    }
+
+    void LCA_findBridge() {
+        CreateTree();
+        FindNotTreeEdge();
+        for (auto&amp; edge : notTreeEdges) {
+            FindLoopEdge(edge);
+        }
+    }
+
+    void printfBridge() {
+        int ans = 0;
+        for (int i = 0; i &lt; vertexNumber; i++) {
+            if (notLoopNode[i]) {
+                //具体输出每一条桥边
+                //cout &lt;&lt; i &lt;&lt; '-' &lt;&lt; father[i] &lt;&lt; endl;
+                ans++;
+            }
+        }
+        cout &lt;&lt; "桥的数量为" &lt;&lt; ans &lt;&lt; endl;
+    }
+};
+
+//在上面思想的基础上
+//对于LCA找环边的过程，我们可以用并查集压缩
+class LCA_CompressPath :public LCA {
+public:
+    LCA_CompressPath(int edgeNumber, int vertexNumber) :LCA(edgeNumber, vertexNumber) {
+        ;
+    }
+
+    //并查集压缩
+    void CompressPath(int current, int ancestor) {
+        while (father[current] != ancestor) {
+            int next = father[current];
+            father[current] = ancestor;
+            depth[current] = depth[ancestor] + 1;
+            current = next;
+        }
+    }
+
+    //找环边
+    void FindLoopEdge(pair&lt;int, int&gt;&amp; edge) {
+        int u = edge.first;
+        int v = edge.second;
+        while (true) {
+            if (depth[u] &gt; depth[v]) {
+                notLoopNode[u] = false;
+                u = father[u];
+            }
+            else if (depth[u] &lt; depth[v]) {
+                notLoopNode[v] = false;
+                v = father[v];
+            }
+            else if (u != v) {
+                notLoopNode[u] = false;
+                u = father[u];
+                notLoopNode[v] = false;
+                v = father[v];
+            }
+            else {//已经找到最近祖先节点，使用并查集进行路径压缩
+                CompressPath(edge.first, father[u]);
+                CompressPath(edge.second, father[u]);
+                break;
+            }
+        }
+    }
+    void LCA_findBridge() {
+        CreateTree();
+        FindNotTreeEdge();
+        for (auto&amp; edge : notTreeEdges) {
+            FindLoopEdge(edge);
+        }
+    }
+};
+
+int main() {
+    //文件名：mediumDG或largeG
+    fstream file("mediumDG.txt");//使用代码时需要填上完整路径
+    if (!file.is_open()) {
+        cout &lt;&lt; "File Open Error!" &lt;&lt; endl;
+        return 0;
+    }
+    int edgeNumber;
+    int vertexNumber;
+    int head, tail;
+    file &gt;&gt; vertexNumber &gt;&gt; edgeNumber;
+    Force_Bridges test1(edgeNumber, vertexNumber);
+    Disjoint test2(edgeNumber, vertexNumber);
+    LCA test3(edgeNumber, vertexNumber);
+    LCA_CompressPath test4(edgeNumber, vertexNumber);
+    while (!file.eof()) {
+        file &gt;&gt; head &gt;&gt; tail;
+        test1.AddEdge(head, tail, true);
+        test2.AddEdge(head, tail, true);
+        test3.AddEdge(head, tail, true);
+        test4.AddEdge(head, tail, true);
+    }
+
+
+    auto beginTime1 = system_clock::now();
+    test1.Force_findBridge();
+    duration&lt;double&gt; diff1 = system_clock::now() - beginTime1;
+    cout &lt;&lt; "基准算法：用时" &lt;&lt; diff1.count() &lt;&lt; 's' &lt;&lt; endl;
+    test1.printfBridge();
+    cout &lt;&lt; endl;
+
+    auto beginTime2 = system_clock::now();
+    test2.Disjoint_findBridge();
+    duration&lt;double&gt; diff2 = system_clock::now() - beginTime2;
+    cout &lt;&lt; "简单并查集算法：用时" &lt;&lt; diff2.count() &lt;&lt; 's' &lt;&lt; endl;
+    test2.printfBridge();
+    cout &lt;&lt; endl;
+
+    auto beginTime3 = system_clock::now();
+    test3.LCA_findBridge();
+    duration&lt;double&gt; diff3 = system_clock::now() - beginTime3;
+    cout &lt;&lt; "寻找环边算法：用时" &lt;&lt; diff3.count() &lt;&lt; 's' &lt;&lt; endl;
+    test3.printfBridge();
+    cout &lt;&lt; endl;
+
+    auto beginTime4 = system_clock::now();
+    test4.LCA_findBridge();
+    duration&lt;double&gt; diff4 = system_clock::now() - beginTime4;
+    cout &lt;&lt; "寻找环边+并查集压缩路径优化算法：用时" &lt;&lt; diff4.count() &lt;&lt; 's' &lt;&lt; endl;
+    test4.printfBridge();
+    cout &lt;&lt; endl;
+}</code></pre>
+            <p style="margin-left:.0001pt;text-align:justify;">
+            </p>
+            <h2 id="%E5%9B%9B%E3%80%81%E5%AE%9E%E9%AA%8C%E7%BB%93%E8%AE%BA%E4%B8%8E%E4%BD%93%E4%BC%9A" style="margin-left:0;">
+             四、实验结论与体会
+            </h2>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              实验结论：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              本实验我们通过编写基准算法、简单并查集算法、寻找环边算法，并在寻找环边算法中引入了并查集压缩路径思想，分别解决了寻找图中桥的数量的问题。除此之外，我们还提出了基准算法的优化。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              完成代码的编写后我们进行了数据测试，对于midG
+             </strong>
+             <strong>
+              数据集，所有算法都能在短时间内运行完毕，并均能得到正确结果；对于
+             </strong>
+             <strong>
+              largeG
+             </strong>
+             <strong>
+              数据集，只有最优化的算法能在短时间内得到结果，用时为
+             </strong>
+             <strong>
+              0.412492s
+             </strong>
+             <strong>
+              。
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+              实验体会：
+             </strong>
+            </p>
+            <p style="margin-left:.0001pt;text-align:justify;">
+             <strong>
+             </strong>
+             <strong>
+              本实验的难点主要在于算法思想，从寻找桥过渡到寻找环边再到构建生成树并寻找最近祖先节点，最后到并查集思想的路径压缩优化，每一步的思维都比较跳跃，需要理清思路，一步步推向最终结果。
+             </strong>
+            </p>
+           </div>
+           <p>
+           </p>
+           <h2 id="%E5%B0%BE%E6%B3%A8%EF%BC%9A">
+            尾注：
+           </h2>
+           <p>
+            <strong>
+             本实验是此课程的第五次实验，要想独自想出构建生成树寻找环边、记录节点的状态并输出桥边，以及使用并查集思想压缩路径优化运行时间三种方法并不容易。通过反复阅读或者查阅其他相关博客可以有助于加深此部分的理解。
+            </strong>
+           </p>
+           <p>
+            <strong>
+             如有疑问欢迎讨论，如有好的建议与意见欢迎提出，如有发现错误则恳请指正！
+            </strong>
+           </p>
+           <p style="margin-left:.0001pt;text-align:justify;">
+           </p>
+           <p style="margin-left:.0001pt;text-align:justify;">
+           </p>
+          </div>
+         </div>
+        </article>
+       </div>
+       <div class="directory-boxshadow-dialog" style="display:none;">
+        <div class="directory-boxshadow-dialog-box">
+        </div>
+        <div class="vip-limited-time-offer-box-new" id="vip-limited-time-offer-box-new">
+         <img class="limited-img limited-img-new" src="https://csdnimg.cn/release/blogv2/dist/pc/img/vip-limited-close-newWhite.png"/>
+         <div class="vip-limited-time-top">
+          确定要放弃本次机会？
+         </div>
+         <span class="vip-limited-time-text">
+          福利倒计时
+         </span>
+         <div class="limited-time-box-new">
+          <span class="time-hour">
+          </span>
+          <i>
+           :
+          </i>
+          <span class="time-minite">
+          </span>
+          <i>
+           :
+          </i>
+          <span class="time-second">
+          </span>
+         </div>
+         <div class="limited-time-vip-box">
+          <p>
+           <img class="coupon-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/vip-limited-close-roup.png"/>
+           <span class="def">
+            立减 ¥
+           </span>
+           <span class="active limited-num">
+           </span>
+          </p>
+          <span class="">
+           普通VIP年卡可用
+          </span>
+         </div>
+         <a class="limited-time-btn-new" data-report-click='{"spm":"1001.2101.3001.9621"}' data-report-query="spm=1001.2101.3001.9621" href="https://mall.csdn.net/vip">
+          立即使用
+         </a>
+        </div>
+       </div>
+       <a id="commentBox" name="commentBox">
+       </a>
+      </main>
+     </div>
+     <div class="recommend-right1 align-items-stretch clearfix" data-type="recommend" id="rightAsideConcision">
+      <aside class="recommend-right_aside">
+       <div id="recommend-right-concision">
+        <div class="flex-column aside-box groupfile" id="groupfileConcision">
+         <div class="groupfile-div1">
+          <h3 class="aside-title">
+           目录
+          </h3>
+          <div class="align-items-stretch group_item">
+           <div class="pos-box">
+            <div class="scroll-box">
+             <div class="toc-box">
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </aside>
+     </div>
+    </div>
+    <div class="mask-dark">
+    </div>
+    <div class="skin-boxshadow">
+    </div>
+    <div class="directory-boxshadow">
+    </div>
+    <div style="display:none;">
+     <img onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);' src=""/>
+    </div>
+    <div class="keyword-dec-box" id="keywordDecBox">
+    </div>
+   </link>
+  </link>
+ </body>
+ <!-- 富文本柱状图  -->
+ <link href="https://csdnimg.cn/release/blog_editor_html/release1.6.12/ckeditor/plugins/chart/chart.css" rel="stylesheet">
+  <link href="https://g.csdnimg.cn/lib/cboxEditor/1.1.6/embed-editor.min.css" rel="stylesheet"/>
+  <link href="https://csdnimg.cn/release/blog_editor_html/release1.6.12/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-dark.css" rel="stylesheet"/>
+ </link>
+</html>

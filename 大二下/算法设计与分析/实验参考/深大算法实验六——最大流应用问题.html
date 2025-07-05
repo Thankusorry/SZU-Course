@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head>
+  <meta charset="utf-8"/>
+  <link href="https://blog.csdn.net/AnakinRM/article/details/124693823" rel="canonical"/>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+  <meta content="webkit" name="renderer">
+   <meta content="webkit" name="force-rendering">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+    <meta content="always" name="referrer"/>
+    <meta content="no-siteapp" http-equiv="Cache-Control">
+     <link href="#" media="handheld" rel="alternate"/>
+     <meta content="pc" name="applicable-device"/>
+     <link href="https://g.csdnimg.cn/static/logo/favicon32.ico" rel="shortcut icon" type="image/x-icon"/>
+     <title>
+      深大算法实验六——最大流应用问题_残留网络-CSDN博客
+     </title>
+     <meta content="残留网络" name="keywords"/>
+     <meta content='{"autorun":true,"install":true,"keyword":"深圳大学算法设计与分析"}' name="csdn-baidu-search"/>
+     <meta content="文章浏览阅读2.7k次，点赞3次，收藏21次。这篇博客介绍了最大流问题的解决方案，包括Ford-Fulkerson方法、Dinic算法和ISAP算法。通过构建流网络模型解决论文评审问题，详细阐述了各算法的原理和实现，如残留网络、增广路径和割的概念。并对算法进行了性能分析和实验，展示了不同参数下算法的运行时间。" name="description"/>
+     <link href="https://csdnimg.cn/release/blogv2/dist/pc/css/detail_enter-d4fc849858.min.css" rel="stylesheet" type="text/css"/>
+     <link href="https://csdnimg.cn/release/blogv2/dist/pc/themesSkin/skin-1024/skin-1024-ecd36efea2.min.css" rel="stylesheet" type="text/css"/>
+     <meta content='{"type":"0","fixModel":"1"}' name="toolbar"/>
+     <link href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css" rel="stylesheet" type="text/css"/>
+     <style>
+      .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+     </style>
+    </meta>
+   </meta>
+  </meta>
+  <style type="text/css">
+   * { user-select: text; } pre{max-height: none!important; overflow-y: hidden;}
+  </style>
+ </head>
+ <body class="nodata" style="">
+  <link href="https://csdnimg.cn/release/blogv2/dist/pc/css/blog_code-01256533b5.min.css" rel="stylesheet"/>
+  <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/chart-3456820cac.css" rel="stylesheet">
+   <link href="https://g.csdnimg.cn/lib/swiper/6.0.4/css/swiper.css" rel="stylesheet">
+    <div class="main_father clearfix d-flex justify-content-center mainfather-concision" style="height:100%;">
+     <div class="container clearfix container-concision" id="mainBox">
+      <main>
+       <div class="blog-content-box">
+        <div class="article-header-box">
+         <div class="article-header">
+          <div class="article-title-box">
+           <h1 class="title-article" id="articleContentId">
+            深大算法实验六——最大流应用问题
+           </h1>
+          </div>
+          <div class="article-info-box">
+           <div class="article-bar-top">
+            <img alt="" class="article-type-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/original.png"/>
+            <div class="bar-content">
+             <a class="article-vip-box" data-report-click='{"spm":"3001.10404"}' data-report-query="spm=3001.10404" data-report-view='{"spm":"3001.10404"}' href="https://mall.csdn.net/vip" target="_blank">
+              <img alt="" class="article-vip-img-new" src="https://csdnimg.cn/release/blogv2/dist/pc/img/identityVipNew.png"/>
+             </a>
+             <a class="follow-nickName" href="https://blog.csdn.net/AnakinRM" rel="noopener" target="_blank" title="Anakin Skywalker RM 00">
+              Anakin Skywalker RM 00
+             </a>
+             <img alt="" class="article-time-img article-heard-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCurrentTime2.png"/>
+             <span class="time">
+              于 2022-05-10 18:56:50 发布
+             </span>
+             <div class="read-count-box">
+              <img alt="" class="article-read-img article-heard-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/articleReadEyes2.png"/>
+              <span class="read-count">
+               阅读量2.7k
+              </span>
+              <a class="un-collection" data-report-click='{"mod":"popu_823","spm":"1001.2101.3001.4232","ab":"new"}' id="blog_detail_zk_collection">
+               <img alt="" class="article-collect-img article-heard-img un-collect-status isdefault" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollect2.png" style="display:inline-block"/>
+               <img alt="" class="article-collect-img article-heard-img collect-status isactive" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollectionActive2.png" style="display:none"/>
+               <span class="name">
+                收藏
+               </span>
+               <span class="get-collection">
+                21
+               </span>
+              </a>
+              <div class="read-count-box is-like" data-type="top">
+               <img alt="" class="article-read-img article-heard-img" id="is-like-imgactive-new" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newHeart2023Active.png" style="display:none"/>
+               <img alt="" class="article-read-img article-heard-img" id="is-like-img-new" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newHeart2023Black.png" style="display:block"/>
+               <span class="read-count" id="blog-digg-num">
+                点赞数
+                            3
+               </span>
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="blog-tags-box">
+            <div class="tags-box artic-tag-box">
+             <span class="label">
+              分类专栏：
+             </span>
+             <a class="tag-link" href="https://blog.csdn.net/anakinrm/category_11662859.html" rel="noopener" target="_blank">
+              深大算法
+             </a>
+             <span class="label">
+              文章标签：
+             </span>
+             <a class="tag-link" data-report-click='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"c++","ab":"new","extra":"{\"searchword\":\"c++\"}"}' data-report-query="spm=1001.2101.3001.4223" data-report-view='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"c++","ab":"new","extra":"{\"searchword\":\"c++\"}"}' href="https://so.csdn.net/so/search/s.do?q=c%2B%2B&amp;t=all&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=&amp;from_tracking_code=tag_word&amp;from_code=app_blog_art" rel="noopener" target="_blank">
+              c++
+             </a>
+            </div>
+           </div>
+           <div class="slide-content-box">
+            <div class="article-copyright">
+             <div class="creativecommons">
+              版权声明：本文为博主原创文章，遵循
+              <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="noopener" target="_blank">
+               CC 4.0 BY-SA
+              </a>
+              版权协议，转载请附上原文出处链接和本声明。
+             </div>
+             <div class="article-source-link">
+              本文链接：
+              <a href="https://blog.csdn.net/AnakinRM/article/details/124693823" target="_blank">
+               https://blog.csdn.net/AnakinRM/article/details/124693823
+              </a>
+             </div>
+            </div>
+           </div>
+           <div class="operating">
+            <a class="href-article-edit slide-toggle">
+             版权
+            </a>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div id="blogHuaweiyunAdvert">
+        </div>
+        <div class="ai-abstract-box">
+         <div class="ai-abstract">
+          <div class="abstract-content">
+           <img alt="" class="lock-img" src="https://img-home.csdnimg.cn/images/20240711042549.png"/>
+           这篇博客介绍了最大流问题的解决方案，包括Ford-Fulkerson方法、Dinic算法和ISAP算法。通过构建流网络模型解决论文评审问题，详细阐述了各算法的原理和实现，如残留网络、增广路径和割的概念。并对算法进行了性能分析和实验，展示了不同参数下算法的运行时间。
+          </div>
+          <p>
+           摘要生成于
+           <a data-report-click='{"spm":"3001.10128","extra":{"location":"ai_abstract","text":"C知道"}}' data-report-query="spm=3001.10128" data-report-view='{"spm":"3001.10128","extra":{"location":"ai_abstract"}}' href="https://ai.csdn.net?utm_source=cknow_pc_ai_abstract" target="_blank">
+            C知道
+           </a>
+           ，由 DeepSeek-R1 满血版支持，
+           <a data-report-click='{"spm":"3001.10128","extra":{"location":"ai_abstract","text":"前往体验"}}' data-report-query="spm=3001.10128" href="https://ai.csdn.net?utm_source=cknow_pc_ai_abstract" target="_blank">
+            前往体验 &gt;
+           </a>
+          </p>
+         </div>
+        </div>
+        <article class="baidu_pl">
+         <div class="article_content clearfix" id="article_content">
+          <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/kdoc_html_views-1a98987dfd.css" rel="stylesheet"/>
+          <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-704d5b9767.css" rel="stylesheet"/>
+          <div class="htmledit_views atom-one-dark" id="content_views">
+           <p>
+            代码链接：
+            <a href="https://download.csdn.net/download/AnakinRM/85328207?spm=1001.2014.3001.5503" title="深大算法实验六——最大流问题-C++文档类资源-CSDN下载">
+             深大算法实验六——最大流问题-C++文档类资源-CSDN下载
+            </a>
+           </p>
+           <p>
+           </p>
+           <p id="main-toc">
+            <strong>
+             目录
+            </strong>
+           </p>
+           <p id="%E4%B8%80.%20%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-toc" style="margin-left:0px;">
+            <a href="#%E4%B8%80.%20%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0" rel="nofollow">
+             一. 问题描述
+            </a>
+           </p>
+           <p id="%E4%BA%8C.%20%E6%9E%84%E5%BB%BA%E6%B5%81%E7%BD%91%E7%BB%9C-toc" style="margin-left:40px;">
+            <a href="#%E4%BA%8C.%20%E6%9E%84%E5%BB%BA%E6%B5%81%E7%BD%91%E7%BB%9C" rel="nofollow">
+             二. 构建流网络
+            </a>
+           </p>
+           <p id="%E4%B8%89.%20%E6%B1%82%E8%A7%A3%E8%BF%87%E7%A8%8B-toc" style="margin-left:0px;">
+            <a href="#%E4%B8%89.%20%E6%B1%82%E8%A7%A3%E8%BF%87%E7%A8%8B" rel="nofollow">
+             三. 求解过程
+            </a>
+           </p>
+           <p id="%E5%9B%9B.%C2%A0%20Ford-Fulkerson%E6%96%B9%E6%B3%95-toc" style="margin-left:0px;">
+            <a href="#%E5%9B%9B.%C2%A0%20Ford-Fulkerson%E6%96%B9%E6%B3%95" rel="nofollow">
+             四.  Ford-Fulkerson方法
+            </a>
+           </p>
+           <p id="1.%20%E6%AE%8B%E7%95%99%E7%BD%91%E7%BB%9C-toc" style="margin-left:40px;">
+            <a href="#1.%20%E6%AE%8B%E7%95%99%E7%BD%91%E7%BB%9C" rel="nofollow">
+             1. 残留网络
+            </a>
+           </p>
+           <p id="2.%20%E5%89%B2-toc" style="margin-left:40px;">
+            <a href="#2.%20%E5%89%B2" rel="nofollow">
+             2. 割
+            </a>
+           </p>
+           <p id="%E4%BA%94.%20Dinic%E7%AE%97%E6%B3%95-toc" style="margin-left:0px;">
+            <a href="#%E4%BA%94.%20Dinic%E7%AE%97%E6%B3%95" rel="nofollow">
+             五. Dinic算法
+            </a>
+           </p>
+           <p id="%E5%85%AD.%20Dinic%EF%BC%8B%E5%A4%9A%E8%B7%AF%E5%A2%9E%E5%B9%BF-toc" style="margin-left:0px;">
+            <a href="#%E5%85%AD.%20Dinic%EF%BC%8B%E5%A4%9A%E8%B7%AF%E5%A2%9E%E5%B9%BF" rel="nofollow">
+             六. Dinic＋多路增广
+            </a>
+           </p>
+           <p id="%E4%B8%83.%20ISAP-toc" style="margin-left:0px;">
+            <a href="#%E4%B8%83.%20ISAP" rel="nofollow">
+             七. ISAP
+            </a>
+           </p>
+           <p id="%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%EF%BC%9A-toc" style="margin-left:0px;">
+            <a href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%EF%BC%9A" rel="nofollow">
+             数据分析：
+            </a>
+           </p>
+           <p id="Dinic%E7%AE%97%E6%B3%95%EF%BC%9A-toc" style="margin-left:40px;">
+            <a href="#Dinic%E7%AE%97%E6%B3%95%EF%BC%9A" rel="nofollow">
+             Dinic算法：
+            </a>
+           </p>
+           <p id="%E5%A4%9A%E8%B7%AF%E5%A2%9E%E5%B9%BFDinic%E7%AE%97%E6%B3%95-toc" style="margin-left:40px;">
+            <a href="#%E5%A4%9A%E8%B7%AF%E5%A2%9E%E5%B9%BFDinic%E7%AE%97%E6%B3%95" rel="nofollow">
+             多路增广Dinic算法
+            </a>
+           </p>
+           <p id="ISAP%E7%AE%97%E6%B3%95-toc" style="margin-left:40px;">
+            <a href="#ISAP%E7%AE%97%E6%B3%95" rel="nofollow">
+             ISAP算法
+            </a>
+           </p>
+           <p id="%E6%94%B9%E5%8F%98%E8%AE%BA%E6%96%87%E6%95%B0%E7%9B%AE-toc" style="margin-left:80px;">
+            <a href="#%E6%94%B9%E5%8F%98%E8%AE%BA%E6%96%87%E6%95%B0%E7%9B%AE" rel="nofollow">
+             改变论文数目
+            </a>
+           </p>
+           <p id="%E6%94%B9%E5%8F%98%E8%AF%84%E5%A7%94%E6%95%B0%E7%9B%AE-toc" style="margin-left:80px;">
+            <a href="#%E6%94%B9%E5%8F%98%E8%AF%84%E5%A7%94%E6%95%B0%E7%9B%AE" rel="nofollow">
+             改变评委数目
+            </a>
+           </p>
+           <p id="%E6%94%B9%E5%8F%98a%E7%9A%84%E5%80%BC-toc" style="margin-left:80px;">
+            <a href="#%E6%94%B9%E5%8F%98a%E7%9A%84%E5%80%BC" rel="nofollow">
+             改变a的值
+            </a>
+           </p>
+           <p id="%E6%94%B9%E5%8F%98b%E7%9A%84%E5%80%BC-toc" style="margin-left:40px;">
+            <a href="#%E6%94%B9%E5%8F%98b%E7%9A%84%E5%80%BC" rel="nofollow">
+             改变b的值
+            </a>
+           </p>
+           <p id="%E5%AE%9E%E9%AA%8C%E7%BB%93%E8%AE%BA%EF%BC%9A-toc" style="margin-left:0px;">
+            <a href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E8%AE%BA%EF%BC%9A" rel="nofollow">
+             实验结论：
+            </a>
+           </p>
+           <hr id="hr-toc"/>
+           <p>
+           </p>
+           <p>
+           </p>
+           <h2 id="%E4%B8%80.%20%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0">
+            一. 问题描述
+           </h2>
+           <p style="margin-left:0;text-align:left;">
+            1. 有m篇论文和n个评审，每篇论文需要安排a个评审，每个评审最多评b篇论文。请设计一个论文分配方案。
+           </p>
+           <p style="margin-left:0;text-align:left;">
+            2. 要求应用最大流解决上述问题，画出m=10，n=3的流网络图并解释说明流网络图与论文评审问题的关系。
+           </p>
+           <p style="margin-left:0;text-align:left;">
+            3. 编程实现所设计算法，计算a和b取不同值情况下的分配方案，如果没有可行方案则输出无解。
+           </p>
+           <p style="margin-left:0;text-align:left;">
+           </p>
+           <h3 id="%E4%BA%8C.%20%E6%9E%84%E5%BB%BA%E6%B5%81%E7%BD%91%E7%BB%9C" style="margin-left:0px;text-align:left;">
+            二. 构建流网络
+           </h3>
+           <p>
+            我们可以将问题抽象成每一个评审和论文是一个节点，将每个评审最多评的论文数量作为评审的入度，也就是说评审节点最多承载b单位的流，每个论文需要多少评审作为论文节点的出度，也就是说每篇论文需要a单位的流。再加上首位两端的起点和汇点即可生成流网络。
+           </p>
+           <p>
+            <img alt="" height="354" src="https://i-blog.csdnimg.cn/blog_migrate/72a2461a15a8d90108c71bfe48062f3f.png" width="834"/>
+           </p>
+           <p style="margin-left:0px;text-align:center;">
+            中间的蓝色边的权值全部为1，代表每个评审都可以选择所有的论文。
+           </p>
+           <p>
+           </p>
+           <h2 id="%E4%B8%89.%20%E6%B1%82%E8%A7%A3%E8%BF%87%E7%A8%8B" style="text-align:justify;">
+            三. 求解过程
+           </h2>
+           <p>
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            将使用FF方法来寻找此流网络的最大流。若最大流可以等于
+            <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/ec052b4b74b804f3c175505dfba08d4e.png" width="36">
+             说明存在分配方案，若小于
+             <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/719e2b19ca341745874b8ef41cf63a16.png" width="36">
+              则说明还有论文没有被批完，则没有存在可行的分配方案。在进行寻找最大流时进行寻找分配方案。
+             </img>
+            </img>
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            由于在用FF方法时需要使用DFS进行查找最短增广路径，在查找时若遇到评委节点指向论文节点的化，就记录下其边。
+           </p>
+           <h2 id="%E5%9B%9B.%C2%A0%20Ford-Fulkerson%E6%96%B9%E6%B3%95" style="margin-left:0px;text-align:justify;">
+            四.  Ford-Fulkerson方法
+           </h2>
+           <p style="margin-left:0;text-align:justify;">
+            F-F方法是一种解决最大流的一种方法，之所以称之为方法而不是算法是因为其实现算法有很多种。
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            F-F方法的最重要的三个思想是：残留网络、增广路径和割。
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            F-F方法的过程是：
+           </p>
+           <ol>
+            <li>
+             <ol>
+              <li>
+               <ol>
+                <li style="text-align:justify;">
+                 找到一条增广路径
+                </li>
+                <li style="text-align:justify;">
+                 求出这条路径的最大流（即看这条路径的最小权值）
+                </li>
+                <li style="text-align:justify;">
+                 更新权值并起来画出其残留网络
+                </li>
+                <li style="text-align:justify;">
+                 在残留网络中继续寻找增广路径
+                </li>
+                <li style="text-align:justify;">
+                 重复1、2、3、4直到没有增广路径到汇点
+                </li>
+               </ol>
+              </li>
+             </ol>
+            </li>
+           </ol>
+           <p style="margin-left:0;text-align:justify;">
+            F-F方法的基本伪代码：
+           </p>
+           <pre><code>Ford-Fulkerson方法(G,s,t)
+初始化流f为0
+While(存在一条增广路径p) {
+沿着增广路径p增广流f
+}
+返回f
+</code></pre>
+           <h3 id="1.%20%E6%AE%8B%E7%95%99%E7%BD%91%E7%BB%9C" style="text-align:justify;">
+            1. 残留网络
+           </h3>
+           <p style="margin-left:0;text-align:justify;">
+            残留网络是更新权值时，增加一条反向边，反向边的值即为通过该边的流的大小。
+           </p>
+           <p class="img-center">
+            <img alt="" height="92" src="https://i-blog.csdnimg.cn/blog_migrate/89bc307797a2241721e47418658e2db5.png" width="542"/>
+           </p>
+           <p>
+            如上图，该边的值为14，通过的流大小是11，更新权值后并且更新成残留网络后，反向边权值为11，正向边为3。
+           </p>
+           <h3 id="2.%20%E5%89%B2" style="text-align:justify;">
+            2. 割
+           </h3>
+           <p style="margin-left:0;text-align:justify;">
+            割是可以将流网络分解成两个区域，每个区域都可以看作为一个节点。
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            <img alt="" height="419" src="https://i-blog.csdnimg.cn/blog_migrate/ed9fd62c3fdb7f0efe08032197749f76.png" width="745"/>
+           </p>
+           <p>
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            如图所示，该流网络可以看作为两个节点。割的净流为
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/16e2a96d0e347991462dbc90aedf48aa.png" width="301">
+             。割的容量为
+             <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/e854d59eff38093a5d1a2e3c00e5d0dd.png" width="225">
+              。
+             </img>
+            </img>
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            求最大径流量就是求其流网络的最小割。
+           </p>
+           <h2 id="%E4%BA%94.%20Dinic%E7%AE%97%E6%B3%95" style="text-align:justify;">
+            五. Dinic算法
+           </h2>
+           <p style="margin-left:0;text-align:justify;">
+            Dinic算法是先使用BFS将流网络进行分层，这样可以避免进行DFS寻找增广路径时出现重复的情况。
+           </p>
+           <p class="img-center">
+            <img alt="" height="298" src="https://i-blog.csdnimg.cn/blog_migrate/14d857540c4c647f40b4defbf7010878.png" width="519"/>
+           </p>
+           <p>
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            在进行DFS寻找增广路径时，下一节点必定在此节点的下一层。
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            DFS伪代码：
+           </p>
+           <pre><code class="language-cpp">	DFS(x, flow)
+		if x==汇点
+			return flow
+		for y in 邻接[x]
+			fxy = 边xy允许的流量最大值
+			r = DFS(y, min(flow, fxy))
+			if r≠ 0
+				更新边xy的权值
+				return r
+		return 0
+</code></pre>
+           <p style="margin-left:0;text-align:justify;">
+            在DFS完毕之后再次使用BFS对残留网络重新进行分层
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            Dinic算法伪代码：
+           </p>
+           <pre><code class="language-cpp">	while true
+		flag = BFS()
+		if  !flag
+			break
+		while true
+			r = DFS(起点, infinity)
+			if r = 0
+				break
+</code></pre>
+           <p style="margin-left:0;text-align:justify;">
+            Dinic算法效率分析：
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            因为dinic的dfs按照层次来递归，因为每次扫描出的层数是递增的，而且不超过n，所以外循环bfs最多进行n次，而因为每次找增广路都有一条边作为“瓶颈”，一共有e条边，就有e个瓶颈，e条路径，要进行e次dfs，每次dfs复杂度为
+            <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/3e63061491327ae8fc00f6a90c8f6367.png" width="29">
+             ，总体复杂度为
+             <img alt="" height="17" src="https://i-blog.csdnimg.cn/blog_migrate/2482f3b72df587943c7d8e51814f083e.png" width="44"/>
+            </img>
+           </p>
+           <h2 id="%E5%85%AD.%20Dinic%EF%BC%8B%E5%A4%9A%E8%B7%AF%E5%A2%9E%E5%B9%BF" style="text-align:justify;">
+            六. Dinic＋多路增广
+           </h2>
+           <p>
+            由于Dinic算法在进行DFS寻找增广路径时，找到一个增广路径以后就直接退回到起点，再进行寻找另外的增广路径，这样会大大的降低效率，于是提出了一个多路增广的思想，就是遍历到一个增广路径之后，只返回到上一父亲节点，再向下寻找增广路径。这样子一次DFS就可以寻找到多条增广路径。
+           </p>
+           <p>
+            <img alt="" height="281" src="https://i-blog.csdnimg.cn/blog_migrate/d217d8d9e372e4c578e322b4d11d6fd3.png" width="698"/>
+           </p>
+           <p>
+            多路增广DFS伪代码：
+           </p>
+           <pre><code class="language-cpp">DFS()
+	If x=汇点
+		return flow
+	temp = flow
+	for y in邻接 [x]
+		fxy = 边xy的权值
+		r = DFS(y, min(flow, fxy))
+		if r≠ 0
+			更新边xy的权值
+			flow = flow – r
+			if  flow = 0
+			return r
+	return 0
+</code></pre>
+           <p style="margin-left:0;text-align:justify;">
+            多路增广Dinic复杂度分析：
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            外循环同样是每次bfs扫描层次，最多做n次bfs。
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            而每次内循环都做一次dfs，需要注意这里的dfs不带访问控制数组，只要有边就能过，这意味着每一个节点可以多次被经过，所以dfs复杂度不是
+            <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/76f310323df9f0f0e7441078215b0bc9.png" width="29"/>
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            因为最多存在e条最短增广路径，而每次走到汇点至多走n步，所以dfs的代价是
+            <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/5ade2454a61cc543f7f160831a51cb92.png" width="37"/>
+            ，这使得多路增广Dinic的总体复杂度是
+            <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/a1c03a563386b63b3eb1cddec2dc9fdc.png" width="44"/>
+           </p>
+           <h2 id="%E4%B8%83.%20ISAP" style="text-align:justify;">
+            七. ISAP
+           </h2>
+           <p style="margin-left:0;text-align:justify;">
+            ISAP大体上与多路增广Dinic相同，只是在进行DFS寻找增广路径时动态的更新残留网络的层的值。
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            ISAP只需要进行一次BFS，并且还引入了一个优化，如果某一层的节点数为0，则说明已经没有了增广路径，可以直接跳出。
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            关于如何动态更新层可以用以下例子举例
+           </p>
+           <p>
+            1. 首先进行一次BFS赋予流网络关系，并且将层次关系反向。
+           </p>
+           <p>
+           </p>
+           <p class="img-center">
+            <img alt="" height="241" src="https://i-blog.csdnimg.cn/blog_migrate/69df0a0d7222a265b217e8ec663cfe48.png" width="574"/>
+           </p>
+           <p>
+           </p>
+           <p>
+            2. 找到一条增广路径并且更新其增广路径
+           </p>
+           <p style="text-align:justify;">
+            3. 退栈时，若该边仍然由路径可走，则将其层次加1
+           </p>
+           <p style="text-align:justify;">
+            4. 若遇到死路，则将此节点层次加1。
+           </p>
+           <p class="img-center">
+            <img alt="" height="236" src="https://i-blog.csdnimg.cn/blog_migrate/eb61330a478babec610286b282b2dabe.png" width="542"/>
+           </p>
+           <p>
+            此时找到了一条增广路径。
+           </p>
+           <p class="img-center">
+            <img alt="" height="238" src="https://i-blog.csdnimg.cn/blog_migrate/753933d5986cd99e5b8465ba233aeb95.png" width="526"/>
+           </p>
+           <p>
+            更新其残留网络，因为(1,3)边没有剩余权值，所以节点3的边关系无需改变。这是因为若(3,5)边还有剩余值时，还可以从另外的路径到节点3，所以此时无需改变其层次。
+           </p>
+           <p style="text-align:center;">
+            <img alt="" height="240" src="https://i-blog.csdnimg.cn/blog_migrate/e4c16a4d0dda237486f2a3206fd25733.png" width="544"/>
+           </p>
+           <p>
+            根据多路增广Dinic算法的DFS遍历，则会选择上面的增广路径。
+           </p>
+           <p style="text-align:center;">
+            <img alt="" height="243" src="https://i-blog.csdnimg.cn/blog_migrate/b02ba5cb04ac10827f15e48958392007.png" width="567"/>
+           </p>
+           <p>
+            同样的更新其残留网络。
+           </p>
+           <p style="text-align:center;">
+            <img alt="" height="256" src="https://i-blog.csdnimg.cn/blog_migrate/9dcb57ecca6a96adbc875047ac83facf.png" width="531"/>
+           </p>
+           <p>
+            到节点1处，由于(0,1)边还有剩余的残量，这说明了从节点1这条路走已经没               有增广路径了，从而将其层次改变成3。
+           </p>
+           <p style="text-align:center;">
+            <img alt="" height="238" src="https://i-blog.csdnimg.cn/blog_migrate/29df54066ad20710a6fa0c93927105c3.png" width="548"/>
+           </p>
+           <p>
+            接下来从此路径走，此时会发现已经是一条思路，所以将3节点的层次改变成2。
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            ISAP算法效率分析：
+           </p>
+           <p>
+            和多路增广Dinic算法中的DFS一样，复杂度是
+            <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/6e4571f63f74ef001e2590a6c1df5e02.png" width="37"/>
+            ，原因也是不带访问控制数组，一个节点会被多次访问，最多有e条增广路径，而每次需要走过n个点到达汇点，所以复杂度
+            <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/23357922392c420d3e1c1784d4f94d05.png" width="37"/>
+            ，因为外循环需要判断源点的高度，而源点最多增高n次，总体复杂度为
+            <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/68aa74561d2aa83c817a44061792e4ec.png" width="44"/>
+            。
+           </p>
+           <p>
+           </p>
+           <h2 id="%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%EF%BC%9A" style="margin-left:0px;text-align:justify;">
+            数据分析：
+           </h2>
+           <ul>
+            <li style="text-align:justify;">
+             <h3 id="Dinic%E7%AE%97%E6%B3%95%EF%BC%9A">
+              Dinic算法：
+             </h3>
+            </li>
+           </ul>
+           <p style="margin-left:0;text-align:justify;">
+            (
+            <img alt="" height="24" src="https://i-blog.csdnimg.cn/blog_migrate/0b1b49c4c8b9f5d87b5f4ac72a6f195d.png" width="160"/>
+            )
+           </p>
+           <table border="1" cellspacing="0">
+            <tbody>
+             <tr>
+              <td style="background-color:#9ba8b7;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/96abae831ffb17ee2645e5e4fe8207b1.png" width="5"/>
+               </p>
+              </td>
+              <td style="background-color:#9ba8b7;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 时间
+                </span>
+                <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/2cdde40e6d64574272ae1aaf1280742f.png" width="18"/>
+               </p>
+              </td>
+              <td style="background-color:#9ba8b7;">
+               <p style="margin-left:0;text-align:center;">
+                <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/8dbe72d5f77f8680974b3a3f04a494ba.png" width="5"/>
+               </p>
+              </td>
+              <td style="background-color:#9ba8b7;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 时间
+                </span>
+                <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/ff30aaec65f6956ffad1c3ec66f6d108.png" width="18"/>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#dee1e6;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 100
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.01
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 600
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 2.961
+                </span>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#eff1f3;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 200
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.08
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 700
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 5.025
+                </span>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#dee1e6;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 300
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.302
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 800
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 7.725
+                </span>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#eff1f3;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 400
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.712
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 900
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 10.765
+                </span>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#dee1e6;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 500
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 1.541
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 1000
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 15.378
+                </span>
+               </p>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+           <p>
+           </p>
+           <ul>
+            <li style="text-align:justify;">
+             <h3 id="%E5%A4%9A%E8%B7%AF%E5%A2%9E%E5%B9%BFDinic%E7%AE%97%E6%B3%95">
+              多路增广Dinic算法
+             </h3>
+            </li>
+           </ul>
+           <p style="margin-left:0;text-align:justify;">
+            <em>
+             (
+            </em>
+            <img alt="" height="24" src="https://i-blog.csdnimg.cn/blog_migrate/9ebec83e99d69fa00e3fd659f5d9256b.png" width="160"/>
+            )
+           </p>
+           <table border="1" cellspacing="0">
+            <tbody>
+             <tr>
+              <td style="background-color:#9ba8b7;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/d25330ced7e18d21f8e635f38d1e2e6c.png" width="5"/>
+               </p>
+              </td>
+              <td style="background-color:#9ba8b7;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 时间
+                </span>
+                <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/8cb8881f7f074b4058ab39955519431d.png" width="18"/>
+               </p>
+              </td>
+              <td style="background-color:#9ba8b7;">
+               <p style="margin-left:0;text-align:center;">
+                <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/136185ecd5c8db93fff048abfdd59b52.png" width="5"/>
+               </p>
+              </td>
+              <td style="background-color:#9ba8b7;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 时间
+                </span>
+                <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/23af4c8da39a50a6486e18f66d8848af.png" width="18"/>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#dee1e6;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 100
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.005
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 600
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 1.333
+                </span>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#eff1f3;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 200
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.031
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 700
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 2.491
+                </span>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#dee1e6;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 300
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.111
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 800
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 4.511
+                </span>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#eff1f3;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 400
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.416
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 900
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 6.422
+                </span>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#dee1e6;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 500
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.703
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 1000
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 8.662
+                </span>
+               </p>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+           <ul>
+            <li style="text-align:justify;">
+             <h3 id="ISAP%E7%AE%97%E6%B3%95">
+              ISAP算法
+             </h3>
+            </li>
+           </ul>
+           <p style="margin-left:0;text-align:justify;">
+            (
+            <img alt="" height="24" src="https://i-blog.csdnimg.cn/blog_migrate/adbbb0d9dce12eb25b57ba54a7e18c2a.png" width="160"/>
+            )
+           </p>
+           <p>
+           </p>
+           <table border="1" cellspacing="0">
+            <tbody>
+             <tr>
+              <td style="background-color:#9ba8b7;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/335c99870c2d9e9a62825f9eedaa801b.png" width="5"/>
+               </p>
+              </td>
+              <td style="background-color:#9ba8b7;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 时间
+                </span>
+                <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/3bed53c30e581892e9ac8fbe126aca45.png" width="18"/>
+               </p>
+              </td>
+              <td style="background-color:#9ba8b7;">
+               <p style="margin-left:0;text-align:center;">
+                <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/d2291258149d7fa08299248ed39bc693.png" width="5"/>
+               </p>
+              </td>
+              <td style="background-color:#9ba8b7;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 时间
+                </span>
+                <img alt="" height="16" src="https://i-blog.csdnimg.cn/blog_migrate/81ed06d7ab5eab7aeb2c644d257454b6.png" width="18"/>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#dee1e6;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 100
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.007
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 600
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 1.274
+                </span>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#eff1f3;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 200
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.057
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 700
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 2.452
+                </span>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#dee1e6;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 300
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.166
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 800
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 4.141
+                </span>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#eff1f3;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 400
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.317
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 900
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#eff1f3;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 6.538
+                </span>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td style="background-color:#dee1e6;border-color:#FFFFFF;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 500
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 0.68
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 1000
+                </span>
+               </p>
+              </td>
+              <td style="background-color:#dee1e6;">
+               <p style="margin-left:0;text-align:center;">
+                <span style="color:#000000;">
+                 8.49
+                </span>
+               </p>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+           <p>
+            综上可以看出多路增广Dinic和ISAP算法都要比Dinic算法快，当时两者相差的时间并不是特别大，也许是因为该测试数据无需进行多次层次调整导致的。
+           </p>
+           <ul>
+            <li style="text-align:justify;">
+             <h4 id="%E6%94%B9%E5%8F%98%E8%AE%BA%E6%96%87%E6%95%B0%E7%9B%AE">
+              改变论文数目
+             </h4>
+            </li>
+           </ul>
+           <p style="margin-left:0;text-align:justify;">
+            （n=150，a=150，b=300）
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            <img alt="" height="464" src="https://i-blog.csdnimg.cn/blog_migrate/6c048d1cc65b3a07b6d86f21827a2ac7.png" width="752"/>
+           </p>
+           <p>
+            由于Dinic算法与另外两个有较大的差别，所以接下来先实另外两种算法的图表对比。
+            <img alt="" height="464" src="https://i-blog.csdnimg.cn/blog_migrate/1f4a3df899de826cd222234bd87ea34b.png" width="752"/>
+           </p>
+           <p>
+            更好用上面两个图可以发现Dinic算法在M小于300时所用的时间是十分多的，这是因为当M大于300时只用做一次BFS就可以找到最大流，e次DFS。而在多路增广Dinic和ISAP种多路增广Dinic算法是比ISAP要快的。
+           </p>
+           <ul>
+            <li style="text-align:justify;">
+             <h4 id="%E6%94%B9%E5%8F%98%E8%AF%84%E5%A7%94%E6%95%B0%E7%9B%AE">
+              改变评委数目
+             </h4>
+            </li>
+           </ul>
+           <p style="margin-left:0;text-align:justify;">
+            （m=300， a=150，b=300）
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            <img alt="" height="464" src="https://i-blog.csdnimg.cn/blog_migrate/c5884da24ddf77db4b0de8e1d4d920b2.png" width="752"/>
+           </p>
+           <ul>
+            <li style="text-align:justify;">
+             <h4 id="%E6%94%B9%E5%8F%98a%E7%9A%84%E5%80%BC">
+              改变a的值
+             </h4>
+            </li>
+           </ul>
+           <p style="margin-left:0;text-align:justify;">
+            （m=300， n=150，b=300）
+           </p>
+           <p>
+            <img alt="" height="464" src="https://i-blog.csdnimg.cn/blog_migrate/10cbc25707f9783ee38bebf4c18487fa.png" width="752"/>
+           </p>
+           <p>
+           </p>
+           <ul>
+            <li style="text-align:justify;">
+             <h3 id="%E6%94%B9%E5%8F%98b%E7%9A%84%E5%80%BC">
+              改变b的值
+             </h3>
+            </li>
+           </ul>
+           <p style="text-align:justify;">
+            <img alt="" height="464" src="https://i-blog.csdnimg.cn/blog_migrate/f139a7eaf75d2569bbb3cad3bf64d999.png" width="752"/>
+           </p>
+           <p>
+            只对比多路增广Dinic和ISAP
+           </p>
+           <p>
+            <img alt="" height="464" src="https://i-blog.csdnimg.cn/blog_migrate/9c96ade449dd36bc7901d806f36daccd.png" width="752"/>
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            我们可以很明显的看到当Dinic算法超过300时，需要用很多的时间，这与第一个改变论文数目的突变的原因是一样的。
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            从上述图像可以看出来，当改变论文数目、评委数目和评委最多改多少论文对时间是有关联的。对于Dinic算法来说，当没有答案的时候时间会十分的快，有答案时需要的时间会比较长。
+           </p>
+           <p>
+           </p>
+           <h2 id="%E5%AE%9E%E9%AA%8C%E7%BB%93%E8%AE%BA%EF%BC%9A" style="margin-left:0px;text-align:justify;">
+            实验结论：
+           </h2>
+           <p style="margin-left:0;text-align:justify;">
+            本次实验完成了求最大流的算法，并且求出了求最大流的算法效率。从上述可知多路增广Dinic算法和ISAP算法是比较快的两种算法。对于要更新多次层次的话ISAP算法理论上会比多路增广更快一些。
+           </p>
+           <p style="margin-left:0;text-align:justify;">
+            本次实验还让我门体会了如何将复杂的问题抽象化，并且转换成相应的算法样例去解决。
+           </p>
+          </div>
+         </div>
+        </article>
+       </div>
+       <div class="directory-boxshadow-dialog" style="display:none;">
+        <div class="directory-boxshadow-dialog-box">
+        </div>
+        <div class="vip-limited-time-offer-box-new" id="vip-limited-time-offer-box-new">
+         <img class="limited-img limited-img-new" src="https://csdnimg.cn/release/blogv2/dist/pc/img/vip-limited-close-newWhite.png"/>
+         <div class="vip-limited-time-top">
+          确定要放弃本次机会？
+         </div>
+         <span class="vip-limited-time-text">
+          福利倒计时
+         </span>
+         <div class="limited-time-box-new">
+          <span class="time-hour">
+          </span>
+          <i>
+           :
+          </i>
+          <span class="time-minite">
+          </span>
+          <i>
+           :
+          </i>
+          <span class="time-second">
+          </span>
+         </div>
+         <div class="limited-time-vip-box">
+          <p>
+           <img class="coupon-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/vip-limited-close-roup.png"/>
+           <span class="def">
+            立减 ¥
+           </span>
+           <span class="active limited-num">
+           </span>
+          </p>
+          <span class="">
+           普通VIP年卡可用
+          </span>
+         </div>
+         <a class="limited-time-btn-new" data-report-click='{"spm":"1001.2101.3001.9621"}' data-report-query="spm=1001.2101.3001.9621" href="https://mall.csdn.net/vip">
+          立即使用
+         </a>
+        </div>
+       </div>
+       <a id="commentBox" name="commentBox">
+       </a>
+      </main>
+     </div>
+     <div class="recommend-right1 align-items-stretch clearfix" data-type="recommend" id="rightAsideConcision">
+      <aside class="recommend-right_aside">
+       <div id="recommend-right-concision">
+        <div class="flex-column aside-box groupfile" id="groupfileConcision">
+         <div class="groupfile-div1">
+          <h3 class="aside-title">
+           目录
+          </h3>
+          <div class="align-items-stretch group_item">
+           <div class="pos-box">
+            <div class="scroll-box">
+             <div class="toc-box">
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </aside>
+     </div>
+    </div>
+    <div class="mask-dark">
+    </div>
+    <div class="skin-boxshadow">
+    </div>
+    <div class="directory-boxshadow">
+    </div>
+    <div style="display:none;">
+     <img onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);' src=""/>
+    </div>
+    <div class="keyword-dec-box" id="keywordDecBox">
+    </div>
+   </link>
+  </link>
+ </body>
+ <!-- 富文本柱状图  -->
+ <link href="https://csdnimg.cn/release/blog_editor_html/release1.6.12/ckeditor/plugins/chart/chart.css" rel="stylesheet">
+  <link href="https://g.csdnimg.cn/lib/cboxEditor/1.1.6/embed-editor.min.css" rel="stylesheet"/>
+  <link href="https://csdnimg.cn/release/blog_editor_html/release1.6.12/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-dark.css" rel="stylesheet"/>
+ </link>
+</html>

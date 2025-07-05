@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage{algorithm} % 排版算法
+\usepackage{algorithmic} % 排版算法
+
+
+\begin{document}
+	
+	
+	\begin{algorithm}
+		\caption{bruteForce(points)} %算法标题
+		\begin{algorithmic}[1] %算法开始
+			\STATE{minDistance$\gets$Inf}
+			\FOR{i $\gets$ 1 to length(points)-1}
+			\FOR{j$\gets$i+1 to length(points)}
+			\IF{Distance(points[i],poinst[j])$<$minDistance}
+			\STATE{minDistance$\gets$Distance(points[i],poinst[j]}
+			\ENDIF
+			\ENDFOR
+			\ENDFOR
+			\RETURN{minDistance}
+		\end{algorithmic}
+	\end{algorithm}
+	
+	\begin{algorithm}
+		\caption{divideConque(points)} %算法标题
+		\begin{algorithmic}[1] %算法开始
+			\IF{length(points)$<$3}
+			\RETURN{bruteForce(points)}
+			\ENDIF
+			\STATE{minLeft$\gets$divideConque(points(left))}
+			\STATE{minRight$\gets$divideConque(points(right))}
+			\STATE{minDistance$\gets$min(minLeft,minRight)}
+			\STATE{minDistance$\gets$crossMidLine(point(mid),minDistance)}
+			\RETURN{minDistance}			
+		\end{algorithmic}
+	\end{algorithm}
+	
+\end{document}

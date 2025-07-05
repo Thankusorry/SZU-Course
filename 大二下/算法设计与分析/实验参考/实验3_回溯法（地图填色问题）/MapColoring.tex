@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage{algorithm} % 排版算法
+\usepackage{algorithmic} % 排版算法
+
+
+\begin{document}
+	
+	
+	\begin{algorithm}
+		\caption{fillColor(vertex)} %算法标题
+		\begin{algorithmic}[1] %算法开始
+			\STATE{choseOneColor(vertex)}
+			\IF{!conflict(vertex)}
+			\STATE{fillColor(nextvertex)}
+			\ENDIF
+		\end{algorithmic}
+	\end{algorithm}
+	
+	\begin{algorithm}
+		\caption{fillColor(vertex)} %算法标题
+		\begin{algorithmic}[1] %算法开始
+			\STATE{choseOneColor(vertex)}
+			\IF{!conflict(vertex)}
+			\STATE{nextvertex$\gets$MaxDegreeVertex()}
+			\STATE{fillColor(nextvertex)}
+			\ENDIF
+		\end{algorithmic}
+	\end{algorithm}
+	
+	\begin{algorithm}
+		\caption{fillColor(vertex)} %算法标题
+		\begin{algorithmic}[1] %算法开始
+			\STATE{choseOneColor(vertex)}
+			\IF{!conflict(vertex)}
+			\STATE{nextvertex$\gets$MinRemainingValueVertex()}
+			\STATE{fillColor(nextvertex)}
+			\ENDIF
+		\end{algorithmic}
+	\end{algorithm}
+
+	\begin{algorithm}
+	\caption{fillColor(vertex)} %算法标题
+	\begin{algorithmic}[1] %算法开始
+		\STATE{choseOneColor(vertex)}
+		\IF{ForwardChecking() and !conflict(vertex)}
+		\STATE{fillColor(nextvertex)}
+		\ENDIF
+	\end{algorithmic}
+\end{algorithm}
+
+	
+\end{document}

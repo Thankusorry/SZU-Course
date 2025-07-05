@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head>
+  <meta charset="utf-8"/>
+  <link href="https://blog.csdn.net/JING0_0/article/details/108339873" rel="canonical"/>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+  <meta content="webkit" name="renderer">
+   <meta content="webkit" name="force-rendering">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+    <meta content="always" name="referrer"/>
+    <meta content="no-siteapp" http-equiv="Cache-Control">
+     <link href="#" media="handheld" rel="alternate"/>
+     <meta content="pc" name="applicable-device"/>
+     <link href="https://g.csdnimg.cn/static/logo/favicon32.ico" rel="shortcut icon" type="image/x-icon"/>
+     <title>
+      算法设计学习笔记（六）——动态规划_分段最小二乘法 动态规划-CSDN博客
+     </title>
+     <meta content="分段最小二乘法 动态规划" name="keywords"/>
+     <meta content='{"autorun":true,"install":true,"keyword":"分段最小二乘法 动态规划"}' name="csdn-baidu-search"/>
+     <meta content="文章浏览阅读2.7k次，点赞4次，收藏27次。这篇博客详细探讨了动态规划的概念，包括带权区间调度、动态规划原理、分段最小二乘、子集和与背包问题、RNA二级结构、序列比对以及图中的最短路径等实际应用。通过递归算法、备忘录法和迭代法阐述了动态规划的求解策略，并分析了算法的时间复杂度和空间复杂度，为读者提供了深入理解动态规划的路径。" name="description"/>
+     <link href="https://csdnimg.cn/release/blogv2/dist/pc/css/detail_enter-d4fc849858.min.css" rel="stylesheet" type="text/css"/>
+     <link href="https://csdnimg.cn/release/blogv2/dist/pc/themesSkin/skin-whitemove/skin-whitemove-2af9149bdc.min.css" rel="stylesheet" type="text/css"/>
+     <meta content='{"type":"0","fixModel":"1"}' name="toolbar"/>
+     <link href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css" rel="stylesheet" type="text/css"/>
+     <style>
+      .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+     </style>
+    </meta>
+   </meta>
+  </meta>
+  <style type="text/css">
+   * { user-select: text; } pre{max-height: none!important; overflow-y: hidden;}
+  </style>
+ </head>
+ <body class="nodata" style="">
+  <link href="https://csdnimg.cn/release/blogv2/dist/pc/css/blog_code-01256533b5.min.css" rel="stylesheet"/>
+  <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/chart-3456820cac.css" rel="stylesheet">
+   <link href="https://g.csdnimg.cn/lib/swiper/6.0.4/css/swiper.css" rel="stylesheet">
+    <div class="main_father clearfix d-flex justify-content-center mainfather-concision" style="height:100%;">
+     <div class="container clearfix container-concision" id="mainBox">
+      <main>
+       <div class="blog-content-box">
+        <div class="article-header-box">
+         <div class="article-header">
+          <div class="article-title-box">
+           <h1 class="title-article" id="articleContentId">
+            算法设计学习笔记（六）——动态规划
+           </h1>
+          </div>
+          <div class="article-info-box">
+           <div class="up-time">
+            最新推荐文章于 2024-05-05 21:49:06 发布
+           </div>
+           <div class="article-bar-top">
+            <img alt="" class="article-type-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/original.png"/>
+            <div class="bar-content">
+             <a class="article-vip-box" data-report-click='{"spm":"3001.10404"}' data-report-query="spm=3001.10404" data-report-view='{"spm":"3001.10404"}' href="https://mall.csdn.net/vip" target="_blank">
+              <img alt="" class="article-vip-img-new" src="https://csdnimg.cn/release/blogv2/dist/pc/img/identityVipNew.png"/>
+             </a>
+             <a class="follow-nickName" href="https://blog.csdn.net/JING0_0" rel="noopener" target="_blank" title="JING0_0">
+              JING0_0
+             </a>
+             <img alt="" class="article-time-img article-heard-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCurrentTime2.png"/>
+             <span class="time blog-postTime" data-time="2020-09-06 18:48:44">
+              最新推荐文章于 2024-05-05 21:49:06 发布
+             </span>
+             <div class="read-count-box">
+              <img alt="" class="article-read-img article-heard-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/articleReadEyes2.png"/>
+              <span class="read-count">
+               阅读量2.7k
+              </span>
+              <a class="un-collection" data-report-click='{"mod":"popu_823","spm":"1001.2101.3001.4232","ab":"new"}' id="blog_detail_zk_collection">
+               <img alt="" class="article-collect-img article-heard-img un-collect-status isdefault" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollect2.png" style="display:inline-block"/>
+               <img alt="" class="article-collect-img article-heard-img collect-status isactive" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollectionActive2.png" style="display:none"/>
+               <span class="name">
+                收藏
+               </span>
+               <span class="get-collection">
+                27
+               </span>
+              </a>
+              <div class="read-count-box is-like" data-type="top">
+               <img alt="" class="article-read-img article-heard-img" id="is-like-imgactive-new" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newHeart2023Active.png" style="display:none"/>
+               <img alt="" class="article-read-img article-heard-img" id="is-like-img-new" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newHeart2023Black.png" style="display:block"/>
+               <span class="read-count" id="blog-digg-num">
+                点赞数
+                            4
+               </span>
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="blog-tags-box">
+            <div class="tags-box artic-tag-box">
+            </div>
+           </div>
+           <div class="slide-content-box">
+            <div class="article-copyright">
+             <div class="creativecommons">
+              版权声明：本文为博主原创文章，遵循
+              <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="noopener" target="_blank">
+               CC 4.0 BY-SA
+              </a>
+              版权协议，转载请附上原文出处链接和本声明。
+             </div>
+             <div class="article-source-link">
+              本文链接：
+              <a href="https://blog.csdn.net/JING0_0/article/details/108339873" target="_blank">
+               https://blog.csdn.net/JING0_0/article/details/108339873
+              </a>
+             </div>
+            </div>
+           </div>
+           <div class="operating">
+            <a class="href-article-edit slide-toggle">
+             版权
+            </a>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div id="blogHuaweiyunAdvert">
+        </div>
+        <div class="ai-abstract-box">
+         <div class="ai-abstract">
+          <div class="abstract-content">
+           <img alt="" class="lock-img" src="https://img-home.csdnimg.cn/images/20240711042549.png"/>
+           这篇博客详细探讨了动态规划的概念，包括带权区间调度、动态规划原理、分段最小二乘、子集和与背包问题、RNA二级结构、序列比对以及图中的最短路径等实际应用。通过递归算法、备忘录法和迭代法阐述了动态规划的求解策略，并分析了算法的时间复杂度和空间复杂度，为读者提供了深入理解动态规划的路径。
+          </div>
+          <p>
+           摘要生成于
+           <a data-report-click='{"spm":"3001.10128","extra":{"location":"ai_abstract","text":"C知道"}}' data-report-query="spm=3001.10128" data-report-view='{"spm":"3001.10128","extra":{"location":"ai_abstract"}}' href="https://ai.csdn.net?utm_source=cknow_pc_ai_abstract" target="_blank">
+            C知道
+           </a>
+           ，由 DeepSeek-R1 满血版支持，
+           <a data-report-click='{"spm":"3001.10128","extra":{"location":"ai_abstract","text":"前往体验"}}' data-report-query="spm=3001.10128" href="https://ai.csdn.net?utm_source=cknow_pc_ai_abstract" target="_blank">
+            前往体验 &gt;
+           </a>
+          </p>
+         </div>
+        </div>
+        <article class="baidu_pl">
+         <div class="article_content clearfix" id="article_content">
+          <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/kdoc_html_views-1a98987dfd.css" rel="stylesheet"/>
+          <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-704d5b9767.css" rel="stylesheet"/>
+          <div class="htmledit_views atom-one-dark" id="content_views">
+           <h2 id="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">
+            动态规划
+           </h2>
+           <p id="main-toc">
+            <strong>
+             目录
+            </strong>
+           </p>
+           <p id="%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-toc" style="margin-left:0px;">
+            <a href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92" rel="nofollow">
+             动态规划
+            </a>
+           </p>
+           <p id="%E4%B8%80%E3%80%81%E5%B8%A6%E6%9D%83%E7%9A%84%E5%8C%BA%E9%97%B4%E8%B0%83%E5%BA%A6%EF%BC%88%E4%B8%80%E4%B8%AA%E9%80%92%E5%BD%92%E8%BF%87%E7%A8%8B%EF%BC%89-toc" style="margin-left:80px;">
+            <a href="#%E4%B8%80%E3%80%81%E5%B8%A6%E6%9D%83%E7%9A%84%E5%8C%BA%E9%97%B4%E8%B0%83%E5%BA%A6%EF%BC%88%E4%B8%80%E4%B8%AA%E9%80%92%E5%BD%92%E8%BF%87%E7%A8%8B%EF%BC%89" rel="nofollow">
+             一、带权的区间调度（一个递归过程）
+            </a>
+           </p>
+           <p id="%E4%BA%8C%E3%80%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8E%9F%E7%90%86%EF%BC%9A%E5%A4%87%E5%BF%98%E5%BD%95%E6%88%96%E8%80%85%E5%AD%90%E9%97%AE%E9%A2%98%E8%BF%AD%E4%BB%A3%C2%A0-toc" style="margin-left:80px;">
+            <a href="#%E4%BA%8C%E3%80%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8E%9F%E7%90%86%EF%BC%9A%E5%A4%87%E5%BF%98%E5%BD%95%E6%88%96%E8%80%85%E5%AD%90%E9%97%AE%E9%A2%98%E8%BF%AD%E4%BB%A3%C2%A0" rel="nofollow">
+             二、动态规划原理：备忘录或者子问题迭代
+            </a>
+           </p>
+           <p id="%E4%B8%89%E3%80%81%E5%88%86%E6%AE%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%EF%BC%9A%E5%A4%9A%E9%87%8D%E9%80%89%E6%8B%A9-toc" style="margin-left:80px;">
+            <a href="#%E4%B8%89%E3%80%81%E5%88%86%E6%AE%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%EF%BC%9A%E5%A4%9A%E9%87%8D%E9%80%89%E6%8B%A9" rel="nofollow">
+             三、分段的最小二乘：多重选择
+            </a>
+           </p>
+           <p id="%E5%9B%9B%E3%80%81%E5%AD%90%E9%9B%86%E5%92%8C%E4%B8%8E%E8%83%8C%E5%8C%85%EF%BC%9A%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F-toc" style="margin-left:80px;">
+            <a href="#%E5%9B%9B%E3%80%81%E5%AD%90%E9%9B%86%E5%92%8C%E4%B8%8E%E8%83%8C%E5%8C%85%EF%BC%9A%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F" rel="nofollow">
+             四、子集和与背包：加一个变量
+            </a>
+           </p>
+           <p id="%E4%BA%94%E3%80%81RNA%E4%BA%8C%E7%BA%A7%E7%BB%93%E6%9E%84%EF%BC%9A%E5%9C%A8%E5%8C%BA%E9%97%B4%E4%B8%8A%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-toc" style="margin-left:80px;">
+            <a href="#%E4%BA%94%E3%80%81RNA%E4%BA%8C%E7%BA%A7%E7%BB%93%E6%9E%84%EF%BC%9A%E5%9C%A8%E5%8C%BA%E9%97%B4%E4%B8%8A%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92" rel="nofollow">
+             五、RNA二级结构：在区间上的动态规划
+            </a>
+           </p>
+           <p id="%E5%85%AD%E3%80%81%E5%BA%8F%E5%88%97%E6%AF%94%E5%AF%B9-toc" style="margin-left:80px;">
+            <a href="#%E5%85%AD%E3%80%81%E5%BA%8F%E5%88%97%E6%AF%94%E5%AF%B9" rel="nofollow">
+             六、序列比对
+            </a>
+           </p>
+           <p id="%E4%B8%83%E3%80%81%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-toc" style="margin-left:80px;">
+            <a href="#%E4%B8%83%E3%80%81%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84" rel="nofollow">
+             七、图中的最短路径
+            </a>
+           </p>
+           <p id="%E5%85%AB%E3%80%81%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E5%92%8C%E8%B7%9D%E7%A6%BB%E5%90%91%E9%87%8F%E5%8D%8F%E8%AE%AE-toc" style="margin-left:80px;">
+            <a href="#%E5%85%AB%E3%80%81%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E5%92%8C%E8%B7%9D%E7%A6%BB%E5%90%91%E9%87%8F%E5%8D%8F%E8%AE%AE" rel="nofollow">
+             八、最短路径和距离向量协议
+            </a>
+           </p>
+           <p id="%E4%B9%9D%E3%80%81%E5%9B%BE%E4%B8%AD%E7%9A%84%E8%B4%9F%E5%9C%88-toc" style="margin-left:80px;">
+            <a href="#%E4%B9%9D%E3%80%81%E5%9B%BE%E4%B8%AD%E7%9A%84%E8%B4%9F%E5%9C%88" rel="nofollow">
+             九、图中的负圈
+            </a>
+           </p>
+           <hr id="hr-toc"/>
+           <p>
+           </p>
+           <h4 id="%E4%B8%80%E3%80%81%E5%B8%A6%E6%9D%83%E7%9A%84%E5%8C%BA%E9%97%B4%E8%B0%83%E5%BA%A6%EF%BC%88%E4%B8%80%E4%B8%AA%E9%80%92%E5%BD%92%E8%BF%87%E7%A8%8B%EF%BC%89">
+            一、带权的区间调度（一个递归过程）
+           </h4>
+           <p>
+            <strong>
+             1.问题
+            </strong>
+           </p>
+           <p>
+            有n个需求，每个需求有一个开始时间
+            <img alt="s_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?s_%7Bi%7D">
+             和一个结束时间
+             <img alt="f_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?f_%7Bi%7D">
+              ，每个区间i还有一个值（或者权）
+              <img alt="\small v_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cfn_phv%20%5Csmall%20v_%7Bi%7D">
+               ，我们的目标是接收一个两两相容得区间子集
+               <img alt="S\subseteq \{​{1,...,n}\}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cfn_phv%20S%5Csubseteq%20%5C%7B%7B1%2C...%2Cn%7D%5C%7D">
+                ，使得所选区间得值之和
+                <img alt="\small \sum_{i\in S} v_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B80%7D%20%5Cfn_jvn%20%5Csmall%20%5Csum_%7Bi%5Cin%20S%7D%20v_%7Bi%7D">
+                 为最大。
+                </img>
+               </img>
+              </img>
+             </img>
+            </img>
+           </p>
+           <p>
+            <strong>
+             2.设计与分析算法
+            </strong>
+           </p>
+           <p>
+            此次的区间调度问题不再是所有值都为1的特殊情况，因此读多数贪心算法不能优化地求解这个问题。
+           </p>
+           <p>
+            二分选择：区间n属于一个最优解或者不属于一个最优解。
+           </p>
+           <p>
+            1）
+            <strong>
+             递归
+            </strong>
+            算法：
+           </p>
+           <blockquote>
+            <ul>
+             <li>
+              将需求按结束时间升序排列，即：
+              <img alt="f_{1}\leq f_{2}\leq ...\leq f_{n}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20f_%7B1%7D%5Cleq%20f_%7B2%7D%5Cleq%20...%5Cleq%20f_%7Bn%7D">
+               .
+              </img>
+             </li>
+             <li>
+              对每一个区间
+              <img alt="j" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20j">
+               ，在集合
+               <img alt="\{​{1,2,...,j}\}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5C%7B%7B1%2C2%2C...%2Cj%7D%5C%7D">
+                中选取与区间
+                <img alt="j" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20j">
+                 不相交的且结束时间最大的区间，定为
+                 <img alt="p(j)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20p%28j%29"/>
+                 .
+                </img>
+               </img>
+              </img>
+             </li>
+             <li>
+              对需求
+              <img alt="\{​{1,2,...,j}\}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5C%7B%7B1%2C2%2C...%2Cj%7D%5C%7D"/>
+              求解最优解，令
+              <img alt="OPT(j)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28j%29"/>
+              为这个解的值，
+              <img alt="O(j)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28j%29"/>
+              表示最优解，可得
+             </li>
+            </ul>
+            <p style="text-indent:33px;">
+             <strong>
+              定理6.1
+             </strong>
+             <img alt="OPT(j) = max(v_{j} + OPT(p(j)),OPT(j-1))." class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28j%29%20%3D%20max%28v_%7Bj%7D%20&amp;plus;%20OPT%28p%28j%29%29%2COPT%28j-1%29%29."/>
+            </p>
+            <p style="text-indent:33px;">
+             <strong>
+              定理6.2
+             </strong>
+             需求
+             <img alt="j" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20j"/>
+             属于集合
+             <img alt="\{​{1,2,...,j}\}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5C%7B%7B1%2C2%2C...%2Cj%7D%5C%7D"/>
+             上的最优解当且仅当
+             <img alt="v_{j}+OPT(p(j))\geq OPT(j-1)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v_%7Bj%7D&amp;plus;OPT%28p%28j%29%29%5Cgeq%20OPT%28j-1%29"/>
+            </p>
+            <ul>
+             <li>
+              自顶而上，求出所有使权值之和变为最大的需求。
+             </li>
+            </ul>
+           </blockquote>
+           <p>
+            OPT(n)递归算法:
+           </p>
+           <blockquote>
+            <p>
+             Compute-Opt(j)
+            </p>
+            <p style="text-indent:33px;">
+             If j=0 then
+            </p>
+            <p style="text-indent:33px;">
+             返回0
+            </p>
+            <p style="text-indent:33px;">
+             Else
+            </p>
+            <p style="text-indent:33px;">
+             返回
+             <img alt="max(v_{j} + Compute-Opt(p(j)),Compute-Opt(j-1))" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20max%28v_%7Bj%7D%20&amp;plus;%20Compute-Opt%28p%28j%29%29%2CCompute-Opt%28j-1%29%29"/>
+            </p>
+            <p style="text-indent:33px;">
+             Endif
+            </p>
+           </blockquote>
+           <p>
+            算法的正确性直接由在
+            <img alt="j" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20j"/>
+            上的归纳得到：
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.3
+             </strong>
+             对每个
+             <img alt="j=1,2,...,n" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20j%3D1%2C2%2C...%2Cn"/>
+             ,
+             <img alt="Compute-Opt(j)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20Compute-Opt%28j%29"/>
+             正确地计算了
+             <img alt="OPT(j)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28j%29"/>
+            </p>
+           </blockquote>
+           <p>
+            <strong>
+             存在的问题
+            </strong>
+            ：最坏情况下将用指数时间运行（Fibonacci数）
+           </p>
+           <p>
+            2）递归的
+            <strong>
+             备忘录
+            </strong>
+            形式
+           </p>
+           <p>
+            备忘录：存储以算好的值
+           </p>
+           <blockquote>
+            <p>
+             M-Compute-Opt(j)
+            </p>
+            <p style="text-indent:33px;">
+             If j=0 then
+            </p>
+            <p style="text-indent:33px;">
+             返回0
+            </p>
+            <p style="text-indent:33px;">
+             Else if
+             <img alt="M[j]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bj%5D"/>
+             不空 then
+            </p>
+            <p style="text-indent:33px;">
+             返回
+             <img alt="M[j]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bj%5D"/>
+            </p>
+            <p style="text-indent:33px;">
+             Else
+            </p>
+            <p style="text-indent:33px;">
+             定义
+             <img alt="M[j]=max(v_{j} + M-Compute-Opt(p(j)),M-Compute-Opt(j-1))" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bj%5D%3Dmax%28v_%7Bj%7D%20&amp;plus;%20M-Compute-Opt%28p%28j%29%29%2CM-Compute-Opt%28j-1%29%29"/>
+            </p>
+            <p style="text-indent:33px;">
+             返回
+             <img alt="M[j]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bj%5D"/>
+            </p>
+            <p style="text-indent:33px;">
+             Endif
+            </p>
+           </blockquote>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.4
+             </strong>
+             M-Compute-Opt(n) 的运行时间是O(n)（假定输入区间按它们的最后时间存储）
+            </p>
+           </blockquote>
+           <p>
+            3）获取
+            <strong>
+             最优解
+            </strong>
+           </p>
+           <p>
+            利用上述算法，我们仅获得了一个最优解的值，而除了值，我们也想要一组
+            <strong>
+             最优的区间
+            </strong>
+            。 可以通过数组M“
+            <strong>
+             反向追踪
+            </strong>
+            ”来找出最优解中的区间集合。
+           </p>
+           <blockquote>
+            <p>
+             Find-Solution(j)
+            </p>
+            <p style="text-indent:33px;">
+             If j=0 then
+            </p>
+            <p style="text-indent:33px;">
+             什么也不输出
+            </p>
+            <p style="text-indent:33px;">
+             Else
+            </p>
+            <p style="text-indent:33px;">
+             if
+             <img alt="v_{j}+M[p(j)]\geq M[j-1]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v_%7Bj%7D&amp;plus;M%5Bp%28j%29%5D%5Cgeq%20M%5Bj-1%5D"/>
+             then
+            </p>
+            <p style="text-indent:33px;">
+             输出
+             <img alt="j" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20j"/>
+             与Find-Solution(p(j))的结果
+            </p>
+            <p style="text-indent:33px;">
+             Else
+            </p>
+            <p style="text-indent:33px;">
+             输出 Find-Solution(j-1)的结果
+            </p>
+            <p style="text-indent:33px;">
+             Endif
+            </p>
+            <p style="text-indent:33px;">
+             Endif
+            </p>
+           </blockquote>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.5
+             </strong>
+             给定这些子问题的最优值的数组M，Find-Solution 在O(n) 时间内返回一个最优解
+            </p>
+           </blockquote>
+           <h4 id="%E4%BA%8C%E3%80%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8E%9F%E7%90%86%EF%BC%9A%E5%A4%87%E5%BF%98%E5%BD%95%E6%88%96%E8%80%85%E5%AD%90%E9%97%AE%E9%A2%98%E8%BF%AD%E4%BB%A3%C2%A0">
+            <strong>
+             二、动态规划原理：备忘录或者子问题迭代
+            </strong>
+           </h4>
+           <p>
+            动态规划的基本原理：
+           </p>
+           <p>
+            在
+            <strong>
+             子问题
+            </strong>
+            上迭代，而不是递归地计算解
+           </p>
+           <p>
+            先设计了一个指数时间的递归算法，然后把它
+            <strong>
+             转换
+            </strong>
+            成一个有效的递归算法
+           </p>
+           <p>
+            <strong>
+             1.设计算法：
+            </strong>
+           </p>
+           <p>
+            数组M[n]包含了整个实例的最优解的值，并且可以用Find-Solution通过M有效地向后追踪并且返回最优解本身。
+           </p>
+           <p>
+            因此我们可以不使用备忘录式的递归，通过迭代算法直接计算M中的项。
+           </p>
+           <blockquote>
+            <p>
+             Iterative-Compute-Opt
+            </p>
+            <p>
+             M[0] = 0
+            </p>
+            <p>
+             For i=1,2,...,n
+            </p>
+            <p style="text-indent:33px;">
+             <img alt="M[j]=max(v_{j}+M[p(j)],M[j-1])" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bj%5D%3Dmax%28v_%7Bj%7D&amp;plus;M%5Bp%28j%29%5D%2CM%5Bj-1%5D%29"/>
+            </p>
+            <p style="text-indent:0;">
+             Endfor
+            </p>
+           </blockquote>
+           <p>
+            <strong>
+             2.分析算法
+            </strong>
+           </p>
+           <p>
+            Iterative-Compute-Opt 运行时间为
+            <img alt="O(n)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28n%29"/>
+            ，它清楚地运行了n次迭代并且每次迭代用常数时间。
+           </p>
+           <p>
+            <strong>
+             3.动态规划的基本要点
+            </strong>
+           </p>
+           <p>
+            (i) 只存在多项式个子问题
+           </p>
+           <p>
+            (ii)可以容易地从子问题地解计算初始问题的解
+           </p>
+           <p>
+            (iii)在子问题从“最小”到“最大”存在一中自然的顺序，与一个容易计算的递推式相联系，这个递推式允许人们从某些更小的子问题的解来确定一个子问题的解。
+           </p>
+           <h4 id="%E4%B8%89%E3%80%81%E5%88%86%E6%AE%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%EF%BC%9A%E5%A4%9A%E9%87%8D%E9%80%89%E6%8B%A9">
+            三、分段的最小二乘：多重选择
+           </h4>
+           <p>
+            <strong>
+             1.分段的最小二乘问题
+            </strong>
+           </p>
+           <p>
+            给定一组点
+            <img alt="P = \{​{(x_{1},y_{1}),(x_{2},y_{2},...,(x_{n},y_{n})}\}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20P%20%3D%20%5C%7B%7B%28x_%7B1%7D%2Cy_%7B1%7D%29%2C%28x_%7B2%7D%2Cy_%7B2%7D%2C...%2C%28x_%7Bn%7D%2Cy_%7Bn%7D%29%7D%5C%7D"/>
+            ，具有
+            <img alt="x_{1}&lt; x_{2}&lt; ...&lt; x_{n}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20x_%7B1%7D%3C%20x_%7B2%7D%3C%20...%3C%20x_%7Bn%7D"/>
+            ，我们用
+            <img alt="P_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20P_%7Bi%7D"/>
+            表示点
+            <img alt="(x_{i},y_{i})." class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28x_%7Bi%7D%2Cy_%7Bi%7D%29."/>
+            我们首先把P划分成若干端，每段是P的一个子集，表示连续的
+            <img alt="x" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20x"/>
+            坐标的集合，即对每个下标
+            <img alt="i&lt; j" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%3C%20j"/>
+            ，集合为
+            <img alt="\{​{p_{i},p_{i+1},...,p_{j-1},p_{j}}\}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5C%7B%7Bp_%7Bi%7D%2Cp_%7Bi&amp;plus;1%7D%2C...%2Cp_%7Bj-1%7D%2Cp_%7Bj%7D%7D%5C%7D"/>
+            .那么，对于在P的划分中的每段S，我们按
+           </p>
+           <p>
+            <img alt="y = ax+b,a=\frac{n \sum_{i}x_{i}y_{i} - ( \sum_{i} x_{i})( \sum_{i} y_{i})}{n \sum_{i}x_{i}^2-( \sum_{i}x_{i})^2},b=\frac{ \sum _{i}y_{i}-a\sum_{i}x_{i}}{n}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20y%20%3D%20ax&amp;plus;b%2Ca%3D%5Cfrac%7Bn%20%5Csum_%7Bi%7Dx_%7Bi%7Dy_%7Bi%7D%20-%20%28%20%5Csum_%7Bi%7D%20x_%7Bi%7D%29%28%20%5Csum_%7Bi%7D%20y_%7Bi%7D%29%7D%7Bn%20%5Csum_%7Bi%7Dx_%7Bi%7D%5E2-%28%20%5Csum_%7Bi%7Dx_%7Bi%7D%29%5E2%7D%2Cb%3D%5Cfrac%7B%20%5Csum%20_%7Bi%7Dy_%7Bi%7D-a%5Csum_%7Bi%7Dx_%7Bi%7D%7D%7Bn%7D"/>
+           </p>
+           <p>
+            计算相对于S中点的误差最小的直线.
+           </p>
+           <p style="text-indent:33px;">
+            一个划分的
+            <strong>
+             罚分
+            </strong>
+            定义为
+            <strong>
+             下面的项之和
+            </strong>
+            ：
+           </p>
+           <p style="text-indent:33px;">
+            (i)我们划分P的段数乘以一个给定的不变因子
+            <img alt="C&gt; 0" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20C%3E%200"/>
+           </p>
+           <p style="text-indent:33px;">
+            (ii)对每段，通过那个段的最优直线的误差值
+           </p>
+           <p style="text-indent:0;">
+            问题的
+            <strong>
+             目标
+            </strong>
+            是找一个
+            <strong>
+             最小罚分
+            </strong>
+            的划分。
+           </p>
+           <p style="text-indent:0;">
+            <strong>
+             2.设计算法
+            </strong>
+           </p>
+           <p>
+            最后一个点
+            <img alt="p_{n}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20p_%7Bn%7D"/>
+            在最优化分中属于一段，并且那个段在某个比较早的点
+            <img alt="p_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20p_%7Bi%7D"/>
+            开始。
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.6
+             </strong>
+             如果最优化分的最后一段是
+             <img alt="p_{i},...,p_{n}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20p_%7Bi%7D%2C...%2Cp_%7Bn%7D"/>
+             ，那么最优解的值是：
+             <img alt="OPT(n) = e_{i,n} + C + OPT(i-1)." class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28n%29%20%3D%20e_%7Bi%2Cn%7D%20&amp;plus;%20C%20&amp;plus;%20OPT%28i-1%29."/>
+            </p>
+            <p>
+             <strong>
+              定理6.7
+             </strong>
+             对于点
+             <img alt="p_{i},...,p_{j}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20p_%7Bi%7D%2C...%2Cp_%7Bj%7D"/>
+             上的子问题，
+            </p>
+            <p>
+             <img alt="OPT(j) = \min_{1\leq i\leq j} (e_{i,j}+C+OPT(i-1))" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28j%29%20%3D%20%5Cmin_%7B1%5Cleq%20i%5Cleq%20j%7D%20%28e_%7Bi%2Cj%7D&amp;plus;C&amp;plus;OPT%28i-1%29%29"/>
+            </p>
+            <p>
+             并且段
+             <img alt="p_{i},...,p_{j}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20p_%7Bi%7D%2C...%2Cp_%7Bj%7D"/>
+             被用于一个关于子问题的最优解，当且仅当这个最小是使用下标
+             <img alt="i" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i"/>
+             得到的
+            </p>
+           </blockquote>
+           <blockquote>
+            <p>
+             Find-Segment(j)
+            </p>
+            <p style="text-indent:33px;">
+             If j=0 then
+            </p>
+            <p style="text-indent:33px;">
+             不用输出
+            </p>
+            <p style="text-indent:33px;">
+             Else
+            </p>
+            <p style="text-indent:33px;">
+             找一个使得
+             <img alt="e_{i,j}+C+M[i-1]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20e_%7Bi%2Cj%7D&amp;plus;C&amp;plus;M%5Bi-1%5D"/>
+             最小的
+             <img alt="i" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i"/>
+            </p>
+            <p style="text-indent:33px;">
+             输出这个段
+             <img alt="{\{p_{i},...,p_{j}}\}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%7B%5C%7Bp_%7Bi%7D%2C...%2Cp_%7Bj%7D%7D%5C%7D"/>
+             以及Find-Segments(i-1) 的结果
+            </p>
+            <p style="text-indent:33px;">
+             Endif
+            </p>
+           </blockquote>
+           <p>
+            <strong>
+             3.分析算法
+            </strong>
+           </p>
+           <p>
+            运行时间：
+            <img alt="O(n^2)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28n%5E2%29"/>
+           </p>
+           <h4 id="%E5%9B%9B%E3%80%81%E5%AD%90%E9%9B%86%E5%92%8C%E4%B8%8E%E8%83%8C%E5%8C%85%EF%BC%9A%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F">
+            四、子集和与背包：加一个变量
+           </h4>
+           <p>
+            <strong>
+             1.子集和问题
+            </strong>
+           </p>
+           <p>
+            给定n个项
+            <img alt="\{​{1,...,n}\}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5C%7B%7B1%2C...%2Cn%7D%5C%7D"/>
+            ,每个项有一个给定的非负的权
+            <img alt="w_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20w_%7Bi%7D"/>
+            ,给定一个界W，我们项选择一个子集S使得
+            <img alt="\sum_{i\in S}\omega _{i}\leq W" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B80%7D%20%5Cfn_cm%20%5Csum_%7Bi%5Cin%20S%7D%5Comega%20_%7Bi%7D%5Cleq%20W"/>
+            ，并且使得
+            <img alt="\sum_{i\in S}\omega _{i}\leq W" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B80%7D%20%5Cfn_cm%20%5Csum_%7Bi%5Cin%20S%7D%5Comega%20_%7Bi%7D%5Cleq%20W"/>
+            最大。
+           </p>
+           <p>
+            （背包问题：每个需求i有一个值
+            <img alt="v_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v_%7Bi%7D"/>
+            和一个权
+            <img alt="w_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20w_%7Bi%7D"/>
+            ，在它的总权不超过W的限制下，选择一个最大总值的子集。）
+           </p>
+           <p>
+            <strong>
+             2.设计算法
+            </strong>
+           </p>
+           <p>
+            我们需要知道前n-1个物品的子集并且允许总权为
+            <img alt="W-w_{n}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20W-w_%7Bn%7D"/>
+            情况下可能得到的最好的解。
+           </p>
+           <ul>
+            <li>
+             如果
+             <img alt="n\notin O" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20n%5Cnotin%20O"/>
+             ，那么
+             <img alt="OPT(n,W) = OPT(n-1,W)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28n%2CW%29%20%3D%20OPT%28n-1%2CW%29"/>
+             ，因为我们只能忽略物品n
+            </li>
+            <li>
+             如果
+             <img alt="n\in O" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20n%5Cin%20O"/>
+             ，那么
+             <img alt="OPT(n,W) = w_{n}+OPT(n-1,W-w_{n})" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28n%2CW%29%20%3D%20w_%7Bn%7D&amp;plus;OPT%28n-1%2CW-w_%7Bn%7D%29"/>
+             ，因为我们寻求以一组在物品
+             <img alt="1,2,...,n-1" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%201%2C2%2C...%2Cn-1"/>
+             上的最优的方法来使用剩下的容量
+             <img alt="W-w_{n}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20W-w_%7Bn%7D"/>
+            </li>
+           </ul>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.8
+             </strong>
+             如果
+             <img alt="w&lt; w_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20w%3C%20w_%7Bi%7D"/>
+             ，那么
+             <img alt="OPT(i,w) = OPT(i-1,w)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28i%2Cw%29%20%3D%20OPT%28i-1%2Cw%29"/>
+             ，否则
+             <img alt="OPT(i,w) = max(OPT(i-1,w),w_{i}+OPT(i-1,w-w_{i}))" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28i%2Cw%29%20%3D%20max%28OPT%28i-1%2Cw%29%2Cw_%7Bi%7D&amp;plus;OPT%28i-1%2Cw-w_%7Bi%7D%29%29"/>
+            </p>
+           </blockquote>
+           <blockquote>
+            <p>
+             Sub-Sum(n,W)
+            </p>
+            <p style="text-indent:33px;">
+             数组
+             <img alt="M[0...n,0...W]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5B0...n%2C0...W%5D"/>
+            </p>
+            <p style="text-indent:33px;">
+             对每个
+             <img alt="w=0,1,...,W" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20w%3D0%2C1%2C...%2CW"/>
+             初始化
+             <img alt="M[0,w]=0" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5B0%2Cw%5D%3D0"/>
+            </p>
+            <p style="text-indent:33px;">
+             For
+             <img alt="i=0,1,...,n" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%3D0%2C1%2C...%2Cn"/>
+            </p>
+            <p style="text-indent:33px;">
+             For
+             <img alt="w=0,1,...,W" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20w%3D0%2C1%2C...%2CW"/>
+            </p>
+            <p style="text-indent:33px;">
+             用定理6.8中的递推式计算
+             <img alt="M[i,w]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bi%2Cw%5D"/>
+            </p>
+            <p style="text-indent:33px;">
+             Endfor
+            </p>
+            <p style="text-indent:33px;">
+             Endfor
+            </p>
+            <p style="text-indent:33px;">
+             返回
+             <img alt="M[n,W]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bn%2CW%5D"/>
+            </p>
+           </blockquote>
+           <p>
+            <strong>
+             3.分析算法
+            </strong>
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.9
+             </strong>
+             SubSet-Sum(n,W)算法正确地计算这个问题的最优值，并且运行在
+             <img alt="O(nW)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28nW%29"/>
+             时间。
+            </p>
+            <p>
+             <strong>
+              定理6.10
+             </strong>
+             给定子问题的最优值的表M，可以在
+             <img alt="O(n)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28n%29"/>
+             时间内找到最优集合S
+            </p>
+           </blockquote>
+           <p>
+            <strong>
+             4.推广：背包问题
+            </strong>
+           </p>
+           <p>
+            背包问题：每个物品i与前面一样有一个非负的权
+            <img alt="w_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20w_%7Bi%7D"/>
+            ，还有一个不同的价值
+            <img alt="v_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v_%7Bi%7D"/>
+            ，我们的目标是找到一个子集S，使得再它的总权不超过W，即
+            <img alt="\sum_{i\in S}\omega _{i}\leq W" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B80%7D%20%5Cfn_cm%20%5Csum_%7Bi%5Cin%20S%7D%5Comega%20_%7Bi%7D%5Cleq%20W"/>
+            的限制下，达到最大值
+            <img alt="\sum_{i\in S}v_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B80%7D%20%5Cfn_cm%20%5Csum_%7Bi%5Cin%20S%7Dv_%7Bi%7D"/>
+            .
+           </p>
+           <ul>
+            <li>
+             如果
+             <img alt="n\notin O" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20n%5Cnotin%20O"/>
+             ，那么
+             <img alt="OPT(n,W) = OPT(n-1,W)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28n%2CW%29%20%3D%20OPT%28n-1%2CW%29"/>
+            </li>
+            <li>
+             如果
+             <img alt="n\in O" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20n%5Cin%20O"/>
+             ，那么
+             <img alt="OPT(n,W) = w_{n}+OPT(n-1,W-w_{n})" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28n%2CW%29%20%3D%20w_%7Bn%7D&amp;plus;OPT%28n-1%2CW-w_%7Bn%7D%29"/>
+            </li>
+           </ul>
+           <blockquote>
+            <p>
+             <strong>
+              命题6.11
+             </strong>
+             如果
+             <img alt="w&lt; w_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20w%3C%20w_%7Bi%7D"/>
+             ，那么
+             <img alt="OPT(i,w) = OPT(i-1,w)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28i%2Cw%29%20%3D%20OPT%28i-1%2Cw%29"/>
+             ，否则
+             <img alt="OPT(i,w) = max(OPT(i-1,w),v_{i}+OPT(i-1,w-w_{i}))" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28i%2Cw%29%20%3D%20max%28OPT%28i-1%2Cw%29%2Cv_%7Bi%7D&amp;plus;OPT%28i-1%2Cw-w_%7Bi%7D%29%29"/>
+            </p>
+            <p>
+             <strong>
+              定理6.12
+             </strong>
+             背包问题可以在
+             <img alt="O(nW)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28nW%29"/>
+             时间内求解。
+            </p>
+           </blockquote>
+           <h4 id="%E4%BA%94%E3%80%81RNA%E4%BA%8C%E7%BA%A7%E7%BB%93%E6%9E%84%EF%BC%9A%E5%9C%A8%E5%8C%BA%E9%97%B4%E4%B8%8A%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">
+            五、RNA二级结构：在区间上的动态规划
+           </h4>
+           <p>
+            <strong>
+             1.预测RNA二级结构问题
+            </strong>
+           </p>
+           <p>
+            令
+            <img alt="B=b_{1}b_{2}...b_{n}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20B%3Db_%7B1%7Db_%7B2%7D...b_%7Bn%7D"/>
+            是一个单螺旋RNA分子，其中每个
+            <img alt="b_{i}\in \{​{A,C,G,U}\}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20b_%7Bi%7D%5Cin%20%5C%7B%7BA%2CC%2CG%2CU%7D%5C%7D"/>
+            , 我们需要得出
+            <strong>
+             B的稳定的二级结构
+            </strong>
+            ，匹配原则如下：
+           </p>
+           <p>
+            i) A-U,C-G
+           </p>
+           <p>
+            ii) 没有尖的转弯，即如果
+            <img alt="(i,j)\in S" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28i%2Cj%29%5Cin%20S"/>
+            ，那么
+            <img alt="i&lt; j-4" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%3C%20j-4"/>
+           </p>
+           <p>
+            iii) 不允许重复配对，每个碱基只能参与一次配对
+           </p>
+           <p>
+            iiii) 不允许交叉，即如果
+            <img alt="(i,j)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28i%2Cj%29"/>
+            与
+            <img alt="(k,l)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28k%2Cl%29"/>
+            是
+            <img alt="S" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20S"/>
+            中的两个对，那么我们不能有
+            <img alt="i&lt; k&lt; j&lt; l" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%3C%20k%3C%20j%3C%20l"/>
+           </p>
+           <p>
+            <strong>
+             稳定的二级结构
+            </strong>
+            ：具有最小自由能——具有最多的匹配对数
+           </p>
+           <p>
+            <strong>
+             2.设计与分析算法
+            </strong>
+           </p>
+           <p>
+            ①如果 t 与 j 配对
+           </p>
+           <p>
+            子问题1：i 到 t-1 的链
+           </p>
+           <p>
+            子问题2：t+1 到 j-1 的链
+           </p>
+           <p>
+            ②如果 j 不参与配对
+           </p>
+           <p>
+            子问题：i 到 j-1 的子问题
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.13
+             </strong>
+             <img alt="\\ OPT(i,j) = max(OPT(i,j-1),max(1+OPT(i,t-1)+OPT(t+1,j-1)))" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5C%5C%20OPT%28i%2Cj%29%20%3D%20max%28OPT%28i%2Cj-1%29%2Cmax%281&amp;plus;OPT%28i%2Ct-1%29&amp;plus;OPT%28t&amp;plus;1%2Cj-1%29%29%29"/>
+            </p>
+            <p>
+             其中max遍取所有的 t ，使得
+             <img alt="b_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20b_%7Bi%7D"/>
+             与
+             <img alt="b_{i}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20b_%7Bi%7D"/>
+             是一对被允许的碱基
+            </p>
+           </blockquote>
+           <p>
+            算法描述：
+           </p>
+           <blockquote>
+            <p>
+             初始化 只要
+             <img alt="i\geq j-4" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%5Cgeq%20j-4"/>
+             令
+             <img alt="OPT(i,j) = 0" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28i%2Cj%29%20%3D%200"/>
+            </p>
+            <p>
+             For k=5,6,...,n-1
+            </p>
+            <p style="text-indent:33px;">
+             For i = 1,2,...,n-k
+            </p>
+            <p style="text-indent:33px;">
+             置
+             <img alt="j=i+k" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20j%3Di&amp;plus;k"/>
+            </p>
+            <p style="text-indent:33px;">
+             使用定理6.13中的递推式计算OPT(i,j)
+            </p>
+            <p style="text-indent:33px;">
+             Endfor
+            </p>
+            <p style="text-indent:0;">
+             Endfor
+            </p>
+            <p style="text-indent:0;">
+             返回OPT(1,n)
+            </p>
+           </blockquote>
+           <p>
+            时间复杂度：
+            <img alt="O(n^3)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28n%5E3%29"/>
+           </p>
+           <h4 id="%E5%85%AD%E3%80%81%E5%BA%8F%E5%88%97%E6%AF%94%E5%AF%B9">
+            六、序列比对
+           </h4>
+           <p>
+            <strong>
+             1.序列比对问题
+            </strong>
+           </p>
+           <p>
+            假设给定两个串X与Y，其中X由字符序列
+            <img alt="x_{1}x_{2}...x_{m}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20x_%7B1%7Dx_%7B2%7D...x_%7Bm%7D"/>
+            组成，Y由字符序列
+            <img alt="y_{1}y_{2}...y_{m}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20y_%7B1%7Dy_%7B2%7D...y_%7Bm%7D"/>
+            组成。考虑集合
+            <img alt="\{​{1,2,...,m}\}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5C%7B%7B1%2C2%2C...%2Cm%7D%5C%7D"/>
+            与
+            <img alt="\{​{1,2,...,n}\}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5C%7B%7B1%2C2%2C...%2Cn%7D%5C%7D"/>
+            作为串X与Y中不同位置的代表，并且考虑这些集合的一个匹配，如果
+            <img alt="(i,j),({i}',{j}')\in M" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28i%2Cj%29%2C%28%7Bi%7D%27%2C%7Bj%7D%27%29%5Cin%20M"/>
+            并且
+            <img alt="i&lt; {i}'" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%3C%20%7Bi%7D%27"/>
+            ，那么
+            <img alt="j&lt; {j}'" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20j%3C%20%7Bj%7D%27"/>
+            ，我们就说这两个集合的匹配M是一个比对，我们需要找到X与Y之间的
+            <strong>
+             最优比对
+            </strong>
+            。这个比对将依照下述标准：
+           </p>
+           <ul>
+            <li>
+             存在一个参数
+             <img alt="\delta &gt; 0" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cdelta%20%3E%200"/>
+             定义一个空隙划分
+            </li>
+            <li>
+             对字母表中的每对字符
+             <img alt="p,q" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20p%2Cq"/>
+             ，存在一个把
+             <img alt="p" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20p"/>
+             与
+             <img alt="q" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20q"/>
+             对准的错配代价
+             <img alt="\alpha _{pq}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Calpha%20_%7Bpq%7D"/>
+            </li>
+            <li>
+             M的代价是它的空隙与错配代价之和，我们要找一个最小代价的比对
+            </li>
+           </ul>
+           <p>
+            <strong>
+             2.设计算法
+            </strong>
+           </p>
+           <p>
+            二分法：在最优比对M中，或者
+            <img alt="(m,n)\in M" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28m%2Cn%29%5Cin%20M"/>
+            或
+            <img alt="(m,n)\notin M" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28m%2Cn%29%5Cnotin%20M"/>
+            （即在这两个串中的最后字符是互相匹配的，或者它们不是互相匹配的）
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              命题6.14
+             </strong>
+             令M是X与Y的任意比对，如果
+             <img alt="(m,n)\notin M" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28m%2Cn%29%5Cnotin%20M"/>
+             ，那么X的第m个位置或者Y的第n个位置在M中不会被匹配。
+            </p>
+            <p>
+             <strong>
+              定理6.15
+             </strong>
+             在一个最优比对M中，至少下述情况之一为真：
+            </p>
+            <p style="text-indent:33px;">
+             (i)
+             <img alt="(m,n)\in M" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28m%2Cn%29%5Cin%20M"/>
+             ；或者
+            </p>
+            <p style="text-indent:33px;">
+             (ii) X的第m个位置没被匹配；或者
+            </p>
+            <p style="text-indent:33px;">
+             (iii)Y的第n个位置没被匹配.
+            </p>
+            <p style="text-indent:0;">
+             <strong>
+              定理6.16
+             </strong>
+             对于
+             <img alt="i\geq 1" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%5Cgeq%201"/>
+             与
+             <img alt="j\geq 1" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20j%5Cgeq%201"/>
+             ，最小比对代价满足下面的递推式：
+            </p>
+            <p style="text-indent:33px;">
+             <img alt="\\ OPT(i,j) = min[\alpha _{x_{i}y_{j}}+OPT(i-1,j-1),\delta +OPT(i-1,t),\delta +OPT(i,j-1)]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5C%5C%20OPT%28i%2Cj%29%20%3D%20min%5B%5Calpha%20_%7Bx_%7Bi%7Dy_%7Bj%7D%7D&amp;plus;OPT%28i-1%2Cj-1%29%2C%5Cdelta%20&amp;plus;OPT%28i-1%2Ct%29%2C%5Cdelta%20&amp;plus;OPT%28i%2Cj-1%29%5D"/>
+            </p>
+            <p style="text-indent:0;">
+             此外，
+             <img alt="(i,j)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28i%2Cj%29"/>
+             在关于这个子问题的一个最优比对M中，当且仅当这个最小值是由上面的第一个值达到的。
+            </p>
+           </blockquote>
+           <p>
+            算法描述：
+           </p>
+           <blockquote>
+            <p>
+             Alignment(X,Y)
+            </p>
+            <p style="text-indent:33px;">
+             数组
+             <img alt="A[0...m,0...n]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%5B0...m%2C0...n%5D"/>
+            </p>
+            <p style="text-indent:33px;">
+             对每个i初始化
+             <img alt="A[i,0] = i\delta" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%5Bi%2C0%5D%20%3D%20i%5Cdelta"/>
+            </p>
+            <p style="text-indent:33px;">
+             对每个j初始化
+             <img alt="A[0,j] =j\delta" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%5B0%2Cj%5D%20%3Dj%5Cdelta"/>
+            </p>
+            <p style="text-indent:33px;">
+             For
+             <img alt="j=1,...,n" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20j%3D1%2C...%2Cn"/>
+            </p>
+            <p style="text-indent:33px;">
+             For
+             <img alt="i = 1,...,m" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%20%3D%201%2C...%2Cm"/>
+            </p>
+            <p style="text-indent:33px;">
+             用定理6.16中的递推式计算
+             <img alt="A[i,j]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%5Bi%2Cj%5D"/>
+            </p>
+            <p style="text-indent:33px;">
+             Endfor
+            </p>
+            <p style="text-indent:33px;">
+             Endfor
+            </p>
+            <p style="text-indent:33px;">
+             Return
+             <img alt="A[m,n]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%5Bm%2Cn%5D"/>
+            </p>
+           </blockquote>
+           <p>
+            <strong>
+             3.分析算法
+            </strong>
+           </p>
+           <p>
+            时间复杂度：
+            <img alt="O(mn)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28mn%29"/>
+           </p>
+           <p>
+            空间复杂度：
+            <img alt="O(mn)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28mn%29"/>
+           </p>
+           <p>
+            我们建立一个二维m*n的方格图
+            <img alt="G_{XY}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20G_%7BXY%7D"/>
+            ，行用串X中的符号标记，列用Y中的符号标记。我们把代价放到
+            <img alt="G_{XY}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20G_%7BXY%7D"/>
+            的边上：每条水平与垂直的边的代价是
+            <img alt="\delta" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cdelta"/>
+            ，并且从
+            <img alt="(i-1,j-1)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28i-1%2Cj-1%29"/>
+            到
+            <img alt="(i,j)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28i%2Cj%29"/>
+            的对角线的边的代价是
+            <img alt="\alpha _{x_{i}y_{j}}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Calpha%20_%7Bx_%7Bi%7Dy_%7Bj%7D%7D"/>
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.17
+             </strong>
+             令
+             <img alt="f(i,j)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20f%28i%2Cj%29"/>
+             表示
+             <img alt="G_{XY}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20G_%7BXY%7D"/>
+             中从
+             <img alt="(0,0)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%280%2C0%29"/>
+             到
+             <img alt="(i,j)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28i%2Cj%29"/>
+             的一条路径最小的代价，那么对于所有的
+             <img alt="i,j" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%2Cj"/>
+             ，我们有
+             <img alt="f(i,j) = OPT(i,j)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20f%28i%2Cj%29%20%3D%20OPT%28i%2Cj%29"/>
+            </p>
+           </blockquote>
+           <p>
+            最优比对的值是在
+            <img alt="G_{XY}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20G_%7BXY%7D"/>
+            中从
+            <img alt="(0,0)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%280%2C0%29"/>
+            到
+            <img alt="(m,n)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28m%2Cn%29"/>
+            的最短路径的长度。
+           </p>
+           <p>
+            <strong>
+             4.通过分治策略在线性空间的序列比对
+            </strong>
+           </p>
+           <p>
+            1）问题：用更小的空间复杂度解决序列比对问题
+           </p>
+           <p>
+            2）设计算法
+           </p>
+           <p>
+            关键：把问题划分为几次的递归调用，那么计算所需要的空间就可以重复使用
+           </p>
+           <p>
+            定理6.16中的递推式只需要A中当前一列以及前一列的学习，一次把数组A折叠成m*2的数组B：当算法通过j的值迭代时，B[i,0]的项将保存值A[i,j-1]，B[i,1]的项将保存值A[i,j].
+           </p>
+           <blockquote>
+            <p>
+             Space-Ffficient-Alignment(X,Y)
+            </p>
+            <p style="text-indent:33px;">
+             数组B[0...m,0...1]
+            </p>
+            <p style="text-indent:33px;">
+             初始化 对每个i令
+             <img alt="B[i,0] = i\delta" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20B%5Bi%2C0%5D%20%3D%20i%5Cdelta"/>
+             (正如在A的第0列一样)
+            </p>
+            <p style="text-indent:33px;">
+             For
+             <img alt="j=1,...,n" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20j%3D1%2C...%2Cn"/>
+            </p>
+            <p style="text-indent:33px;">
+             <img alt="B[0,1] = i\delta" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20B%5B0%2C1%5D%20%3D%20i%5Cdelta"/>
+             ( 对应
+             <img alt="A[0,j]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20A%5B0%2Cj%5D"/>
+             )
+            </p>
+            <p style="text-indent:33px;">
+             For
+             <img alt="i = 1,...,m" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%20%3D%201%2C...%2Cm"/>
+            </p>
+            <p style="text-indent:33px;">
+             <img alt="\\ B[i,1]= min[\alpha _{x_{i}y_{j}}+B[i-1,0],\delta +B(i-1,1),\delta +B(i,0)]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5C%5C%20B%5Bi%2C1%5D%3D%20min%5B%5Calpha%20_%7Bx_%7Bi%7Dy_%7Bj%7D%7D&amp;plus;B%5Bi-1%2C0%5D%2C%5Cdelta%20&amp;plus;B%28i-1%2C1%29%2C%5Cdelta%20&amp;plus;B%28i%2C0%29%5D"/>
+            </p>
+            <p style="text-indent:33px;">
+             Endfor
+            </p>
+            <p style="text-indent:33px;">
+             将B的第一列移到第0列来为下一次迭代留出空间：对每个 i 修改
+             <img alt="B[i,0] = B[i,1]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20B%5Bi%2C0%5D%20%3D%20B%5Bi%2C1%5D"/>
+            </p>
+            <p style="text-indent:33px;">
+             Endfor
+            </p>
+           </blockquote>
+           <p>
+            动态规划的逆向公式
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.18
+             </strong>
+             对于
+             <img alt="i&lt; m" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%3C%20m"/>
+             与
+             <img alt="j&lt; n" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20j%3C%20n"/>
+             ，我们有
+             <img alt="g[i,j] = min[\alpha _{x_{i+1}y_{j+1}}+g(i+1,j+1),\delta +g(i,j+1),\delta +g(i+1,j)]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20g%5Bi%2Cj%5D%20%3D%20min%5B%5Calpha%20_%7Bx_%7Bi&amp;plus;1%7Dy_%7Bj&amp;plus;1%7D%7D&amp;plus;g%28i&amp;plus;1%2Cj&amp;plus;1%29%2C%5Cdelta%20&amp;plus;g%28i%2Cj&amp;plus;1%29%2C%5Cdelta%20&amp;plus;g%28i&amp;plus;1%2Cj%29%5D"/>
+            </p>
+           </blockquote>
+           <p>
+            正向与逆向公式的组合
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              命题6.19
+             </strong>
+             在
+             <img alt="G_{XY}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20G_%7BXY%7D"/>
+             中通过
+             <img alt="(i,j)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28i%2Cj%29"/>
+             的角到角的最短路径的长度是
+             <img alt="f(i,j)+g(i,j)." class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20f%28i%2Cj%29&amp;plus;g%28i%2Cj%29."/>
+            </p>
+            <p>
+             <strong>
+              定理6.20
+             </strong>
+             令k 表示在
+             <img alt="\{​{0,...,n}\}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5C%7B%7B0%2C...%2Cn%7D%5C%7D"/>
+             中的任何数，且令q是使得量
+             <img alt="f(q,k)+g(q,k)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20f%28q%2Ck%29&amp;plus;g%28q%2Ck%29"/>
+             达到最小的序标，那么存在一条通过结点
+             <img alt="(q,k)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28q%2Ck%29"/>
+             的最小长度的角到角的路径。
+            </p>
+           </blockquote>
+           <blockquote>
+            <p>
+             Divide-and-Conquer-Alignment(X,Y)
+            </p>
+            <p style="text-indent:33px;">
+             令m是X中的符号个数
+            </p>
+            <p style="text-indent:33px;">
+             令n 是Y中的符号个数
+            </p>
+            <p style="text-indent:33px;">
+             If  或   then
+            </p>
+            <p style="text-indent:33px;">
+             使用Alignment(X,Y)计算最优比对
+            </p>
+            <p style="text-indent:33px;">
+             调用
+             <img alt="Space-Efficient-Alignment(X,Y[1:n/2])" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20Space-Efficient-Alignment%28X%2CY%5B1%3An/2%5D%29"/>
+            </p>
+            <p style="text-indent:33px;">
+             调用
+             <img alt="Backward-Space-Efficient-Alignment(X,Y[n/2+1:n])" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20Backward-Space-Efficient-Alignment%28X%2CY%5Bn/2&amp;plus;1%3An%5D%29"/>
+            </p>
+            <p style="text-indent:33px;">
+             令q是使得
+             <img alt="f(q,n/2)+g(q,n/2)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20f%28q%2Cn/2%29&amp;plus;g%28q%2Cn/2%29"/>
+             达到最小的序标
+            </p>
+            <p style="text-indent:33px;">
+             把
+             <img alt="(q,n/2)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28q%2Cn/2%29"/>
+             加到全局表P中
+            </p>
+            <p style="text-indent:33px;">
+             <img alt="Divide-and-Conquer-Alignment(X[1:q],Y[1:n/2])" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20Divide-and-Conquer-Alignment%28X%5B1%3Aq%5D%2CY%5B1%3An/2%5D%29"/>
+            </p>
+            <p style="text-indent:33px;">
+             <img alt="Divide-and-Conquer-Alignment(X[q:n],Y[n/2:n])" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20Divide-and-Conquer-Alignment%28X%5Bq%3An%5D%2CY%5Bn/2%3An%5D%29"/>
+            </p>
+            <p style="text-indent:33px;">
+             返回P
+            </p>
+           </blockquote>
+           <p>
+            3)分析算法
+           </p>
+           <p>
+            时间复杂度：
+            <img alt="O(mn)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28mn%29"/>
+           </p>
+           <p>
+            空间复杂度：
+            <img alt="O(m+n)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28m&amp;plus;n%29"/>
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.21
+             </strong>
+             算法Divide-and-Conquer-Alignment在长为m与n的串上的运行时间是
+             <img alt="O(mn)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28mn%29"/>
+            </p>
+           </blockquote>
+           <h4 id="%E4%B8%83%E3%80%81%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84">
+            七、图中的最短路径
+           </h4>
+           <p>
+            <strong>
+             1.最短路径问题：
+            </strong>
+           </p>
+           <ul>
+            <li>
+             给定一个带权图G，如上所述，确定G是否有负圈——即一个有向圈C使得：
+            </li>
+           </ul>
+           <p style="text-indent:33px;">
+            <img alt="\sum _{ij\in C} c_{i,j}&lt; 0" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Csum%20_%7Bij%5Cin%20C%7D%20c_%7Bi%2Cj%7D%3C%200"/>
+           </p>
+           <ul>
+            <li>
+             如果这个图没有负圈，找一条从始点s到终点t的路径P使它具有最小总费用：
+            </li>
+           </ul>
+           <p style="text-indent:33px;">
+            <img alt="\sum _{ij\in P} c_{i,j}" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Csum%20_%7Bij%5Cin%20P%7D%20c_%7Bi%2Cj%7D"/>
+           </p>
+           <p>
+            <strong>
+             2.设计与分析算法（Bellman-Ford算法）
+            </strong>
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.22
+             </strong>
+             如果G没有负圈，那么存在一条从s到t的简单得最短路径(即没有重复结点)，因此它至多有n-1条边。
+            </p>
+           </blockquote>
+           <ul>
+            <li>
+             如果路径P至多用
+             <img alt="i-1" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i-1"/>
+             条边，那么
+             <img alt="OPT(i,v) = OPT(i-1,v)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28i%2Cv%29%20%3D%20OPT%28i-1%2Cv%29"/>
+            </li>
+            <li>
+             如果路径P用
+             <img alt="i" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i"/>
+             条边，并且第一条边是
+             <img alt="(v,w)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28v%2Cw%29"/>
+             ，那么
+             <img alt="OPT(i,v) = c_{vw}+OPT(i-1,w)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28i%2Cv%29%20%3D%20c_%7Bvw%7D&amp;plus;OPT%28i-1%2Cw%29"/>
+            </li>
+           </ul>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.23
+             </strong>
+             如果
+             <img alt="i&gt; 0" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%3E%200"/>
+             ，那么
+            </p>
+            <p style="text-indent:33px;">
+             <img alt="OPT(i,v) = min(OPT(i-1,v),min_{w\in V}(OPT(i-1,w)+c_{vw}))" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28i%2Cv%29%20%3D%20min%28OPT%28i-1%2Cv%29%2Cmin_%7Bw%5Cin%20V%7D%28OPT%28i-1%2Cw%29&amp;plus;c_%7Bvw%7D%29%29"/>
+            </p>
+           </blockquote>
+           <p>
+            算法描述：
+           </p>
+           <blockquote>
+            <p>
+             Shortest-Path(G,s,t)
+            </p>
+            <p style="text-indent:33px;">
+             <img alt="n=G" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20n%3DG"/>
+             中的节点数
+            </p>
+            <p style="text-indent:33px;">
+             数组
+             <img alt="M[0...n-1,V]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5B0...n-1%2CV%5D"/>
+            </p>
+            <p style="text-indent:33px;">
+             定义
+             <img alt="M[0,t]=0" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5B0%2Ct%5D%3D0"/>
+             并且对所有其他的
+             <img alt="v\in V,M[0,v]=\infty" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v%5Cin%20V%2CM%5B0%2Cv%5D%3D%5Cinfty"/>
+            </p>
+            <p style="text-indent:33px;">
+             For
+             <img alt="i=1,...,n-1" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%3D1%2C...%2Cn-1"/>
+            </p>
+            <p style="text-indent:33px;">
+             For 用定理6.23的递推式以任何次序计算
+            </p>
+            <p style="text-indent:33px;">
+             Endfor
+            </p>
+            <p style="text-indent:33px;">
+             返回
+             <img alt="M[n-1,s]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bn-1%2Cs%5D"/>
+            </p>
+           </blockquote>
+           <p>
+            分析算法：
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.14
+             </strong>
+             在任何没有负圈的图中，Shortest-Path方法正确计算了一条
+             <img alt="s-t" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20s-t"/>
+             路径的最小费用，并且运行在
+             <img alt="O(n^3)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28n%5E3%29"/>
+             时间。
+            </p>
+           </blockquote>
+           <p>
+            <strong>
+             3.推广：对算法的某些基本改进
+            </strong>
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.25
+             </strong>
+             Shortest-Path方法可以被改进到
+             <img alt="O(mn)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28mn%29"/>
+             时间
+            </p>
+           </blockquote>
+           <p>
+            存储需求的改进：不对每个值
+            <img alt="i" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i"/>
+            记录 ，而是对每个结点
+            <img alt="v" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v"/>
+            使用和更新一个值
+            <img alt="M[v]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bv%5D"/>
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              命题6.26
+             </strong>
+             在整个算法中，
+             <img alt="M[v]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bv%5D"/>
+             是从
+             <img alt="v" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v"/>
+             到
+             <img alt="t" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20t"/>
+             的某条路径的长度，且在
+             <img alt="i" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i"/>
+             轮更新后
+             <img alt="M[v]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bv%5D"/>
+             的值不大于从
+             <img alt="v" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v"/>
+             到
+             <img alt="t" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20t"/>
+             至多使用
+             <img alt="i" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i"/>
+             条边的最短路径的长度。
+            </p>
+           </blockquote>
+           <p>
+            找到最短路径：使每个结点
+            <img alt="v" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v"/>
+            保存它通向终点
+            <img alt="t" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20t"/>
+            的路径上的第一个结点
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              命题6.27
+             </strong>
+             如果指针图P包含一个圈C，那么这个圈一定有负费用。
+            </p>
+            <p>
+             <strong>
+              命题6.28
+             </strong>
+             假设G没有负圈，考虑算法终止时的指针图P，对每个结点
+             <img alt="v" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v"/>
+             ，在P中从
+             <img alt="v" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v"/>
+             到
+             <img alt="t" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20t"/>
+             的路径是G中的一条最短
+             <img alt="v-t" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v-t"/>
+             路径。
+            </p>
+           </blockquote>
+           <h4 id="%E5%85%AB%E3%80%81%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E5%92%8C%E8%B7%9D%E7%A6%BB%E5%90%91%E9%87%8F%E5%8D%8F%E8%AE%AE">
+            八、最短路径和距离向量协议
+           </h4>
+           <p>
+            基于推的来实现算法：
+           </p>
+           <blockquote>
+            <p>
+             Push-Based-Shortest-Path(G,s,t)
+            </p>
+            <p style="text-indent:33px;">
+             <img alt="n=G" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20n%3DG"/>
+             中的结点数
+            </p>
+            <p style="text-indent:33px;">
+             数组
+             <img alt="M[V]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5BV%5D"/>
+            </p>
+            <p style="text-indent:33px;">
+             初始化
+             <img alt="M[t]=0" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bt%5D%3D0"/>
+             并且对所有其他的
+             <img alt="v\in V,M[v]=\infty" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v%5Cin%20V%2CM%5Bv%5D%3D%5Cinfty"/>
+            </p>
+            <p style="text-indent:33px;">
+             For
+             <img alt="i=1,...,n-1" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%3D1%2C...%2Cn-1"/>
+            </p>
+            <p style="text-indent:33px;">
+             For
+             <img alt="w\in V" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20w%5Cin%20V"/>
+             以任何次序
+            </p>
+            <p style="text-indent:33px;">
+             If
+             <img alt="M[V]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5BV%5D"/>
+             在前一次迭代中被更新 then
+            </p>
+            <p style="text-indent:33px;">
+             For 所有的边
+             <img alt="(v,w)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%28v%2Cw%29"/>
+             以任何次序
+            </p>
+            <p style="text-indent:33px;">
+             <img alt="M[v] =min(M[v],c_{vw}+M[w])" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bv%5D%20%3Dmin%28M%5Bv%5D%2Cc_%7Bvw%7D&amp;plus;M%5Bw%5D%29"/>
+            </p>
+            <p style="text-indent:33px;">
+             If 这改变了
+             <img alt="M[V]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5BV%5D"/>
+             的值，then
+             <img alt="first[v]=w" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20first%5Bv%5D%3Dw"/>
+            </p>
+            <p style="text-indent:33px;">
+             Endfor
+            </p>
+            <p style="text-indent:33px;">
+             Endfor
+            </p>
+            <p style="text-indent:33px;">
+             If 在这次迭代中没有值改变，then结束算法
+            </p>
+            <p style="text-indent:33px;">
+             Endfor
+            </p>
+            <p style="text-indent:33px;">
+             返回
+             <img alt="M[s]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bs%5D"/>
+            </p>
+           </blockquote>
+           <blockquote>
+            <p style="text-indent:0;">
+             Asynchronous-Shortest-Path(G,s,t)
+            </p>
+            <p style="text-indent:33px;">
+             <img alt="n=G" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20n%3DG"/>
+             中的结点数
+            </p>
+            <p style="text-indent:33px;">
+             数组
+             <img alt="M[V]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5BV%5D"/>
+            </p>
+            <p style="text-indent:33px;">
+             初始化
+             <img alt="M[t]=0" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bt%5D%3D0"/>
+             并且对所有其他的
+             <img alt="v\in V,M[v]=\infty" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v%5Cin%20V%2CM%5Bv%5D%3D%5Cinfty"/>
+            </p>
+            <p style="text-indent:33px;">
+             声明 t 是活跃的且所有其他结点不是活跃的
+            </p>
+            <p style="text-indent:33px;">
+             While 存在一个活跃结点
+            </p>
+            <p style="text-indent:33px;">
+             选择一个活跃结点w
+            </p>
+            <p style="text-indent:33px;">
+             For 所有的边 以任何次序
+            </p>
+            <p style="text-indent:33px;">
+             <img alt="M[v] =min(M[v],c_{vw}+M[w])" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bv%5D%20%3Dmin%28M%5Bv%5D%2Cc_%7Bvw%7D&amp;plus;M%5Bw%5D%29"/>
+            </p>
+            <p style="text-indent:33px;">
+             If 这改变了
+             <img alt="M[V]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5BV%5D"/>
+             的值，then
+            </p>
+            <p style="text-indent:33px;">
+             <img alt="first[v]=w" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20first%5Bv%5D%3Dw"/>
+            </p>
+            <p style="text-indent:33px;">
+             v变成活跃的
+            </p>
+            <p style="text-indent:33px;">
+             Endfor
+            </p>
+            <p style="text-indent:33px;">
+             w变成不活跃的
+            </p>
+            <p style="text-indent:33px;">
+             Endwhile
+            </p>
+           </blockquote>
+           <p>
+            具有距离向量协议的问题：
+           </p>
+           <h4 id="%E4%B9%9D%E3%80%81%E5%9B%BE%E4%B8%AD%E7%9A%84%E8%B4%9F%E5%9C%88">
+            九、图中的负圈
+           </h4>
+           <p>
+            <strong>
+             1.问题
+            </strong>
+           </p>
+           <ul>
+            <li>
+             我们怎么确定图是否包含负圈？
+            </li>
+            <li>
+             怎么找到负圈？
+            </li>
+           </ul>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.29
+             </strong>
+             增广图
+             <img alt="{}'" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%7B%7D%27"/>
+             <img alt="{G}'" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%7BG%7D%27"/>
+             有一个负圈C使得存在一条从C到终点t的路径当且仅当初始的图有一个负圈。
+            </p>
+           </blockquote>
+           <p>
+            <strong>
+             2.设计与分析算法
+            </strong>
+           </p>
+           <p>
+            对负圈上的任何结点v，如果它有一条到t的路径，我们都有下面的结果：
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              命题6.30
+             </strong>
+             如果结点v能到达结点t 并且被包含在一个负圈中，那么
+             <img alt="\lim_{i\rightarrow \infty }OPT(i,v) = -\infty" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Clim_%7Bi%5Crightarrow%20%5Cinfty%20%7DOPT%28i%2Cv%29%20%3D%20-%5Cinfty"/>
+             .
+            </p>
+           </blockquote>
+           <p>
+            如果这个图没有负圈，那么：
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              命题6.31
+             </strong>
+             如果G中没有负圈，那么对所有的结点v和所有的
+             <img alt="i\geq n,OPT(i,v) = OPT(n-1,v)." class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i%5Cgeq%20n%2COPT%28i%2Cv%29%20%3D%20OPT%28n-1%2Cv%29."/>
+            </p>
+           </blockquote>
+           <blockquote>
+            <p>
+             <strong>
+              定理6.32
+             </strong>
+             不存在负圈具有一条通向t的路径，当且仅当对所有的结点
+             <img alt="v,OPT(n,v) = OPT(n-1,v)." class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v%2COPT%28n%2Cv%29%20%3D%20OPT%28n-1%2Cv%29."/>
+            </p>
+            <p>
+             <strong>
+              命题6.33
+             </strong>
+             如果G有n个结点且
+             <img alt="OPT(n,v) \neq OPT(n-1,v)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28n%2Cv%29%20%5Cneq%20OPT%28n-1%2Cv%29"/>
+             ，那么一条从
+             <img alt="v" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v"/>
+             到
+             <img alt="t" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20t"/>
+             的费用
+             <img alt="OPT(n,v)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20OPT%28n%2Cv%29"/>
+             的路径P包含一个圈C，并且C有负费用。
+            </p>
+            <p>
+             <strong>
+              命题6.34
+             </strong>
+             如果G中存在这样一个负圈，上诉算法找到一个负圈，并且运行在
+             <img alt="O(mn)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28mn%29"/>
+             时间
+            </p>
+           </blockquote>
+           <p>
+            <strong>
+             3.推广：改进最短路径与负圈检测算法
+            </strong>
+           </p>
+           <blockquote>
+            <p>
+             <strong>
+              命题6.35
+             </strong>
+             在整个算法中，
+             <img alt="M[V]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5BV%5D"/>
+             是从
+             <img alt="v" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v"/>
+             到
+             <img alt="t" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20t"/>
+             的某条简单路径的长度；如果距离值
+             <img alt="M[V]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5BV%5D"/>
+             在
+             <img alt="i" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i"/>
+             次迭代被更新，那么这条路径至少有
+             <img alt="i" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i"/>
+             条边；在
+             <img alt="i" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i"/>
+             次迭代以后，对所有存在一条使用至多
+             <img alt="i" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20i"/>
+             条边的最短
+             <img alt="v-t" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v-t"/>
+             路径的结点
+             <img alt="v" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20v"/>
+             ，值
+             <img alt="M[V]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5BV%5D"/>
+             是这条最短路径的长度。
+            </p>
+            <p>
+             <strong>
+              命题6.36
+             </strong>
+             如果不存在这样的圈，那么上面算法表面在G中找到一个负圈，如果
+             <img alt="first[v]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20first%5Bv%5D"/>
+             指针的指针图P含有一个圈C，或者在迭代中没有要更新的距离值
+             <img alt="M[v]" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20M%5Bv%5D"/>
+             ，那么算法停止，该算法使用
+             <img alt="O(n)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28n%29"/>
+             空间，最多进行几次迭代，最坏情况下用
+             <img alt="O(mn)" class="mathcode" src="https://private.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20O%28mn%29"/>
+             时间。
+            </p>
+           </blockquote>
+          </div>
+         </div>
+        </article>
+       </div>
+       <div class="directory-boxshadow-dialog" style="display:none;">
+        <div class="directory-boxshadow-dialog-box">
+        </div>
+        <div class="vip-limited-time-offer-box-new" id="vip-limited-time-offer-box-new">
+         <img class="limited-img limited-img-new" src="https://csdnimg.cn/release/blogv2/dist/pc/img/vip-limited-close-newWhite.png"/>
+         <div class="vip-limited-time-top">
+          确定要放弃本次机会？
+         </div>
+         <span class="vip-limited-time-text">
+          福利倒计时
+         </span>
+         <div class="limited-time-box-new">
+          <span class="time-hour">
+          </span>
+          <i>
+           :
+          </i>
+          <span class="time-minite">
+          </span>
+          <i>
+           :
+          </i>
+          <span class="time-second">
+          </span>
+         </div>
+         <div class="limited-time-vip-box">
+          <p>
+           <img class="coupon-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/vip-limited-close-roup.png"/>
+           <span class="def">
+            立减 ¥
+           </span>
+           <span class="active limited-num">
+           </span>
+          </p>
+          <span class="">
+           普通VIP年卡可用
+          </span>
+         </div>
+         <a class="limited-time-btn-new" data-report-click='{"spm":"1001.2101.3001.9621"}' data-report-query="spm=1001.2101.3001.9621" href="https://mall.csdn.net/vip">
+          立即使用
+         </a>
+        </div>
+       </div>
+       <a id="commentBox" name="commentBox">
+       </a>
+      </main>
+     </div>
+     <div class="recommend-right1 align-items-stretch clearfix" data-type="recommend" id="rightAsideConcision">
+      <aside class="recommend-right_aside">
+       <div id="recommend-right-concision">
+        <div class="flex-column aside-box groupfile" id="groupfileConcision">
+         <div class="groupfile-div1">
+          <h3 class="aside-title">
+           目录
+          </h3>
+          <div class="align-items-stretch group_item">
+           <div class="pos-box">
+            <div class="scroll-box">
+             <div class="toc-box">
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </aside>
+     </div>
+    </div>
+    <div class="mask-dark">
+    </div>
+    <div class="skin-boxshadow">
+    </div>
+    <div class="directory-boxshadow">
+    </div>
+    <div style="display:none;">
+     <img onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);' src=""/>
+    </div>
+    <div class="keyword-dec-box" id="keywordDecBox">
+    </div>
+   </link>
+  </link>
+ </body>
+ <!-- 富文本柱状图  -->
+ <link href="https://csdnimg.cn/release/blog_editor_html/release1.6.12/ckeditor/plugins/chart/chart.css" rel="stylesheet">
+  <link href="https://g.csdnimg.cn/lib/cboxEditor/1.1.6/embed-editor.min.css" rel="stylesheet"/>
+  <link href="https://csdnimg.cn/release/blog_editor_html/release1.6.12/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-dark.css" rel="stylesheet"/>
+ </link>
+</html>

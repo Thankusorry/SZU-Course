@@ -1,0 +1,3 @@
+g++ -o2 基准算法.cpp -o brute -Wl,--stack=1073741824
+g++ -o2 生成森林与LCA.cpp -o lca -Wl,--stack=1073741824
+g++ -o2 tarjan.cpp -o tarjan -Wl,--stack=1073741824
