@@ -4,27 +4,26 @@
 //import java.io.*;
 //import java.net.*;
 //
-//public class Client {
+//public class Client1 {
 //    private String username;   // 保存用户名
 //    private BufferedReader in;
 //    private PrintWriter out;
+//    private Socket socket;
+//
 //    private JFrame frame = new JFrame("Chat Room");
 //    private JPanel messagePanel = new JPanel();  // 用于显示消息的面板
 //    private JScrollPane scrollPane;
 //    private JTextField textField = new JTextField(50);
-//    private Socket socket;
-//
-//    public Client() {
+//    public Client1() {
 //        messagePanel.setLayout(new BoxLayout(messagePanel, BoxLayout.Y_AXIS));
 //        scrollPane = new JScrollPane(messagePanel);
+//        // 垂直滚动条都会始终显示
 //        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-//
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 //        frame.getContentPane().add(textField, BorderLayout.SOUTH);
 //        frame.setSize(600, 400);  // 设置窗口初始大小
 //        frame.setLocationRelativeTo(null);  // 窗口居中显示
-//
 //        textField.addActionListener(new ActionListener() {
 //            public void actionPerformed(ActionEvent e) {
 //                sendMessage();  // 发送消息
@@ -39,7 +38,7 @@
 //            try {
 //                out.println("exit");
 //                socket.close();
-//                System.exit(0);
+//                frame.dispose();
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
@@ -56,14 +55,12 @@
 //        messagePanelItem.setLayout(new FlowLayout(isMine ? FlowLayout.RIGHT : FlowLayout.LEFT));
 //
 //        // 只显示内容，不显示用户名
-//        JTextArea messageText = new JTextArea(isMine ? message : username + ": " + message);
-////        JTextArea messageText = new JTextArea(isMine ? username + ": " + message : message);
+//        JTextArea messageText = new JTextArea(message);
 //        messageText.setEditable(false);
-//
-//        messageText.setWrapStyleWord(true);
-//        messageText.setLineWrap(true);
+//        messageText.setWrapStyleWord(true);//单词边界处换行
+//        messageText.setLineWrap(true);//自动换行
 //        messageText.setFont(new Font("微软雅黑", Font.PLAIN, 14)); // 设置字体为支持中文
-//        messageText.setBackground(isMine ? new Color(0xD6F7FF) : new Color(0xFFFFFF));
+//        messageText.setBackground(isMine ? new Color(0xD6F7FF) : Color.WHITE);
 //        messageText.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
 //
 //        messagePanelItem.add(messageText);
@@ -82,7 +79,7 @@
 //
 //    // 运行客户端，连接到服务器
 //    public void run() throws IOException {
-//        socket = new Socket("localhost", 12345);   // 连接到服务器
+//        socket = new Socket("127.0.0.1", 12345);   // 连接到服务器
 //        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 //        out = new PrintWriter(socket.getOutputStream(), true);
 //
@@ -96,10 +93,10 @@
 //        } else {
 //            username = "User" + Math.random();  // 如果未输入，给一个默认用户名
 //        }
-//        frame.setTitle(username+"的聊天栏");
+//
 //        // 将用户名发送给服务器
 //        out.println(username);
-//
+//        frame.setTitle(username+"的聊天栏");
 //        // 监听来自服务器的消息并显示
 //        new Thread(new Runnable() {
 //            public void run() {
@@ -120,9 +117,11 @@
 //    }
 //
 //    public static void main(String[] args) throws IOException {
-//        Client client = new Client();
+//        Client1 client = new Client1();
 //        client.run();
-//        Client client2 = new Client();
-//        client2.run();
+////        Client1 client2 = new Client1();
+////        client2.run();
+////        Client1 client3 = new Client1();
+////        client3.run();
 //    }
 //}

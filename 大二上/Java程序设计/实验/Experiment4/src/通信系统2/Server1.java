@@ -3,7 +3,7 @@
 //import java.util.*;
 //import java.util.concurrent.*;
 //
-//public class Server {
+//public class Server1 {
 //    private static Map<String, PrintWriter> clientWriters = new HashMap<>();  // 保存用户名与输出流的映射
 //    private static ExecutorService pool = Executors.newFixedThreadPool(10);  // 使用线程池
 //
@@ -89,3 +89,69 @@
 //
 //    }
 //}
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import java.util.concurrent.*;
+
+public class Server1 {
+    private static final int PORT = 12345;
+    private static List<ClientHandler> clients = new CopyOnWriteArrayList<>();
+
+    public static void main(String[] args) throws IOException {
+        ExecutorService pool = Executors.newCachedThreadPool();
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+            System.out.println("服务器已启动，端口：" + PORT);
+
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                ClientHandler client = new ClientHandler(clientSocket);
+                clients.add(client);
+                pool.execute(client);
+            }
+        }
+    }
+
+    static class ClientHandler implements Runnable {
+        private Socket socket;
+        private PrintWriter out;
+        private BufferedReader in;
+        private String username;
+
+        public ClientHandler(Socket socket) {
+            this.socket = socket;
+        }
+
+        public void run() {
+            try {
+                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                out = new PrintWriter(socket.getOutputStream(), true);
+
+                // 获取用户名
+                username = in.readLine();
+                broadcast(username + "|系统|加入了聊天室");
+
+                String input;
+                while ((input = in.readLine()) != null) {
+                    if ("EXIT_CMD".equals(input)) break;
+                    broadcast(username + "|" + input);  // 格式：用户名|时间|消息
+                }
+
+            } catch (IOException e) {
+                System.out.println(username + " 异常断开");
+            } finally {
+                try { socket.close(); } catch (IOException e) {}
+                clients.remove(this);
+                broadcast(username + "|系统|离开了聊天室");
+            }
+        }
+
+        private void broadcast(String message) {
+            for (ClientHandler client : clients) {
+                if (client != this) {
+                    client.out.println(message);
+                }
+            }
+        }
+    }
+}
