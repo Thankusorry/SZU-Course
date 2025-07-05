@@ -1,0 +1,47 @@
+[HKEY_CLASSES_ROOT\VisualSourceSafe\DefaultIcon]
+@="<Product Path>\\win32\\ssexp.exe.dll,0"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Developer\Source Control]
+"AllowStatusUpdates"="REG_DWORD:0"	
+				
+[HKEY_CURRENT_USER\Software\Microsoft\DevStudio\5.0\Source Control]
+"AllowStatusUpdates"="REG_DWORD:0"					
+
+[HKEY_CLASSES_ROOT\SccAddIn.SourceCodeControlAddIn]
+@="Source Code Control Add-In"
+					
+[HKEY_CLASSES_ROOT\SccAddIn.SourceCodeControlAddIn\CLSID]
+@="{2F998FDA-3487-11CE-BCB6-00AA00688899}"
+				
+[HKEY_CLASSES_ROOT\SccAddIn.SourceCodeControlAddIn.1]
+@="Source Code Control Add-In"
+
+[HKEY_CLASSES_ROOT\SccAddIn.SourceCodeControlAddIn.1\CLSID]
+@="{2F998FDA-3487-11CE-BCB6-00AA00688899}"
+
+[HKEY_CLASSES_ROOT\CLSID\{2F998FDA-3487-11CE-BCB6-00AA00688899}]
+@="Source Code Control Add-In"
+
+[HKEY_CLASSES_ROOT\CLSID\{2F998FDA-3487-11CE-BCB6-00AA00688899}\ProgID]
+@="SccAddIn.SourceCodeControlAddIn.1"					
+
+[HKEY_CLASSES_ROOT\CLSID\{2F998FDA-3487-11CE-BCB6-00AA00688899}\VersionIndependentProgID]
+@="SccAddIn.SourceCodeControlAddIn"					
+
+[HKEY_CLASSES_ROOT\CLSID\{2F998FDA-3487-11CE-BCB6-00AA00688899}\InProcServer32]
+@="<Product Path>\\win32\\ssvb.dll"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SourceSafe]
+"API Current Database"="REG_SZ:<Product Path>"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SourceSafe]
+"PromptForConnect"="REG_DWORD:1"
+
+[HKEY_CLASSES_ROOT\.scc]
+@="SCC.Status.File"
+
+[HKEY_CLASSES_ROOT\SCC.Status.File]
+@="Microsoft SourceSafe Status"
+
+[HKEY_CLASSES_ROOT\SCC.Status.File]
+"DefaultIcon"="<Product Path>\\win32\\ssexp.exe,0"

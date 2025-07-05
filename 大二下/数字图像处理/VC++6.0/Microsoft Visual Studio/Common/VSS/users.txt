@@ -1,0 +1,3 @@
+Admin = users\admin\ss.ini
+
+Guest = users\guest\ss.ini

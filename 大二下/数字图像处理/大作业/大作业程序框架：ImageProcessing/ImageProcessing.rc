@@ -1,0 +1,298 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "resource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_IMAGEPROCESSING     ICON    DISCARDABLE     "ImageProcessing.ICO"
+IDI_SMALL               ICON    DISCARDABLE     "SMALL.ICO"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDC_IMAGEPROCESSING MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                       IDM_EXIT
+    END
+    MENUITEM "显示RAW图像",                 IDM_SHOWRAWIMAGE
+    MENUITEM "显示BMP图像",                 IDM_SHOWBMPIMAGE
+    POPUP "图像动态显示"
+    BEGIN
+        MENUITEM "淡出",                        IDM_GRAYTOLOW
+        MENUITEM "左右开门",                    IDM_LEFTRIGHTOPEN
+        MENUITEM "由上到下百叶窗",              IDM_TBSHUTTER
+    END
+    POPUP "Bmp图像动态显示"
+    BEGIN
+        MENUITEM "淡出",                        BMP_GRAYTOLOW
+        MENUITEM "左右开门",                    BMP_LEFTRIGHTOPEN
+        MENUITEM "由上向下百叶窗",              BMP_TBSHUTTER
+    END
+    MENUITEM "直方图",                      IDM_HISTOGRAMSHOW
+    POPUP "灰度变换"
+    BEGIN
+        MENUITEM "反变换",                      IDM_GRAYREVERSION
+        MENUITEM "直方图均衡化",                IDM_BALANCED
+        POPUP "位平面分割"
+        BEGIN
+            MENUITEM "位平面0",                     IDM_DIVIEDPLANE1
+            MENUITEM "位平面1",                     IDM_DIVIEDPLANE2
+            MENUITEM "位平面2",                     IDM_DIVIEDPLANE3
+            MENUITEM "位平面3",                     IDM_DIVIEDPLANE4
+            MENUITEM "位平面4",                     IDM_DIVIEDPLANE5
+            MENUITEM "位平面5",                     IDM_DIVIEDPLANE6
+            MENUITEM "位平面6",                     IDM_DIVIEDPLANE7
+            MENUITEM "位平面7",                     IDM_THRESHOLD
+        END
+        POPUP "伽马校正"
+        BEGIN
+            MENUITEM "α=0.2",                      GammaCorrection0_2
+            MENUITEM "α=0.5",                      GammaCorrection0_5
+            MENUITEM "α=2.0",                      GammaCorrection2
+            MENUITEM "α=4.0",                      GammaCorrection4
+        END
+    END
+    POPUP "图像滤波"
+    BEGIN
+        MENUITEM "均值滤波",                    IDM_AVERAGEFILTER
+        MENUITEM "高斯滤波",                    IDM_AVERAGEGAUSS
+        MENUITEM "最大值滤波",                  IDM_MAXFILTER
+        MENUITEM "最小值滤波",                  IDM_MINFILTER
+        POPUP "中值滤波"
+        BEGIN
+            MENUITEM "3×3",                        IDM_MidFILTER3
+            MENUITEM "5×5",                        IDM_MidFILTER5
+        END
+        MENUITEM "双边滤波",                    IDM_BilateralFilter
+        POPUP "形态学滤波"
+        BEGIN
+            MENUITEM "腐蚀",                        IDM_ErosionProcessing1
+            MENUITEM "膨胀",                        IDM_ErosionProcessing2
+            MENUITEM "先腐蚀再膨胀",                IDM_OpenProcessing
+            MENUITEM "先膨胀再腐蚀",                IDM_CloseProcessing
+        END
+        MENUITEM "自适应中值滤波",              IDM_AdaptiveMedianFilter
+    END
+    POPUP "随机噪声"
+    BEGIN
+        POPUP "椒盐噪声"
+        BEGIN
+            MENUITEM "50% 椒盐噪声",                IDM_SaltPeper
+            MENUITEM "盐噪声",                      IDM_Salt
+            MENUITEM "椒噪声",                      IDM_Pepper
+        END
+        MENUITEM "高斯噪声",                    IDM_Gauss
+    END
+    POPUP "边缘检测"
+    BEGIN
+        POPUP "Laplace"
+        BEGIN
+            MENUITEM "直接检测",                    IDM_LAPLACEFILTER
+            MENUITEM "高斯滤波",                    IDM_LAPLACEFILTER2
+        END
+        MENUITEM "Sobel",                       IDM_SobelFILTER
+        MENUITEM "Prewitt",                     IDM_PrewittFILTER
+        MENUITEM "Roberts",                     IDM_RobertsFILTER
+        MENUITEM "Kirsch",                      IDM_KirschFILTER
+        MENUITEM "Canny",                       IDM_CannyFILTER
+    END
+    POPUP "图像几何变换"
+    BEGIN
+        MENUITEM "图像平移",                    IDM_TRANSLATION
+        MENUITEM "图像缩放",                    IDM_SCALING
+        MENUITEM "图像旋转",                    IDM_ROTATION
+        POPUP "图像翻转"
+        BEGIN
+            MENUITEM "水平翻转",                    IDM_HorizontalMirror
+            MENUITEM "竖直翻转",                    IDM_VerticalMirror
+        END
+        POPUP "图像错切"
+        BEGIN
+            MENUITEM "水平错切",                    IDM_HorizontalShearing
+            MENUITEM "竖直错切",                    IDM_VerticalShearing
+        END
+        POPUP "透视变换"
+        BEGIN
+            MENUITEM "上窄下宽",                    IDM_PerspectiveCorrection1
+
+            MENUITEM "上宽下窄",                    IDM_PerspectiveCorrection2
+
+            MENUITEM "左窄右宽",                    IDM_PerspectiveCorrection3
+
+            MENUITEM "左宽右窄",                    IDM_PerspectiveCorrection4
+
+        END
+        POPUP "径向变换"
+        BEGIN
+            MENUITEM "桶形畸变",                    IDM_BarrelDistortion1
+            MENUITEM "枕形畸变",                    IDM_BarrelDistortion2
+            MENUITEM "畸形校正",                    IDM_ImageDistortionCorrection2
+
+        END
+        MENUITEM "漩涡变换",                    IDM_SwirlTransformation
+        POPUP "波浪变换"
+        BEGIN
+            MENUITEM "水平波浪变换",                IDM_WaveTransformation1
+            MENUITEM "双向波浪变换",                IDM_WaveTransformation2
+            MENUITEM "径向波浪变换",                IDM_WaveTransformation3
+        END
+    END
+    POPUP "频域操作"
+    BEGIN
+        POPUP "频域平滑"
+        BEGIN
+            MENUITEM "理想低通滤波",                IDM_IDEAL_FILTER
+            MENUITEM "高斯低通滤波",                IDM_GAUSSIAN_FILTER
+            MENUITEM "巴特沃斯低通滤波",            IDM_BUTTERWORTH_FILTER
+        END
+        POPUP "频域边缘提取"
+        BEGIN
+            MENUITEM "理想高通滤波",                IDM_IDEAL_HIGH_FILTER
+            MENUITEM "高斯高通滤波",                IDM_GAUSSIAN_HIGH_FILTER
+            MENUITEM "巴特沃斯高通滤波",            IDM_BUTTERWORTH_HIGH_FILTER
+
+        END
+        MENUITEM "显示频谱",                    IDM_FREQ_SPECTRUM
+    END
+    MENUITEM "图像质量评估",                IDM_QUALITY_ASSESSMENT
+    POPUP "图像分割"
+    BEGIN
+        MENUITEM "自适应阈值分割",              IDM_ADAPTIVE_THRESHOLD
+        MENUITEM "Otsu自动阈值分割",            IDM_OTSU_THRESHOLD
+        MENUITEM "区域生长分割",                IDM_REGION_GROWING
+        MENUITEM "边界追踪",                    IDM_BOUNDARY_TRACING
+        MENUITEM "分水岭分割",                  IDM_WATERSHED
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About ...",                  IDM_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDC_IMAGEPROCESSING ACCELERATORS MOVEABLE PURE 
+BEGIN
+    "?",            IDM_ABOUT,              ASCII,  ALT
+    "/",            IDM_ABOUT,              ASCII,  ALT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  22, 17, 230, 75
+STYLE DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "System"
+BEGIN
+    ICON            IDI_IMAGEPROCESSING,IDC_MYICON,14,9,16,16
+    LTEXT           "ImageProcessing Version 1.0",IDC_STATIC,49,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2013",IDC_STATIC,49,20,119,8
+    DEFPUSHBUTTON   "OK",IDOK,195,6,30,11,WS_GROUP
+END
+
+IDD_QUALITY_RESULT DIALOG DISCARDABLE  0, 0, 300, 250
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "图像质量评估结果"
+FONT 12, "Microsoft YaHei UI"
+BEGIN
+    LTEXT           "",IDC_STATIC,10,10,280,200
+    DEFPUSHBUTTON   "确定",IDOK,125,220,50,20
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""resource.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_APP_TITLE           "ImageProcessing"
+    IDS_HELLO               "Hello World!"
+    IDC_IMAGEPROCESSING     "IMAGEPROCESSING"
+END
+
+#endif    // Chinese (中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
