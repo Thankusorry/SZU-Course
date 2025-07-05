@@ -1,0 +1,404 @@
+package Chat;
+
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.*;
+import java.net.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class Server {
+    private int port = 5000;
+    private DatagramSocket udpSocket;
+    private byte[] buffer = new byte[1024];
+
+    private Map<String, ClientInfo> clients = new ConcurrentHashMap<>();
+    private List<String> onlineClient = new ArrayList<>();
+    private JPanel panel1;
+    private JList userList;
+    private JList sysMessageList;
+    private JTextField sysMessageFiled;
+    private JButton send_Button;
+    private DefaultListModel<String> userListModel;
+    private DefaultListModel<String> sysMessageListModel;
+    private Map<String, List<String>> groups = new ConcurrentHashMap<>();
+    // 在Server类中添加以下成员变量
+    private Map<String, GameRoom> gameRooms = new ConcurrentHashMap<>();
+
+    public void start() throws Exception {
+        JFrame frame = new JFrame("服务器");
+        frame.setContentPane(this.panel1);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+
+//        聊天信息、好友列表绑定模型
+        userListModel = new DefaultListModel<>();
+        userList.setModel(userListModel);
+        sysMessageListModel = new DefaultListModel<>();
+        sysMessageList.setModel(sysMessageListModel);
+
+        udpSocket = new DatagramSocket(port);
+        System.out.println("UDP Server started, listening on port " + port);
+
+//        // 启动心跳检测线程
+//        new Thread(this::checkClientTimeouts).start();
+
+        while (true) {
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+            udpSocket.receive(packet);
+            new Thread(new ClientHandler(packet)).start();
+        }
+    }
+
+    class ClientInfo {
+        InetAddress address;
+        int port;
+        long lastActive;
+
+        public ClientInfo(InetAddress address, int port) {
+            this.address = address;
+            this.port = port;
+            this.lastActive = System.currentTimeMillis();
+        }
+    }
+
+    class ClientHandler implements Runnable {
+        private DatagramPacket packet;
+        private String account;
+
+        ClientHandler(DatagramPacket packet) {
+            this.packet = packet;
+        }
+
+        @Override
+        public synchronized void run() {
+            try {
+
+                String message = new String(packet.getData(), 0, packet.getLength(), "UTF-8");
+                System.out.println("Received: " + message);
+                String[] parts = message.split("&", 5);
+                int code = Integer.parseInt(parts[0]);
+                account = parts[1];
+                System.out.println("code="+code);
+                System.out.println("account="+account);
+                List<String> groupMembers = new ArrayList<>(); // 初始化为一个空列表
+                String groupName = parts[1];
+
+                // 更新客户端地址信息
+                clients.put(account, new ClientInfo(packet.getAddress(), packet.getPort()));
+                System.out.println("account"+account);
+                System.out.println("packet.getAddress()"+packet.getAddress());
+                System.out.println("packet.getPort()"+packet.getPort());
+
+                switch (code) {
+                    case 1111: // 登录
+                        if (!onlineClient.contains(account)) {
+                            onlineClient.add(account);
+                            SwingUtilities.invokeLater(() -> userListModel.addElement(account));
+                            broadcast("1111&" + account);
+                        }
+                        sendOnlineList(account);
+                        break;
+
+                    case 2333: // 广播消息
+                        broadcast("5555&" + account + ";" + parts[2]);
+                        break;
+
+                    case 1333: // 私聊
+                        String recipient = parts[2];
+                        String privateMsg = parts[3];
+                        sendTo(recipient, "0000&" + account + ";" + privateMsg);
+                        break;
+
+                    case 5555: // 创建群组
+                        groupName = parts[1];
+                        groups.putIfAbsent(groupName, new ArrayList<>());
+                        account=parts[2];
+                        groupMembers = groups.get(groupName);
+                        groupMembers.add(account);
+                        break;
+
+                    case 6666: // 添加群成员
+                        String addGroup = parts[1];
+                        String newMember = parts[2];
+                        if (groupMembers !=null){
+                            groupMembers.add(newMember);
+                            sendTo(newMember, "6666&" + addGroup);
+                        }
+                        break;
+
+                    case 7777: // 移除群成员
+                        String removeGroup = parts[1];
+                        String removeMember = parts[2];
+                        if (groupMembers != null) {
+                            groupMembers.remove(removeMember);
+                            sendTo(removeMember, "7777&" + removeGroup);
+                        }
+                        break;
+
+                    case 8888: // 群组消息
+                        String targetGroup = parts[1];
+                        String groupMsg = parts[2];
+                        groupMembers = groups.get(targetGroup);
+                        if (groupMembers != null) {
+                            //群组消息==逐个私聊
+                            for (String member : groupMembers) {
+                                sendTo(member, "8888&" + targetGroup + "&" + groupMsg);
+                            }
+                        }
+                        break;
+
+                    case 9999: // 主动退出
+                        ClientInfo target = clients.get(account);
+                        if(target!=null) {
+                            sendUDP("exit", target.address, target.port);
+                            clients.remove(account);
+                            onlineClient.remove(account);
+                            SwingUtilities.invokeLater(() -> {
+                                userListModel.removeElement(account);
+                                sysMessageListModel.addElement("系统检测到 " + account + " 下线");
+                            });
+                            broadcast("4444&" + account);
+                        }
+                        break;
+                    case 1234: // 邀请游戏
+                        recipient = parts[1];
+                        privateMsg = parts[2];
+                        System.out.println(recipient+"邀请"+privateMsg+"开一把五子棋");
+                        sendTo(privateMsg, "1234&" + recipient + "&" + privateMsg);
+                        break;
+
+                    case 4321: // 开始游戏
+                        String sender = parts[1];
+                        String receiver = parts[2];
+                        ClientInfo senderInfo = clients.get(sender);
+                        ClientInfo receiverInfo = clients.get(receiver);
+
+                        if (senderInfo != null && receiverInfo != null) {
+                            String roomId = UUID.randomUUID().toString().substring(0, 8);
+                            GameRoom room = new GameRoom(
+                                    senderInfo.address, senderInfo.port,
+                                    receiverInfo.address, receiverInfo.port
+                            );
+                            gameRooms.put(roomId, room);
+
+                            // 发送游戏开始指令
+                            sendTo(sender, "4321&" + roomId + "&1");  // 1表示先手
+                            try{
+                                Thread.sleep(3000);
+                            }
+                            catch (InterruptedException e){}
+                            sendTo(receiver, "4321&" + roomId + "&2"); // 2表示后手
+                            // 添加回合通知调用
+//                            sendTurnNotifications(room); // 这里调用新增的方法
+                        }
+                        break;
+//                    case 1: // 准备就绪了
+//                        handleReadyMessage(parts[1], parts[2],packet.getAddress(), packet.getPort());
+//                        break;
+                    case 5556: // 棋子移动消息（格式：5556&roomId&x&y）
+                        handleMoveMessage(parts[1], parts[2], parts[3], packet.getAddress(), packet.getPort());
+                        break;
+                    case 5557: // 游戏胜利消息（格式：5557&roomId&winner）
+                        handleWinMessage(parts[1], parts[2]);
+                        break;
+                    default:
+                        System.out.println("Unknown message type: " + code);
+                        break;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                // 不自动移除，依靠心跳检测
+            }
+        }
+    }
+
+
+
+    // 在Server类中添加以下方法
+    private void sendTurnNotifications(GameRoom room) {
+        try {
+            // 给当前玩家发送"YOUR_TURN"
+            String currentPlayerMsg = "TURN&YOUR_TURN";
+            sendUDP(currentPlayerMsg, room.players[room.currentPlayer], room.ports[room.currentPlayer]);
+
+            // 给对手玩家发送"OPPONENT_TURN"
+            String opponentMsg = "TURN&OPPONENT_TURN";
+            int opponentIndex = (room.currentPlayer + 1) % 2;
+            sendUDP(opponentMsg, room.players[opponentIndex], room.ports[opponentIndex]);
+
+            System.out.println("已发送回合通知: 当前玩家" + (room.currentPlayer + 1));
+        } catch (Exception e) {
+            System.err.println("发送回合通知失败: " + e.getMessage());
+        }
+    }
+    // 消息发送方法
+    private void sendUDP(String message, InetAddress address, int port) {
+        try {
+            byte[] data = message.getBytes("UTF-8");
+            DatagramPacket packet = new DatagramPacket(data, data.length, address, port);
+            udpSocket.send(packet);
+        } catch (IOException e) {
+            System.err.println("发送消息失败: " + e.getMessage());
+        }
+    }
+
+    private void broadcast(String message) {
+        clients.forEach((acc, info) -> {
+            info.lastActive = System.currentTimeMillis();
+            sendUDP(message, info.address, info.port);
+        });
+    }
+
+    //私聊
+    private synchronized void sendTo(String recipient, String message) {
+        ClientInfo info = clients.get(recipient);
+        if (info != null) {
+            info.lastActive = System.currentTimeMillis();
+            sendUDP(message, info.address, info.port);
+        }
+        else {
+            System.out.println("Recipient not found: " + recipient);
+        }
+    }
+    //更新用户列表
+    private void sendOnlineList(String account) {
+        ClientInfo info = clients.get(account);
+        if (info != null) {
+            String list = "2222&" + String.join(",", onlineClient);
+            sendUDP(list, info.address, info.port);
+        }
+        else {
+            System.out.println("Recipient not found: " + account);
+        }
+    }
+
+//    private void handleReadyMessage(String roomId, String playerNum,InetAddress addr, int port) {
+//        GameRoom room = gameRooms.get(roomId);
+//        if (room != null) {
+//            // 验证玩家身份
+//            if (room.players[0].equals(addr) && room.ports[0] == port) {
+//                sendUDP("GAME_START&1", addr, port); // 玩家1确认
+//            } else if (room.players[1].equals(addr) && room.ports[1] == port) {
+//                sendUDP("GAME_START&2", addr, port); // 玩家2确认
+//                // 双方就绪后开始游戏
+////                sendTurnNotifications(room);
+//            }
+//        }
+//    }
+    // GUI部分保持不变
+    public Server() {
+        send_Button.addActionListener(e -> refreshMessage());
+        sysMessageFiled.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyChar() == KeyEvent.VK_ENTER) refreshMessage();
+            }
+        });
+        userList.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    String selected = userList.getSelectedValue().toString();
+                    int confirm = JOptionPane.showConfirmDialog(null,
+                            "强制下线用户：" + selected, "确认", JOptionPane.YES_NO_OPTION);
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        forceDisconnect(selected);
+                    }
+                }
+            }
+        });
+    }
+
+    //给所有用户、群聊发送系统消息
+    private void refreshMessage() {
+        String message = sysMessageFiled.getText();
+        broadcast("0000&系统消息;(" + nowDate() + "):" + message);
+        sysMessageListModel.addElement("系统消息 (" + nowDate() + "): " + message);
+        sysMessageFiled.setText("");
+        sysMessageList.ensureIndexIsVisible(sysMessageListModel.size() - 1);
+    }
+
+    // 强制下线用户
+    private void forceDisconnect(String account) {
+        ClientInfo info = clients.get(account);
+        if (info != null) {
+            sendUDP("3333", info.address, info.port);
+            clients.remove(account);
+            userListModel.removeElement(account);
+            broadcast("4444&" + account);
+        }
+    }
+
+    private String nowDate() {
+        return LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+
+    // 添加GameRoom内部类
+    class GameRoom {
+        InetAddress[] players = new InetAddress[2];
+        int[] ports = new int[2];
+        int currentPlayer = 0;  // 当前回合玩家索引
+
+        public GameRoom(InetAddress p1Addr, int p1Port, InetAddress p2Addr, int p2Port) {
+            players[0] = p1Addr;
+            ports[0] = p1Port;
+            players[1] = p2Addr;
+            ports[1] = p2Port;
+        }
+    }
+    private void handleMoveMessage(String roomId, String xStr, String yStr, InetAddress senderAddr, int senderPort) {
+        try {
+            GameRoom room = gameRooms.get(roomId);
+            if (room == null) return;
+
+            int x = Integer.parseInt(xStr);
+            int y = Integer.parseInt(yStr);
+
+            // 验证发送者身份
+            int playerIndex = -1;
+            if (senderAddr.equals(room.players[0]) && senderPort == room.ports[0]) {
+                playerIndex = 0;
+            } else if (senderAddr.equals(room.players[1]) && senderPort == room.ports[1]) {
+                playerIndex = 1;
+            }
+
+            if (playerIndex != room.currentPlayer) return;
+
+            // 转发移动信息给对手
+            int opponentIndex = 1 - playerIndex;
+            String moveMsg = "MOVE&" + x + "&" + y;
+            sendUDP(moveMsg, room.players[opponentIndex], room.ports[opponentIndex]);
+
+            // 切换回合
+            room.currentPlayer = opponentIndex;
+            sendUDP("TURN&" + (opponentIndex + 1), room.players[0], room.ports[0]);
+            sendUDP("TURN&" + (opponentIndex + 1), room.players[1], room.ports[1]);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleWinMessage(String roomId, String winner) {
+        GameRoom room = gameRooms.get(roomId);
+        if (room != null) {
+            // 广播胜利信息
+            String winMsg = "WIN&" + winner;
+            sendUDP(winMsg, room.players[0], room.ports[0]);
+            sendUDP(winMsg, room.players[1], room.ports[1]);
+            gameRooms.remove(roomId);
+        }
+    }
+    public static void main(String[] args) {
+        try {
+            Server server = new Server();
+            server.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

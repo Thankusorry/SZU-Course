@@ -1,0 +1,3 @@
+B站课程《深入理解计算机系统》 https://www.bilibili.com/video/BV1iW411d7hd
+B站课程《计算机组成原理》 https://www.bilibili.com/video/BV1Wv411x7zP
+计系二实验参考 https://blog.csdn.net/m0_46326495/category_11204662.html

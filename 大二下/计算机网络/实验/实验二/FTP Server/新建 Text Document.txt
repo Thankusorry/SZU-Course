@@ -1,0 +1,2 @@
+interface show interfaces
+interface ipv4 show addresses

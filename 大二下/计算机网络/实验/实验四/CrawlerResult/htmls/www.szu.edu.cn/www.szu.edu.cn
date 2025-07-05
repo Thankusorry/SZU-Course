@@ -1,0 +1,2154 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN"><head>
+
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>深圳大学</title><META Name="keywords" Content="深圳大学" />
+
+    <meta name="description" content="">
+     <link rel="shortcut icon" href="images/favicon.ico" />
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+<!--Announced by Visual SiteBuilder 9-->
+<link rel="stylesheet" type="text/css" href="_sitegray/_sitegray_d.css" />
+<script language="javascript" src="_sitegray/_sitegray.js"></script>
+<!-- CustomerNO:77656262657232307c78475253545742000000004656 -->
+<link rel="stylesheet" type="text/css" href="index.vsb.css" />
+<script type="text/javascript" src="/system/resource/js/counter.js"></script>
+<script type="text/javascript">_jsq_(1001,'/index.jsp',-1,1680698289)</script>
+</head>
+
+<body>
+<style type="text/css">
+#browser-modal{width:100%;height:100%;top:0;left:0;text-align:center;color:#303233;position:fixed;z-index:9999;display: none;}
+#browser-modal .browser-modal-cover{position:fixed;left:0;top:0;height:100%;width:100%;background-color:#111;opacity:.9;z-index:-1;}
+#browser-modal .browser-content{width:700px;margin-top:120px;margin-left:auto;margin-right:auto;padding-bottom:80px;padding-top:30px;background-color:#fff;border-radius:5px;}
+#browser-modal .browser-content .browser-dpc-logo img{height:62px;margin:45px auto 30px;}
+#browser-modal .browser-content .browser-text-title{text-transform:uppercase;font-size:24px;}
+#browser-modal .browser-content .browser-text-desc{margin-top:30px;margin-bottom:40px;font-size:14px;}
+#browser-modal .browser-content .browser-list{width:600px;margin:40px auto;height:130px;}
+#browser-modal .browser-content .browser-item{float:left;width:150px;padding-top:20px;padding-bottom:20px;margin-left:auto;margin-right:auto;}
+#browser-modal .browser-content .browser-item .iconfont{width:80px;height:80px;margin:0 auto;font-size:80px;line-height:80px;margin-bottom:30px;}
+#browser-modal .browser-content .browser-item a{color:#921041;cursor:pointer;display:block;}
+#browser-modal .browser-content .browser-item a img{display:block;margin:0 auto;max-width:100px;width:100px;height:100px;}
+#browser-modal .browser-content .browser-item a h4{text-align:center;margin-top:20px;font-size:18px;font-weight:700;}
+.fixedok .banner {opacity:0;}
+
+
+
+@media only screen and (max-width: 1200px){
+.banner{bottom:auto;top:50px;}
+.fix-top{padding-top: 45%;}
+.banner .item1, .banner .item2, .banner .slick-slide{height:auto;}
+.banner .slick-slide img{width:100%;height:auto;}
+.row-a1{padding-top:40px;}
+}
+
+@media only screen and (max-width: 800px){
+.fix-top{padding-top: 44%;}
+}
+
+@media only screen and (max-width: 400px){
+.fix-top{padding-top: 43%;}
+.row-a1{padding-top:30px;}
+.row-a1 .g-t1 {margin-bottom: 13px;}
+}
+
+</style>
+
+<!-- 低版本浏览器升级提升 -->
+<div id="browser-modal">
+    <div class="browser-modal-cover">
+    </div>
+    <div class="browser-content">
+        <div class="browser-text">
+            <div class="browser-dpc-logo">
+                <img src="images/logo_03.png" alt="">
+            </div>
+            <h3 class="browser-text-title">请升级浏览器版本</h3>
+            <p class="browser-text-desc">
+        你正在使用旧版本浏览器。请升级浏览器以获得更好的体验。
+            </p>
+        </div>
+        <div class="browser-list">
+            <div class="browser-item">
+                <a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank">
+                <div class="iconfont iconchrome">
+                </div>
+                <h4>Chrome</h4>
+                </a>
+            </div>
+            <div class="browser-item">
+                <a href="http://www.firefox.com.cn/" target="_blank">
+                <div class="iconfont iconfirefox">
+                </div>
+                <h4>Firefox</h4>
+                </a>
+            </div>
+            <div class="browser-item">
+                <a href="https://www.apple.com.cn/safari/" target="_blank">
+                <div class="iconfont iconsafari">
+                </div>
+                <h4>Safari</h4>
+                </a>
+            </div>
+            <div class="browser-item">
+                <a href="https://www.microsoft.com/zh-cn/edge" target="_blank">
+                <div class="iconfont iconEdge">
+                </div>
+                <h4>Edge</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        if(navigator.appName == "Microsoft Internet Explorer"&&parseInt(navigator.appVersion.split(";")[1].replace(/[ ]/g, "").replace("MSIE","")) <=9){
+            document.getElementById('browser-modal').style.display='block';
+            console.log("您的浏览器版本过低，请使用IE10以上版本");
+    }
+    </script>
+</div>
+    <div class="header on1 hdst">
+        <div class="wp2">
+            <div class="logo">
+<a href="index.htm" title="深圳大学"><img src="images/logo_03.png" alt="深圳大学" /></a>
+
+
+<script>
+$(document).ready(function(){
+
+//移除没有带标题图的pic
+$(".no-pic .pic").remove();
+
+//隐藏元素
+$(".topnav-1").remove();
+  
+});
+</script>
+</div>
+            <div class="hd-r">
+                <div class="nav js-nav"><ul>
+            <li class="topnav-1">
+            <a href="javascript:void(0);" class="v1">首页</a>
+               
+                    <div class="sub">
+                        <img src="images/on_03.png" class="on" alt="">
+                        <div class="pic">
+                            <img src="" alt="">
+                        </div>
+                        <ul class="ul-tit">
+                                <li><a href="index/sdxw.htm">深大新闻</a></li>
+                                <li><a href="index/tzgg.htm">通知公告</a></li>
+                                <li><a href="index/mtsd.htm">媒体深大</a></li>
+                        </ul>
+                    </div>
+                 
+        </li>
+        <li class="topnav-2">
+            <a href="javascript:void(0);" class="v1">学校概况</a>
+               
+                    <div class="sub">
+                        <img src="images/on_03.png" class="on" alt="">
+                        <div class="pic">
+                            <img src="images/headerpic_03.jpg" alt="">
+                        </div>
+                        <ul class="ul-tit">
+                                <li><a href="xxgk/xxjj.htm">学校简介</a></li>
+                                <li><a href="xxgk/sdbs.htm">深大标识</a></li>
+                                <li><a href="xxgk/xrld.htm">现任领导</a></li>
+                                <li><a href="xxgk/lrld.htm">历任领导</a></li>
+                                <li><a href="xxgk/jcxy.htm">杰出校友</a></li>
+                                <li><a href="xxgk/xydt.htm">校园地图</a></li>
+                                <li><a href="xxgk/xyfg/yhxq.htm">校园风光</a></li>
+                                <li><a href="xxgk/xl.htm">校历</a></li>
+                        </ul>
+                    </div>
+                 
+        </li>
+        <li class="topnav-3">
+            <a href="javascript:void(0);" class="v1">院系机构</a>
+               
+                    <div class="sub">
+                        <img src="images/on_03.png" class="on" alt="">
+                        <div class="pic">
+                            <img src="images/headerpic_03.jpg" alt="">
+                        </div>
+                        <ul class="ul-tit">
+                                <li><a href="yxjg/xbxy.htm">学部学院</a></li>
+                                <li><a href="yxjg/xddlkyjg.htm">相对独立科研机构</a></li>
+                                <li><a href="yxjg/jswyh.htm">教授委员会</a></li>
+                                <li><a href="yxjg/znbm.htm">职能部门</a></li>
+                                <li><a href="yxjg/zsdw.htm">直属单位</a></li>
+                                <li><a href="yxjg/fsdw.htm">附属单位</a></li>
+                        </ul>
+                    </div>
+                 
+        </li>
+        <li class="topnav-4">
+            <a href="javascript:void(0);" class="v1">师资队伍</a>
+               
+                    <div class="sub">
+                        <img src="images/on_03.png" class="on" alt="">
+                        <div class="pic">
+                            <img src="images/headerpic_03.jpg" alt="">
+                        </div>
+                        <ul class="ul-tit">
+                                <li><a href="szdw/jsjj.htm">教师简介</a></li>
+                                <li><a href="https://hr.szu.edu.cn/rczp1.htm">岗位招聘</a></li>
+                                <li><a href="https://hr.szu.edu.cn/bsh.htm">博士后招聘</a></li>
+                        </ul>
+                    </div>
+                 
+        </li>
+        <li class="topnav-5">
+            <a href="javascript:void(0);" class="v1">教育教学</a>
+               
+                    <div class="sub">
+                        <img src="images/on_03.png" class="on" alt="">
+                        <div class="pic">
+                            <img src="images/headerpic_03.jpg" alt="">
+                        </div>
+                        <ul class="ul-tit">
+                                <li><a href="jyjx1/jxdt.htm">教学动态</a></li>
+                                <li><a href="https://jwb.szu.edu.cn/">本科生教育</a></li>
+                                <li><a href="http://gra.szu.edu.cn/">研究生教育</a></li>
+                                <li><a href="http://lxs.szu.edu.cn/">留学生教育</a></li>
+                                <li><a href="http://cce.szu.edu.cn/">继续教育</a></li>
+                                <li><a href="https://jxjy.szu.edu.cn/">非学历教育</a></li>
+                        </ul>
+                    </div>
+                 
+        </li>
+        <li class="topnav-6">
+            <a href="javascript:void(0);" class="v1">科学研究</a>
+               
+                    <div class="sub">
+                        <img src="images/on_03.png" class="on" alt="">
+                        <div class="pic">
+                            <img src="images/headerpic_03.jpg" alt="">
+                        </div>
+                        <ul class="ul-tit">
+                                <li><a href="kxyj/zrkx.htm">自然科学</a></li>
+                                <li><a href="kxyj/rwsk.htm">人文社科</a></li>
+                                <li><a href="kxyj/xsdt.htm">学术动态</a></li>
+                                <li><a href="kxyj/yjjg.htm">研究机构</a></li>
+                                <li><a href="kxyj/xsqk.htm">学术期刊</a></li>
+                        </ul>
+                    </div>
+                 
+        </li>
+        <li class="topnav-7">
+            <a href="javascript:void(0);" class="v1">交流合作</a>
+               
+                    <div class="sub">
+                        <img src="images/on_03.png" class="on" alt="">
+                        <div class="pic">
+                            <img src="images/headerpic_03.jpg" alt="">
+                        </div>
+                        <ul class="ul-tit">
+                                <li><a href="hzjl/gjjl.htm">国际交流</a></li>
+                                <li><a href="https://hmt.szu.edu.cn/">港澳台交流</a></li>
+                                <li><a href="https://szupu.szu.edu.cn/cmsArticlesController/synopsi/000000006cd1e966016cdd42c3e90024" target="_blank">外事资讯</a></li>
+                        </ul>
+                    </div>
+                 
+        </li>
+        <li class="topnav-8">
+            <a href="javascript:void(0);" class="v1">招生与就业</a>
+               
+                    <div class="sub">
+                        <img src="images/on_03.png" class="on" alt="">
+                        <div class="pic">
+                            <img src="images/headerpic_03.jpg" alt="">
+                        </div>
+                        <ul class="ul-tit">
+                                <li><a href="zsyjy1/bkszs.htm">本科生招生</a></li>
+                                <li><a href="zsyjy1/yjszs1.htm">研究生招生</a></li>
+                                <li><a href="zsyjy1/lxszs1.htm">留学生招生</a></li>
+                                <li><a href="zsyjy1/jxjyzs1.htm">继续教育招生</a></li>
+                                <li><a href="zsyjy1/cglxzs.htm">出国留学招生</a></li>
+                                <li><a href="https://jobszu.jysd.com/">就业招聘</a></li>
+                                <li><a href="zsyjy1/xszz.htm">学生资助</a></li>
+                        </ul>
+                    </div>
+                 
+        </li>
+        <li class="topnav-9">
+            <a href="xysh1/xshd.htm" target="_blank" class="v1">校园生活</a>
+               
+                    <div class="sub">
+                        <img src="images/on_03.png" class="on" alt="">
+                        <div class="pic">
+                            <img src="images/headerpic_03.jpg" alt="">
+                        </div>
+                        <ul class="ul-tit">
+                                <li><a href="https://sdgh.szu.edu.cn/">工会活动</a></li>
+                                <li><a href="http://jingsai.szu.edu.cn/">学科竞赛</a></li>
+                                <li><a href="xysh1/cxcy.htm">创新创业</a></li>
+                                <li><a href="xysh1/xshd.htm">学生活动</a></li>
+                        </ul>
+                    </div>
+                 
+        </li>
+        <li class="topnav-10">
+    
+        <li class="topnav-11">
+            <a href="javascript:void(0);" class="v1">合规建设</a>
+               
+                    <div class="sub">
+                        <img src="images/on_03.png" class="on" alt="">
+                        <div class="pic">
+                            <img src="images/headerpic_03.jpg" alt="">
+                        </div>
+                        <ul class="ul-tit">
+                                <li><a href="hgjs/xwdt.htm">新闻动态</a></li>
+                                <li><a href="hgjs/tzgg.htm">通知公告</a></li>
+                                <li><a href="hgjs/gzzd.htm">规章制度</a></li>
+                        </ul>
+                    </div>
+                 
+        </li>
+        <li class="topnav-12">
+            <a href="javascript:void(0);" class="v1">角色入口</a>
+               
+                    <div class="sub">
+                        <img src="images/on_03.png" class="on" alt="">
+                        <div class="pic">
+                            <img src="" alt="">
+                        </div>
+                        <ul class="ul-tit">
+                                <li><a href="jsrk/xs.htm">学生</a></li>
+                                <li><a href="jsrk/jg.htm">教工</a></li>
+                                <li><a href="jsrk/xy.htm">校友</a></li>
+                                <li><a href="jsrk/ks.htm">考生</a></li>
+                                <li><a href="jsrk/fk.htm">访客</a></li>
+                        </ul>
+                    </div>
+                 
+        </li>
+</ul></div>
+                <div class="so"><script type="text/javascript">
+    function _nl_ys_check(){
+        
+        var keyword = document.getElementById('showkeycode267499').value;
+        if(keyword==null||keyword==""){
+            alert("请输入你要检索的内容！");
+            return false;
+        }
+        if(window.toFF==1)
+        {
+            document.getElementById("lucenenewssearchkey267499").value = Simplized(keyword );
+        }else
+        {
+            document.getElementById("lucenenewssearchkey267499").value = keyword;            
+        }
+        var  base64 = new Base64();
+        document.getElementById("lucenenewssearchkey267499").value = base64.encode(document.getElementById("lucenenewssearchkey267499").value);
+        new VsbFormFunc().disableAutoEnable(document.getElementById("showkeycode267499"));
+        return true;
+    } 
+</script>
+<a class="so-btn" href="javascript:;"></a>
+<div class="form-so">
+<form action="qwjs.jsp?wbtreeid=1001" method="post" id="au2a" name="au2a" onsubmit="return _nl_ys_check()">
+ <input type="hidden" id="lucenenewssearchkey267499" name="lucenenewssearchkey" value=""><input type="hidden" id="_lucenesearchtype267499" name="_lucenesearchtype" value="1"><input type="hidden" id="searchScope267499" name="searchScope" value="0">
+ <div class="row">
+<input name="showkeycode" id="showkeycode267499" class="inp">
+<input class="sub" type="submit" value="" />
+ </div>
+</form>
+ </div>
+
+<script language="javascript" src="/system/resource/js/base64.js"></script><script language="javascript" src="/system/resource/js/formfunc.js"></script>
+</div>
+                <div class="en1"><script language="javascript" src="/system/resource/js/dynclicks.js"></script><script language="javascript" src="/system/resource/js/openlink.js"></script>
+<a href="https://en.szu.edu.cn/" target="_blank" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1680698289, 66046)">En</a>
+</div>
+                <div class="menuBtn1"><b></b>
+<b></b>
+<b></b>
+</div>
+            </div>
+        </div>
+        <!-- 下拉菜单 -->
+        <div class="navopen">
+            <div class="open-main">
+                <div class="col-left"><div class="item on item-1">
+    <a href="index.htm" title="首页">首页</a>
+</div>
+
+<div class="item  item-2">
+    <a href="xxgk/xxjj.htm" title="学校概况">学校概况</a>
+</div>
+
+<div class="item  item-3">
+    <a href="yxjg/xbxy.htm" title="院系机构">院系机构</a>
+</div>
+
+<div class="item  item-4">
+    <a href="https://www.szu.edu.cn/szdw/jsjj.htm" target="_blank" title="师资队伍">师资队伍</a>
+</div>
+
+<div class="item  item-5">
+    <a href="jyjx1/jxdt.htm" title="教育教学">教育教学</a>
+</div>
+
+<div class="item  item-6">
+    <a href="kxyj.htm" title="科学研究">科学研究</a>
+</div>
+
+<div class="item  item-7">
+    <a href="hzjl/gjjl.htm" title="交流合作">交流合作</a>
+</div>
+
+<div class="item  item-8">
+    <a href="https://www.szu.edu.cn/zsyjy1/bkszs.htm" title="招生与就业">招生与就业</a>
+</div>
+
+<div class="item  item-9">
+    <a href="xysh1/xshd.htm" title="校园生活">校园生活</a>
+</div>
+
+
+
+<div class="item  item-12">
+    <a href="jsrk/xs.htm" title="角色入口">角色入口</a>
+</div>
+
+
+
+</div>
+                <div class="col-right">    <ul class="ul-btn">
+    <li>
+        <a href="https://news.szu.edu.cn/" title="深大新闻网" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 57068)" target="_blank">
+            <div class="pic">
+                <img src="images/openbtn_03.png" border="0" alt="深大新闻网">
+            </div>
+            <p>深大新闻网</p>
+        </a>
+    </li>
+    <li>
+        <a href="http://www1.szu.edu.cn/" title="内部网" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58892)" target="_blank">
+            <div class="pic">
+                <img src="images/openbtn_03.png" border="0" alt="内部网">
+            </div>
+            <p>内部网</p>
+        </a>
+    </li>
+    <li>
+        <a href="http://www.lib.szu.edu.cn/" title="图书馆" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58889)" target="_blank">
+            <div class="pic">
+                <img src="images/openbtn_11.png" border="0" alt="图书馆">
+            </div>
+            <p>图书馆</p>
+        </a>
+    </li>
+    <li>
+        <a href="http://xxgk.szu.edu.cn/cw_zcjsf1/ndbmys.htm" title="预决算公开" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58890)" target="_blank">
+            <div class="pic">
+                <img src="images/openbtn_13.png" border="0" alt="预决算公开">
+            </div>
+            <p>预决算公开</p>
+        </a>
+    </li>
+    <li>
+        <a href="http://210.39.3.155:9090/goLogin.do" title="OA" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 57069)" target="_blank">
+            <div class="pic">
+                <img src="images/openbtn_06.png" border="0" alt="OA">
+            </div>
+            <p>OA</p>
+        </a>
+    </li>
+    <li>
+        <a href="http://ehall.szu.edu.cn/" title="办事大厅" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58891)" target="_blank">
+            <div class="pic">
+                <img src="images/openbtn_15.png" border="0" alt="办事大厅">
+            </div>
+            <p>办事大厅</p>
+        </a>
+    </li>
+    <li>
+        <a href="https://mail.szu.edu.cn/" title="教师邮箱" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 57070)" target="_blank">
+            <div class="pic">
+                <img src="images/openbtn_07.png" border="0" alt="教师邮箱">
+            </div>
+            <p>教师邮箱</p>
+        </a>
+    </li>
+    <li>
+        <a href="https://email.szu.edu.cn/" title="学生邮箱" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58888)" target="_blank">
+            <div class="pic">
+                <img src="images/openbtn_09.png" border="0" alt="学生邮箱">
+            </div>
+            <p>学生邮箱</p>
+        </a>
+    </li>
+</ul>    
+
+</div>
+            </div>
+            <div class="open-footer">    <p><a href="jsrk/xs.htm" title="">学生</a></p>
+    <p><a href="jsrk/jg.htm" title="">教工</a></p>
+    <p><a href="jsrk/xy.htm" title="">校友</a></p>
+    <p><a href="jsrk/ks.htm" title="">考生</a></p>
+    <p><a href="jsrk/fk.htm" title="">访客</a></p>
+</div>
+        </div>
+        <!-- 下拉菜单end -->
+    </div>
+    <!-- banner -->
+    <div class="banner s1 ss1" style="z-index: 1;">
+   <script language="javascript" src="/system/resource/js/centerCutImg.js"></script><script language="javascript" src="/system/resource/js/ajax.js"></script><div class="bannerslick">
+        
+
+
+    <div class="item1">
+        <img src="/__local/8/F9/78/698D8DE7D8E303F49A5F72B5DE3_1B74D3D8_60AC0.jpg" alt="深圳大学东京学院举行2025年春季开学典礼 推进产教融合 与华为开展合作">
+    </div>
+    
+
+
+    <div class="item2">
+        <img src="/__local/C/F5/B4/FBCD20DEB2A47C4B25DA2973C1C_741769BB_323AC.jpg" alt="深圳大学党委部署启动深入贯彻中央八项规定精神学习教育工作">
+    </div>
+    
+
+
+    <div class="item3">
+        <img src="/__local/E/15/94/B4E4D2DEB635F51DE7BCAF149B9_3EEF5AAA_7076E.jpg" alt="百万英才汇南粤︱深圳大学竭诚欢迎海内外英才">
+    </div>
+    
+</div>
+<div class="ani">
+    <div class="ani-0 ani-01">
+        <h3><a href="https://mp.weixin.qq.com/s/9T6jpbxyLCkt_VdNRejo1g" title="深圳大学东京学院举行2025年春季开学典礼 推进产教融合 与华为开展合作" target="_blank">深圳大学东京学院举行2025年春季开学典礼 推进产教融合 与华为开展合作</a></h3>
+        <div class="wp1 on">
+            <ul class="btn">
+                <li class="l1"><span></span></li>
+                <li class="l2"><span></span></li>
+                <li class="l3"><span></span></li>
+                <li class="l4"><span></span></li>
+                <li class="l5"><span></span></li>
+                <li class="l6"><span></span></li>
+                <li class="l7"><span></span></li>
+                <li class="l8"><span></span></li>
+            </ul>
+        </div>
+        <p>01</p>
+    </div>
+    <div class="ani-0 ani-02">
+        <h3><a href="https://mp.weixin.qq.com/s/zMdfvn9PiTWiaZajHxUi9w" title="深圳大学党委部署启动深入贯彻中央八项规定精神学习教育工作" target="_blank">深圳大学党委部署启动深入贯彻中央八项规定精神学习教育工作</a></h3>
+        <div class="wp1 on">
+            <ul class="btn">
+                <li class="l1"><span></span></li>
+                <li class="l2"><span></span></li>
+                <li class="l3"><span></span></li>
+                <li class="l4"><span></span></li>
+                <li class="l5"><span></span></li>
+                <li class="l6"><span></span></li>
+                <li class="l7"><span></span></li>
+                <li class="l8"><span></span></li>
+            </ul>
+        </div>
+        <p>02</p>
+    </div>
+    <div class="ani-0 ani-03">
+        <h3><a href="https://mp.weixin.qq.com/s/v6iK7qdfCNQVCfHsACwvqg" title="百万英才汇南粤︱深圳大学竭诚欢迎海内外英才" target="_blank">百万英才汇南粤︱深圳大学竭诚欢迎海内外英才</a></h3>
+        <div class="wp1 on">
+            <ul class="btn">
+                <li class="l1"><span></span></li>
+                <li class="l2"><span></span></li>
+                <li class="l3"><span></span></li>
+                <li class="l4"><span></span></li>
+                <li class="l5"><span></span></li>
+                <li class="l6"><span></span></li>
+                <li class="l7"><span></span></li>
+                <li class="l8"><span></span></li>
+            </ul>
+        </div>
+        <p>03</p>
+    </div>
+</div><script>_showDynClickBatch(['dynclicks_u8_20016','dynclicks_u8_20000','dynclicks_u8_19999'],[20016,20000,19999],"wbnews", 1680698289)</script>
+
+        
+        <ul class="list01">
+    <LI class="li01"><a href="jsrk/xs.htm" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1680698289, 66047)">学生</a></li>
+    <LI class="li01"><a href="jsrk/jg.htm" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1680698289, 66048)">教工</a></li>
+    <LI class="li01"><a href="jsrk/xy.htm" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1680698289, 66049)">校友</a></li>
+    <LI class="li01"><a href="jsrk/ks.htm" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1680698289, 66050)">考生</a></li>
+    <LI class="li01"><a href="jsrk/fk.htm" title="" onclick="_addDynClicks(&#34;wburl&#34;, 1680698289, 66051)">访客</a></li>
+</UL>
+    </div>
+    <!-- banner end -->
+    <div class="fix-top"></div>
+    <div class="fix-body">
+        <!-- 深大新闻 -->
+        <div class="row-a1" style="background-image: url(images/z-bg1.jpg);">
+            <div class="wp">
+                <h3 class="g-t1 wow fadeInDown"><a href="index/sdxw.htm">深大新闻</a></h3>
+                <div class="m-Journ">
+                    <div class="col-l"><ul class="ul-list1">
+    <li class="item">
+        <a href="info/1161/20017.htm" title="再登Nature子刊 | 深圳大学谢和平院士团队发表“力学-电化学”交叉研究最新成果" class="con wow fadeInUp" data-wow-delay=".5s" data-wow-duration="1s">
+            <div class="pic">
+                <img src="/__local/7/E2/03/42FBA510C8C3C32123DC2C55CC3_6CDA42E0_145C6.jpg" alt="再登Nature子刊 | 深圳大学谢和平院士团队发表“力学-电化学”交叉研究最新成果">
+            </div>
+            <div class="txt">
+                <span class="time">2025-04-03</span>
+                <h3 class="tit">再登Nature子刊 | 深圳大学谢和平院士团队发表“力学-电化学”交叉研究最新成果</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="info/1161/20019.htm" title="深圳大学教育发展基金会换届大会暨第三届理事会第一次会议顺利召开" class="con wow fadeInUp" data-wow-delay=".5s" data-wow-duration="1s">
+            <div class="pic">
+                <img src="/__local/E/08/93/1B2122DD0CF212F704C596502F2_7116B227_1EA1DE.jpg" alt="深圳大学教育发展基金会换届大会暨第三届理事会第一次会议顺利召开">
+            </div>
+            <div class="txt">
+                <span class="time">2025-04-03</span>
+                <h3 class="tit">深圳大学教育发展基金会换届大会暨第三届理事会第一次会议顺利召开</h3>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="info/1161/20018.htm" title="深圳大学举行机关党委“党员优质服务示范岗”创建对象座谈交流会" class="con wow fadeInUp" data-wow-delay=".5s" data-wow-duration="1s">
+            <div class="pic">
+                <img src="/__local/8/D2/8E/AB4B762092DDC57D96EE17C30C2_62C81113_1DDA95.jpg" alt="深圳大学举行机关党委“党员优质服务示范岗”创建对象座谈交流会">
+            </div>
+            <div class="txt">
+                <span class="time">2025-04-03</span>
+                <h3 class="tit">深圳大学举行机关党委“党员优质服务示范岗”创建对象座谈交流会</h3>
+            </div>
+        </a>
+    </li>
+</ul><script>_showDynClickBatch(['dynclicks_u10_20017','dynclicks_u10_20019','dynclicks_u10_20018'],[20017,20019,20018],"wbnews", 1680698289)</script>
+</div>
+                    <div class="col-r wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s"><ul class="ul-list2">
+    <li>
+        <a href="info/1161/20020.htm" title="深圳大学召开深入贯彻中央八项规定精神学习教育动员推进会" class="con">
+            <div class="time">
+                <em class="day">03</em>
+                <em class="year">2025-04</em>
+            </div>
+            <h3 class="tit">深圳大学召开深入贯彻中央八项规定精神学习教育动员推进会</h3>
+        </a>
+    </li>
+
+
+    <li>
+        <a href="info/1161/20017.htm" title="再登Nature子刊 | 深圳大学谢和平院士团队发表“力学-电化学”交叉研究最新成果" class="con">
+            <div class="time">
+                <em class="day">03</em>
+                <em class="year">2025-04</em>
+            </div>
+            <h3 class="tit">再登Nature子刊 | 深圳大学谢和平院士团队发表“力学-电化学”交叉研究最新成果</h3>
+        </a>
+    </li>
+
+
+    <li>
+        <a href="info/1161/20019.htm" title="深圳大学教育发展基金会换届大会暨第三届理事会第一次会议顺利召开" class="con">
+            <div class="time">
+                <em class="day">03</em>
+                <em class="year">2025-04</em>
+            </div>
+            <h3 class="tit">深圳大学教育发展基金会换届大会暨第三届理事会第一次会议顺利召开</h3>
+        </a>
+    </li>
+
+
+    <li>
+        <a href="info/1161/20018.htm" title="深圳大学举行机关党委“党员优质服务示范岗”创建对象座谈交流会" class="con">
+            <div class="time">
+                <em class="day">03</em>
+                <em class="year">2025-04</em>
+            </div>
+            <h3 class="tit">深圳大学举行机关党委“党员优质服务示范岗”创建对象座谈交流会</h3>
+        </a>
+    </li>
+
+
+    <li>
+        <a href="info/1161/20015.htm" title="深圳大学东京学院举行2025年春季开学典礼 推进产教融合 与华为开展合作" class="con">
+            <div class="time">
+                <em class="day">02</em>
+                <em class="year">2025-04</em>
+            </div>
+            <h3 class="tit">深圳大学东京学院举行2025年春季开学典礼 推进产教融合 与华为开展合作</h3>
+        </a>
+    </li>
+
+
+</ul>
+<a href="http://news.szu.edu.cn/" target="_blank" class="g-more">进入深大新闻网</a><script>_showDynClickBatch(['dynclicks_u11_20020','dynclicks_u11_20017','dynclicks_u11_20019','dynclicks_u11_20018','dynclicks_u11_20015'],[20020,20017,20019,20018,20015],"wbnews", 1680698289)</script>
+</div>
+                </div>
+            </div>
+        </div>
+        <!-- 深大新闻 end -->
+        <!-- 通知公告 -->
+        <div class="row-a2" style="background-image: url(images/z-bg2.jpg);">
+            <!-- 通知公告 -->
+            <div class="m-notice">
+                <h3 class="g-t1 g-t1-1 wow fadeInDown"><a href="index/tzgg.htm" target="">通知公告</a></h3>
+                <div class="line"></div>
+                <div class="wp"><div class="slick-notice wow fadeInUp">
+<div class="item">
+    <a href="https://mp.weixin.qq.com/s/M_Xx0qkTp-_sZj25ZqY7YA" title="深圳大学2025年硕士研究生招生复试分数线及复试录取办法公布" class="con">
+        <div class="time">2025-03-17</div>
+        <h3 class="tit">深圳大学2025年硕士研究生招生复试分数线及复试录取办法公布</h3>
+    </a>
+    <em class="circular"></em>
+</div>
+<div class="item">
+    <a href="https://mp.weixin.qq.com/s/kQSMM-MKFKqTfP0mPfLrIw" title="深圳大学2025年面向香港、澳门、台湾地区招收研究生简章" class="con">
+        <div class="time">2025-03-07</div>
+        <h3 class="tit">深圳大学2025年面向香港、澳门、台湾地区招收研究生简章</h3>
+    </a>
+    <em class="circular"></em>
+</div>
+<div class="item">
+    <a href="https://mp.weixin.qq.com/s/aR97eyQa1IWGxO1-pVywTA" title="深圳大学2025年硕士研究生初试成绩查询及复核的通知" class="con">
+        <div class="time">2025-02-22</div>
+        <h3 class="tit">深圳大学2025年硕士研究生初试成绩查询及复核的通知</h3>
+    </a>
+    <em class="circular"></em>
+</div>
+<div class="item">
+    <a href="https://mp.weixin.qq.com/s/-l4nZ34xZueyLtht06E-cQ" title="诚邀全球英才依托深圳大学申报2025年度海外优青" class="con">
+        <div class="time">2025-02-20</div>
+        <h3 class="tit">诚邀全球英才依托深圳大学申报2025年度海外优青</h3>
+    </a>
+    <em class="circular"></em>
+</div>
+<div class="item">
+    <a href="https://mp.weixin.qq.com/s/DzT7bbziNjAVKWiNNa_1Gw" title="深圳大学2025年博士研究生招生章程及招生专业目录" class="con">
+        <div class="time">2025-01-18</div>
+        <h3 class="tit">深圳大学2025年博士研究生招生章程及招生专业目录</h3>
+    </a>
+    <em class="circular"></em>
+</div>
+</div>
+<script>_showDynClickBatch(['dynclicks_u12_19955','dynclicks_u12_19939','dynclicks_u12_19835','dynclicks_u12_19818','dynclicks_u12_19784'],[19955,19939,19835,19818,19784],"wbnews", 1680698289)</script>
+</div>
+            </div>
+            <!-- 媒体深大 -->
+            <div class="m-notice1">
+                <div class="wp">
+                    <h3 class="g-t1 g-t1-1 wow fadeInDown"><a href="index/mtsd.htm">媒体深大</a></h3>
+                    <div class="m-slick"><div class="item">
+                          <ul class="ul-list3"><li class="l1 wow fadeInUp">
+        <a href="https://static.nfnews.com/content/202503/29/c11134566.html?colID=0&firstColID=36323&appversion=12200&from=weChatMessage&enterColumnId=" class="con">
+            <div class="pic">
+                <img src="/__local/F/F5/BD/DD437698B3A7D4ABB0EB74E00BD_37915804_96F.jpg" alt="">
+            </div>
+            <div class="txt">
+                <h3 class="tit" title="200+国际学者齐聚深大，这场医学大会成果与你我息息相关">200+国际学者齐聚深大，这场医学大会成果与你我息息相关</h3>
+                <div class="time">
+                    <em class="day">30</em>
+                    <em>2025-03</em>
+                </div>
+            </div>
+        </a>
+    </li>
+<li class="l2 wow fadeInUp">
+        <a href="http://sztqb.sznews.com/MB/content/202503/30/content_3323542.html" class="con">
+            <div class="pic">
+                <img src="/__local/2/92/EF/6367A9A499978BC389572647A55_5E146173_123B.jpg" alt="">
+            </div>
+            <div class="txt">
+                <h3 class="tit" title="深圳大学深圳医疗保障研究院揭牌成立">深圳大学深圳医疗保障研究院揭牌成立</h3>
+                <div class="time">
+                    <em class="day">30</em>
+                    <em>2025-03</em>
+                </div>
+            </div>
+        </a>
+    </li>
+<li class="l3 wow fadeInUp">
+        <a href="https://static.nfnews.com/content/202503/26/c11120450.html?date=&layer=2&from=weChatMessage" class="con">
+            <div class="pic">
+                <img src="/__local/F/F5/BD/DD437698B3A7D4ABB0EB74E00BD_37915804_96F.jpg" alt="">
+            </div>
+            <div class="txt">
+                <h3 class="tit" title="“你放心入伍，我保留offer！”深圳大学与招行合作助毕业生“先就业再入伍”">“你放心入伍，我保留offer！”深圳大学与招行合作助毕业生“先就业再入伍”</h3>
+                <div class="time">
+                    <em class="day">26</em>
+                    <em>2025-03</em>
+                </div>
+            </div>
+        </a>
+    </li>
+<li class="l4 wow fadeInUp">
+        <a href="https://static.nfnews.com/content/202503/25/c11119493.html?from=weChatMessage&colID=null&appversion=12200&firstColID=21216&enterColumnId=0" class="con">
+            <div class="pic">
+                <img src="/__local/F/F5/BD/DD437698B3A7D4ABB0EB74E00BD_37915804_96F.jpg" alt="">
+            </div>
+            <div class="txt">
+                <h3 class="tit" title="数智化浪潮下，土木工程专业如何破局？陈湘生院士“划重点”">数智化浪潮下，土木工程专业如何破局？陈湘生院士“划重点”</h3>
+                <div class="time">
+                    <em class="day">26</em>
+                    <em>2025-03</em>
+                </div>
+            </div>
+        </a>
+    </li>
+<script>_showDynClickBatch(['dynclicks_u13_20008','dynclicks_u13_20007','dynclicks_u13_19997','dynclicks_u13_19996'],[20008,20007,19997,19996],"wbnews", 1680698289)</script>
+</ul> 
+                        </div>
+                        <div class="item">
+                             
+                            
+                            
+                             <ul class="ul-list3"><li class="l1 wow fadeInUp">
+        <a href="https://appdetail.netwin.cn/dc-h5s/dc_new/newdetail?id=s67e2a848e4b0da3882cf3f93" class="con">
+            <div class="pic">
+                <img src="/__local/2/76/8B/2EC6B594CB006021919E72A0B2B_A3FF6B94_3828.jpg" alt="">
+            </div>
+            <div class="txt">
+                <h3 class="tit" title="陈湘生院士讲“思政第一课”：培养“未来大土木”创新者">陈湘生院士讲“思政第一课”：培养“未来大土木”创新者</h3>
+                <div class="time">
+                    <em class="day">26</em>
+                    <em>2025-03</em>
+                </div>
+            </div>
+        </a>
+    </li>
+<li class="l2 wow fadeInUp">
+        <a href="https://ycpai.ycwb.com/content/ikinvkhtin/content_53313671.html?isShare=true" class="con">
+            <div class="pic">
+                <img src="/__local/6/E5/B9/1D1632C86EDCA9FF307A7FBC835_5973CE4D_3920.jpg" alt="">
+            </div>
+            <div class="txt">
+                <h3 class="tit" title="陈湘生院士讲“思政第一课”：从“智能岩土”到“数智土木” 培养“未来大土木”创新者">陈湘生院士讲“思政第一课”：从“智能岩土”到“数智土木” 培养“未来大土木”创新者</h3>
+                <div class="time">
+                    <em class="day">26</em>
+                    <em>2025-03</em>
+                </div>
+            </div>
+        </a>
+    </li>
+<li class="l3 wow fadeInUp">
+        <a href="https://www.dutenews.com/n/article/8753390?from=app&client=1" class="con">
+            <div class="pic">
+                <img src="/__local/2/92/EF/6367A9A499978BC389572647A55_5E146173_123B.jpg" alt="">
+            </div>
+            <div class="txt">
+                <h3 class="tit" title="估产115吨，深大荔枝将迎大丰收">估产115吨，深大荔枝将迎大丰收</h3>
+                <div class="time">
+                    <em class="day">25</em>
+                    <em>2025-03</em>
+                </div>
+            </div>
+        </a>
+    </li>
+<li class="l4 wow fadeInUp">
+        <a href="https://mp.weixin.qq.com/s/3QHz9-4fuaQ2Mrwe_lj53A" class="con">
+            <div class="pic">
+                <img src="/__local/3/8F/5B/9C1FA226D0C60B84C246BA28BDC_77FBB11C_13EC.jpg" alt="">
+            </div>
+            <div class="txt">
+                <h3 class="tit" title="超1.5亿奖金！深圳一高校公布">超1.5亿奖金！深圳一高校公布</h3>
+                <div class="time">
+                    <em class="day">25</em>
+                    <em>2025-03</em>
+                </div>
+            </div>
+        </a>
+    </li>
+<script>_showDynClickBatch(['dynclicks_u14_20008','dynclicks_u14_20007','dynclicks_u14_19997','dynclicks_u14_19996','dynclicks_u14_19995','dynclicks_u14_19994','dynclicks_u14_19993','dynclicks_u14_19991'],[20008,20007,19997,19996,19995,19994,19993,19991],"wbnews", 1680698289)</script>
+</ul>
+                        </div></div>
+                </div>
+            </div>
+        </div>
+        <!-- 通知公告 end -->
+      
+      
+    <!-- 科学研究 -->
+        <div class="row-a3 wow fadeInUp" style="background-image: url(images/z-bg3.jpg);">
+            <div class="wp">
+                <div class="wow fadeInLeft">
+                    <h3 class="g-t1 g-t1-1"><a href="kxyj/xsdt.htm" target="_blank" style="color:#fff">科学研究</a></h3>
+                    <ul class="ul-tab TAB_CLICK" id=".m-taber">
+                        <li class="on"><a href="javascript:;">自然科学</a></li>
+                        <li><a href="javascript:;">人文社科</a></li>
+                    </ul>
+                </div>
+                <div class="wow fadeInRight">
+                    <div class="m-taber"><div class="m-slick1">
+    <div class="img-slick1 img-slick1-1">
+
+    <div class="item">
+        <img src="/__local/7/84/59/CFC805E20137FEA3BDE735D7AC6_23A7A165_10F8B.jpg" alt="香港城市大学刘彬教授联合深圳大学苏陈良教授等联合在Nature Nanotechnology发表研究成果">
+    </div>
+    <div class="item">
+        <img src="/__local/0/AB/0E/FDE4579C99A9EEB0240E378D39F_00EF820B_14DB3.jpg" alt="计算机与软件学院首篇学生一作论文发表在IEEE TPAMI上">
+    </div>
+    <div class="item">
+        <img src="/__local/9/9D/86/3752816F7C53AAE14AAC4EAF645_7347C05D_11C36.jpg" alt="高等研究院周晔团队发表“光电突触晶体管用于智能医疗”研究成果">
+    </div>
+    <div class="item">
+        <img src="/__local/B/C4/1D/D0D187CFBD0DEC0F33F54938060_0BF62D74_1BA81.jpg" alt="CVPR 2025 | 注意力蒸馏：视觉特征迁移的统一方法">
+    </div>
+    <div class="item">
+        <img src="/__local/1/63/C8/BBAD404A1491273377ABD679C86_5FC21E94_E663.jpg" alt="物理与光电工程学院王健教授团队提出了一种新的塞曼量子几何张量">
+    </div>
+    <div class="item">
+        <img src="/__local/6/F7/1B/50C1ADF3CDEEAD72E1F0177E775_9C166809_19A87.jpg" alt="何传新教授团队连续在《Angew. Chem. Int. Ed.》发表研究论文">
+    </div>
+
+
+ 
+
+    </div>
+    <div class="img-slick2 img-slick2-1">
+     
+     
+    <div class="item">
+    <div class="pic">
+        <img src="/__local/7/84/59/CFC805E20137FEA3BDE735D7AC6_23A7A165_10F8B.jpg" alt="香港城市大学刘彬教授联合深圳大学苏陈良教授等联合在Nature Nanotechnology发表研究成果">
+    </div>
+    </div>
+    <div class="item">
+    <div class="pic">
+        <img src="/__local/0/AB/0E/FDE4579C99A9EEB0240E378D39F_00EF820B_14DB3.jpg" alt="计算机与软件学院首篇学生一作论文发表在IEEE TPAMI上">
+    </div>
+    </div>
+    <div class="item">
+    <div class="pic">
+        <img src="/__local/9/9D/86/3752816F7C53AAE14AAC4EAF645_7347C05D_11C36.jpg" alt="高等研究院周晔团队发表“光电突触晶体管用于智能医疗”研究成果">
+    </div>
+    </div>
+    <div class="item">
+    <div class="pic">
+        <img src="/__local/B/C4/1D/D0D187CFBD0DEC0F33F54938060_0BF62D74_1BA81.jpg" alt="CVPR 2025 | 注意力蒸馏：视觉特征迁移的统一方法">
+    </div>
+    </div>
+    <div class="item">
+    <div class="pic">
+        <img src="/__local/1/63/C8/BBAD404A1491273377ABD679C86_5FC21E94_E663.jpg" alt="物理与光电工程学院王健教授团队提出了一种新的塞曼量子几何张量">
+    </div>
+    </div>
+    <div class="item">
+    <div class="pic">
+        <img src="/__local/6/F7/1B/50C1ADF3CDEEAD72E1F0177E775_9C166809_19A87.jpg" alt="何传新教授团队连续在《Angew. Chem. Int. Ed.》发表研究论文">
+    </div>
+    </div>
+     
+    </div>
+</div>
+<div class="m-txts1 m-txts1-1">
+    
+    <div class="item">
+        <div class="con">
+            <div class="tit">香港城市大学刘彬教授联合深圳大学苏陈良教授等联合在Nature ...</div>
+            <div class="desc"></div>
+            <div class="more"><a href="https://mp.weixin.qq.com/s/sJeSnI37kmeeifOQKT4GHw">查看详情</a></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="con">
+            <div class="tit">计算机与软件学院首篇学生一作论文发表在IEEE TPAMI上</div>
+            <div class="desc">如何将分类器和特征提取器集成到一个统一的模型框架中进行联合优化学习是人工智能算法设计...</div>
+            <div class="more"><a href="info/1302/20013.htm">查看详情</a></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="con">
+            <div class="tit">高等研究院周晔团队发表“光电突触晶体管用于智能医疗”研究成果</div>
+            <div class="desc">2025年3月17日，深圳大学高等研究院周晔教授团队在自然指数期刊Journal of Physical Chemis...</div>
+            <div class="more"><a href="info/1302/19977.htm">查看详情</a></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="con">
+            <div class="tit">CVPR 2025 | 注意力蒸馏：视觉特征迁移的统一方法</div>
+            <div class="desc"></div>
+            <div class="more"><a href="https://mp.weixin.qq.com/s/QTfTH8K84J3X0iG1MsEtbA">查看详情</a></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="con">
+            <div class="tit">物理与光电工程学院王健教授团队提出了一种新的塞曼量子几何张量</div>
+            <div class="desc">近日，深圳大学物理与光电工程学院王健教授团队在物理学期刊Physical Review Letters发表了...</div>
+            <div class="more"><a href="info/1302/19975.htm">查看详情</a></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="con">
+            <div class="tit">何传新教授团队连续在《Angew. Chem. Int. Ed.》发表研究论文</div>
+            <div class="desc">一、高熵合金（HEA）具有独特的热稳定性和电子特性，在电催化反应中表现出巨大的应用潜力。...</div>
+            <div class="more"><a href="info/1302/19974.htm">查看详情</a></div>
+        </div>
+    </div>
+
+
+
+</div><script>_showDynClickBatch(['dynclicks_u15_20021','dynclicks_u15_20013','dynclicks_u15_19977','dynclicks_u15_19976','dynclicks_u15_19975','dynclicks_u15_19974'],[20021,20013,19977,19976,19975,19974],"wbnews", 1680698289)</script>
+</div>
+                    <div class="m-taber"><div class="m-slick1">
+    <div class="img-slick1 img-slick1-2">
+
+    <div class="item">
+        <img src="/__local/6/6F/7B/1D22187F2131D838793DB587771_D63FFB50_BBB3F.jpg" alt="传播学院17篇学术论文获2025年国际传播学会（ICA）年会录用">
+    </div>
+    <div class="item">
+        <img src="/__local/0/C8/12/F1FF4AA4F405FA1B38AF3925171_44A7C4DD_10BCF.jpg" alt="金融科技学院黎明儿在FT 50国际知名期刊《Journal of Management studies》上发表论文">
+    </div>
+    <div class="item">
+        <img src="/__local/4/43/7D/69DAEDCC9BF79F6597D6BCE1CE2_1787AE4A_368663.jpg" alt="管理学院公共政策系吴进进副教授在国际知名期刊The China Review发表论文">
+    </div>
+    <div class="item">
+        <img src="/__local/7/E5/3E/569915033FD0E739C803199E744_A3CB7DC6_13FB7.jpg" alt="法学院教授张淑钿在《法学研究》2025年第1期发表论文“内地与香港继承判决流通制度的构建”">
+    </div>
+    <div class="item">
+        <img src="/__local/6/72/02/24DE1E0B706C31FAB06BBC2D5A6_16FBDF0F_11A41.jpg" alt="管理学院人力资源管理系何国华助理教授在FT50期刊Human Resource Management发表高水平论文">
+    </div>
+    <div class="item">
+        <img src="/__local/5/EE/8E/EB2543B5847113B5CE1C16048D9_E0923C6E_150D1E.jpg" alt="深圳大学首次获批国家社科基金冷门绝学研究项目">
+    </div>
+
+
+ 
+
+    </div>
+    <div class="img-slick2 img-slick2-2">
+     
+     
+    <div class="item">
+    <div class="pic">
+        <img src="/__local/6/6F/7B/1D22187F2131D838793DB587771_D63FFB50_BBB3F.jpg" alt="传播学院17篇学术论文获2025年国际传播学会（ICA）年会录用">
+    </div>
+    </div>
+    <div class="item">
+    <div class="pic">
+        <img src="/__local/0/C8/12/F1FF4AA4F405FA1B38AF3925171_44A7C4DD_10BCF.jpg" alt="金融科技学院黎明儿在FT 50国际知名期刊《Journal of Management studies》上发表论文">
+    </div>
+    </div>
+    <div class="item">
+    <div class="pic">
+        <img src="/__local/4/43/7D/69DAEDCC9BF79F6597D6BCE1CE2_1787AE4A_368663.jpg" alt="管理学院公共政策系吴进进副教授在国际知名期刊The China Review发表论文">
+    </div>
+    </div>
+    <div class="item">
+    <div class="pic">
+        <img src="/__local/7/E5/3E/569915033FD0E739C803199E744_A3CB7DC6_13FB7.jpg" alt="法学院教授张淑钿在《法学研究》2025年第1期发表论文“内地与香港继承判决流通制度的构建”">
+    </div>
+    </div>
+    <div class="item">
+    <div class="pic">
+        <img src="/__local/6/72/02/24DE1E0B706C31FAB06BBC2D5A6_16FBDF0F_11A41.jpg" alt="管理学院人力资源管理系何国华助理教授在FT50期刊Human Resource Management发表高水平论文">
+    </div>
+    </div>
+    <div class="item">
+    <div class="pic">
+        <img src="/__local/5/EE/8E/EB2543B5847113B5CE1C16048D9_E0923C6E_150D1E.jpg" alt="深圳大学首次获批国家社科基金冷门绝学研究项目">
+    </div>
+    </div>
+     
+    </div>
+</div>
+<div class="m-txts1 m-txts1-2">
+    
+    <div class="item">
+        <div class="con">
+            <div class="tit">传播学院17篇学术论文获2025年国际传播学会（ICA）年会录用</div>
+            <div class="desc">2025年第75届国际传播学会（International Communication Association，简称ICA）年会论文...</div>
+            <div class="more"><a href="info/1303/19979.htm">查看详情</a></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="con">
+            <div class="tit">金融科技学院黎明儿在FT 50国际知名期刊《Journal of Managem...</div>
+            <div class="desc">近日，金融科技学院副教授黎明儿近期在国际知名学术期刊Journal of Management studies上发...</div>
+            <div class="more"><a href="info/1303/19910.htm">查看详情</a></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="con">
+            <div class="tit">管理学院公共政策系吴进进副教授在国际知名期刊The China Rev...</div>
+            <div class="desc">近日，深圳大学政府管理学院公共政策系副教授吴进进在国际知名学术期刊The China Review上...</div>
+            <div class="more"><a href="info/1303/19879.htm">查看详情</a></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="con">
+            <div class="tit">法学院教授张淑钿在《法学研究》2025年第1期发表论文“内地与...</div>
+            <div class="desc">内容提要：内地与香港现有的区际民商事判决认可和执行安排均不适用于继承判决，两地继承判...</div>
+            <div class="more"><a href="info/1303/19957.htm">查看详情</a></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="con">
+            <div class="tit">管理学院人力资源管理系何国华助理教授在FT50期刊Human Resou...</div>
+            <div class="desc"></div>
+            <div class="more"><a href="https://news.szu.edu.cn/info/1072/13039.htm">查看详情</a></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="con">
+            <div class="tit">深圳大学首次获批国家社科基金冷门绝学研究项目</div>
+            <div class="desc"></div>
+            <div class="more"><a href="https://news.szu.edu.cn/info/1072/13033.htm">查看详情</a></div>
+        </div>
+    </div>
+
+
+
+</div><script>_showDynClickBatch(['dynclicks_u16_19979','dynclicks_u16_19910','dynclicks_u16_19879','dynclicks_u16_19957','dynclicks_u16_19709','dynclicks_u16_19715'],[19979,19910,19879,19957,19709,19715],"wbnews", 1680698289)</script>
+</div>
+                </div>
+            </div>
+        </div>
+        <!-- 科学研究 end -->
+        <!-- 教育教学 -->
+        <div class="row-a4" style="background-image: url(images/z-bg4.jpg);">
+            <div class="row-a4-con">
+                <div class="con-bg">
+                    <div class="before"></div>
+                    <div class="after"></div>
+                </div>
+                <div class="wp">
+                    <div class="col-l wow fadeInLeft"><h3 class="g-t1 g-t1-1"><a href="jyjx1/jxdt.htm" target="_blank" style="color:#fff">教育教学</a></h3>
+<div class="scroll-con">
+    <div class="slick-education">
+
+        <div class="item">
+            <a href="https://mp.weixin.qq.com/s/LadDor8S3Ees3Jt4tjhDAg" title="田间地头，SZUer的青春脚步" class="con">
+                <div class="pic">
+                    <img src="/__local/E/CF/97/D9ACEDA8AE972ADB3BE97270F7B_E9248EF6_3BA78.jpg" alt="田间地头，SZUer的青春脚步">
+                </div>
+                <div class="txt">
+                    <div class="time">2025-03-07</div>
+                    <h3 class="tit">田间地头，SZUer的青春脚步</h3>
+                </div>
+            </a>
+        </div>
+
+        <div class="item">
+            <a href="info/1104/19925.htm" title="深圳大学物理光电学院X腾讯云：AIGC助力物理光电教学创新模式" class="con">
+                <div class="pic">
+                    <img src="/__local/2/F8/4A/6EACB6495F880A19D56422F4826_63038000_D0BB.jpg" alt="深圳大学物理光电学院X腾讯云：AIGC助力物理光电教学创新模式">
+                </div>
+                <div class="txt">
+                    <div class="time">2025-03-06</div>
+                    <h3 class="tit">深圳大学物理光电学院X腾讯云：AIGC助力物理光电教学创新模式</h3>
+                </div>
+            </a>
+        </div>
+
+        <div class="item">
+            <a href="https://mp.weixin.qq.com/s/Qibrk5RE0vx_GLTRTKiV_A" title="公共机房也能玩转AI，GPU工作站来啦！" class="con">
+                <div class="pic">
+                    <img src="/__local/2/4B/B2/78CB3395A1FAA2CC01C4808D75C_58195D70_46782.jpg" alt="公共机房也能玩转AI，GPU工作站来啦！">
+                </div>
+                <div class="txt">
+                    <div class="time">2025-02-27</div>
+                    <h3 class="tit">公共机房也能玩转AI，GPU工作站来啦！</h3>
+                </div>
+            </a>
+        </div>
+
+        <div class="item">
+            <a href="https://mp.weixin.qq.com/s/xKHE8plFqPdjtxsReXcfOA" title="ÀI了！" class="con">
+                <div class="pic">
+                    <img src="/__local/9/6B/6F/1BC387595DBC2D69A4457A2DA95_50E25898_E38E.jpg" alt="ÀI了！">
+                </div>
+                <div class="txt">
+                    <div class="time">2025-02-24</div>
+                    <h3 class="tit">ÀI了！</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+</div><script>_showDynClickBatch(['dynclicks_u17_19942','dynclicks_u17_19925','dynclicks_u17_19870','dynclicks_u17_19857'],[19942,19925,19870,19857],"wbnews", 1680698289)</script>
+</div>
+                    <div class="col-r wow fadeInRight">
+                        <div class="scroll-con">    <h3 class="g-t1 g-t1-1">交流合作</h3>
+<div class="m-coop">
+    <div class="slick-pic">
+                <div class="item">
+            <div class="pic">
+                <img src="images/guojijiaoliu20230320.jpg" alt="国际交流">
+            </div>
+        </div>
+        <div class="item">
+            <div class="pic">
+                <img src="images/z-p16.jpg" alt="港澳台交流">
+            </div>
+        </div>
+        <div class="item">
+            <div class="pic">
+                <img src="images/waishizixun20230320.jpg" alt="外事资讯">
+            </div>
+        </div>
+    </div>
+    
+    <ul class="ul-list4">
+        <li class="item l1" data-index="0">
+            <a href="hzjl/gjjl.htm" title="国际交流" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58893)" target="_blank" class="con">
+                <div class="icon"></div>
+                <h3 class="tit">国际交流</h3>
+            </a>
+        </li>
+        <li class="item l2" data-index="1">
+            <a href="https://hmt.szu.edu.cn/" title="港澳台交流" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58894)" target="_blank" class="con">
+                <div class="icon"></div>
+                <h3 class="tit">港澳台交流</h3>
+            </a>
+        </li>
+        <li class="item l3" data-index="2">
+            <a href="https://szupu.szu.edu.cn/cmsArticlesController/synopsi/000000006cd1e966016cdd42c3e90024" title="外事资讯" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58895)" target="_blank" class="con">
+                <div class="icon"></div>
+                <h3 class="tit">外事资讯</h3>
+            </a>
+        </li>
+    </ul>
+</div>            
+                
+
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 教育教学end -->
+        <!-- 校园生活 -->
+        <div class="row-a5" style="background-image: url(images/z-bg5.jpg);">
+            <div class="wp">
+                <div class="m-life">
+                    <h3 class="g-t1 g-t1-1 wow fadeInDown">校园生活</h3>
+                    <div class="m-campus m-campus1">
+                        <div class="col-l wow fadeIn">    <div class="swiper-container video-scroll">
+        <div class="swiper-wrapper">
+
+<div class="swiper-slide m-video video-video">
+    <abbr class="videosrc" style="display:none;">/__local/C/5E/89/2D2E0DE59452F67A2FDF44321E9_D0A4119B_829F48B.mp4?e=.mp4</abbr>
+    <video id="index_video" class="video1" src="/__local/C/5E/89/2D2E0DE59452F67A2FDF44321E9_D0A4119B_829F48B.mp4?e=.mp4" poster="/__local/1/CA/16/1DB8AE062A8218FE41A7A4DBB21_EAFE4701_696A8.jpg" control="" autoplay="" muted=""></video>
+</div>
+          
+
+<div class="swiper-slide m-video video-video">
+    <abbr class="videosrc" style="display:none;">/__local/4/3A/7B/F6067D59954B8541822CF35184B_A2A5B918_17856655.mp4?e=.mp4</abbr>
+    <video id="index_video" src="/__local/4/3A/7B/F6067D59954B8541822CF35184B_A2A5B918_17856655.mp4?e=.mp4" poster="/__local/B/5A/67/B8C3E692E41A0E9F2F33881510D_1F993440_29DE9.jpg" control="" autoplay="" muted=""></video>
+</div>
+          
+
+<div class="swiper-slide m-video video-video">
+    <abbr class="videosrc" style="display:none;">/__local/7/94/B5/2C5B716D2CF8527956E1E588711_4B744814_2E3F7C53.mp4?e=.mp4</abbr>
+    <video id="index_video" src="/__local/7/94/B5/2C5B716D2CF8527956E1E588711_4B744814_2E3F7C53.mp4?e=.mp4" poster="/__local/7/69/4A/DEE4ABD023101B7DAB8E2EC1FC6_EC38C9B8_332EA.png" control="" autoplay="" muted=""></video>
+</div>
+          
+          
+
+          
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next video-next"></div>
+        <div class="swiper-button-prev video-prev"></div>
+        <div class="video-page"></div>
+    </div>
+
+
+
+<script>_showDynClickBatch(['dynclicks_u19_19090','dynclicks_u19_19082','dynclicks_u19_18332'],[19090,19082,18332],"wbnews", 1680698289)</script>
+</div>
+                        <div class="col-r">    <ul class="ul-lists1">
+    <li class="l1 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">
+        <a href="indexxyxh/rw.htm" title="人物" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58897)" class="con">
+            <div class="pic">
+                <img src="images/my/renwu24312.jpg" alt="人物">
+                <div class="icon" style="background-image:url(images/icons01.png);">人物</div>
+            </div>
+        </a>
+    </li>
+    <li class="l2 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0s">
+        <a href="indexxyxh/wy.htm" title="文娱" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58898)" class="con">
+            <div class="pic">
+                <img src="images/pics02.jpg" alt="文娱">
+                <div class="icon" style="background-image:url(images/icons02.png);">文娱</div>
+            </div>
+        </a>
+    </li>
+    <li class="l3 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".9s">
+        <a href="indexxyxh/fq.htm" title="风情" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58899)" class="con">
+            <div class="pic">
+                <img src="images/pics03.jpg" alt="风情">
+                <div class="icon" style="background-image:url(images/icons03.png);">风情</div>
+            </div>
+        </a>
+    </li>
+    <li class="l4 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".6s">
+        <a href="indexxyxh/gs.htm" title="故事" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58900)" class="con">
+            <div class="pic">
+                <img src="images/pics04.jpg" alt="故事">
+                <div class="icon" style="background-image:url(images/icons04.png);">故事</div>
+            </div>
+        </a>
+    </li>
+</ul>    
+                  
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 校园生活 end -->
+        <!-- 招生信息 -->
+      
+        <div class="row-a6" style="background-image: url(images/bg1.jpg);">
+            <div class="wp">
+                <div class="col-l">    <div class="g-t1 g-t1-1 wow fadeInDown">招生信息</div>
+<ul class="ul-list5 ul-list5-1">
+    <li class="l1 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">
+        <a href="http://yz.szu.edu.cn/" title="研究生招生" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58902)" class="con" target="_blank">
+            <div class="pic">
+                <img src="images/yanjiusheng.jpg" alt="研究生招生">
+            </div>
+            <h4 class="tit">研究生招生</h4>
+            <div class="mask">
+                <span class="icon" style="background-image:url(images/m1.png);"></span>
+                <h4>研究生招生</h4>
+            </div>
+        </a>
+    </li>
+    <li class="l2 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0s">
+        <a href="http://zs.szu.edu.cn/" title="本科生招生" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58901)" class="con" target="_blank">
+            <div class="pic">
+                <img src="images/benkesheng.jpg" alt="本科生招生">
+            </div>
+            <h4 class="tit">本科生招生</h4>
+            <div class="mask">
+                <span class="icon" style="background-image:url(images/m2.png);"></span>
+                <h4>本科生招生</h4>
+            </div>
+        </a>
+    </li>
+    <li class="l3 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".9s">
+        <a href="http://cce.szu.edu.cn/" title="继续教育招生" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58904)" class="con" target="_blank">
+            <div class="pic">
+                <img src="images/p4.jpg" alt="继续教育招生">
+            </div>
+            <h4 class="tit">继续教育招生</h4>
+            <div class="mask">
+                <span class="icon" style="background-image:url(images/m3.png);"></span>
+                <h4>继续教育招生</h4>
+            </div>
+        </a>
+    </li>
+    <li class="l4 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".6s">
+        <a href="http://lxs.szu.edu.cn/" title="留学生招生" onclick="_addDynClicks(&#34;wbimage&#34;, 1680698289, 58903)" class="con" target="_blank">
+            <div class="pic">
+                <img src="images/liuxueshengzhaosheng_fuben.png" alt="留学生招生">
+            </div>
+            <h4 class="tit">留学生招生</h4>
+            <div class="mask">
+                <span class="icon" style="background-image:url(images/m4.png);"></span>
+                <h4>留学生招生</h4>
+            </div>
+        </a>
+    </li>
+        
+</div>
+                <div class="col-r"><div class="g-t1 g-t1-1 wow fadeInDown">专题网站</div>
+<ul class="m-list1 wow fadeInUp" data-wow-duration="2.2s" data-wow-delay=".3s">
+
+    <li class="i1 on">
+        <div class="tit">深圳大学捐赠平台</div>
+        <div class="con">
+            <div class="bg" style=" background-image:url(images/m5.png);"></div>
+            <div class="txt">
+                <h4>深圳大学捐赠平台</h4>
+                <div class="desc">深圳大学捐赠平台</div>
+                <a href="https://giving.szu.edu.cn/" class="more">查看详情</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="i2 ">
+        <div class="tit">深圳大学信息公开网</div>
+        <div class="con">
+            <div class="bg" style=" background-image:url(images/m5.png);"></div>
+            <div class="txt">
+                <h4>深圳大学信息公开网</h4>
+                <div class="desc">深圳大学信息公开网</div>
+                <a href="https://xxgk.szu.edu.cn/" class="more">查看详情</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="i3 ">
+        <div class="tit">深圳大学招投标管理</div>
+        <div class="con">
+            <div class="bg" style=" background-image:url(images/m5.png);"></div>
+            <div class="txt">
+                <h4>深圳大学招投标管理</h4>
+                <div class="desc">深圳大学招投标管理</div>
+                <a href="https://bidding.szu.edu.cn/" class="more">查看详情</a>
+            </div>
+        </div>
+    </li>
+</ul><script>_showDynClickBatch(['dynclicks_u22_16333','dynclicks_u22_15471','dynclicks_u22_1107'],[16333,15471,1107],"wbnews", 1680698289)</script>
+</div>
+            </div>
+        </div>
+        <!-- 招生信息 end -->
+        <!-- footer -->
+        <div class="footer">
+            <div class="wp3">
+                <div class="row-top">
+                    <div class="fd_logo">            <img src="images/logo.png" border="0">
+</div>
+                    
+                    
+                     <div><ul class="ul-txt">
+
+<li class="bot-nav-5">
+    <dl>
+        <dt>教育教学</dt>
+        
+        <dd><A href="jyjx1/jxdt.htm">教学动态</A></dd>
+        <dd><A href="https://jwb.szu.edu.cn/">本科生教育</A></dd>
+        <dd><A href="http://gra.szu.edu.cn/">研究生教育</A></dd>
+        <dd><A href="http://lxs.szu.edu.cn/">留学生教育</A></dd>
+        <dd><A href="http://cce.szu.edu.cn/">继续教育</A></dd>
+        <dd><A href="https://jxjy.szu.edu.cn/">非学历教育</A></dd>
+        
+    </dl>
+</li>
+
+
+<li class="bot-nav-7">
+    <dl>
+        <dt>交流合作</dt>
+        
+        <dd><A href="hzjl/gjjl.htm">国际交流</A></dd>
+        <dd><A href="https://hmt.szu.edu.cn/">港澳台交流</A></dd>
+        <dd><A href="https://szupu.szu.edu.cn/cmsArticlesController/synopsi/000000006cd1e966016cdd42c3e90024">外事资讯</A></dd>
+        
+    </dl>
+</li>
+
+
+<li class="bot-nav-8">
+    <dl>
+        <dt>招生与就业</dt>
+        
+        <dd><A href="zsyjy1/bkszs.htm">本科生招生</A></dd>
+        <dd><A href="zsyjy1/yjszs1.htm">研究生招生</A></dd>
+        <dd><A href="zsyjy1/lxszs1.htm">留学生招生</A></dd>
+        <dd><A href="zsyjy1/jxjyzs1.htm">继续教育招生</A></dd>
+        <dd><A href="zsyjy1/cglxzs.htm">出国留学招生</A></dd>
+        <dd><A href="https://jobszu.jysd.com/">就业招聘</A></dd>
+        <dd><A href="zsyjy1/xszz.htm">学生资助</A></dd>
+        
+    </dl>
+</li>
+
+
+<li class="bot-nav-9">
+    <dl>
+        <dt>校园生活</dt>
+        
+        <dd><A href="https://sdgh.szu.edu.cn/">工会活动</A></dd>
+        <dd><A href="http://jingsai.szu.edu.cn/">学科竞赛</A></dd>
+        <dd><A href="xysh1/cxcy.htm">创新创业</A></dd>
+        <dd><A href="xysh1/xshd.htm">学生活动</A></dd>
+        
+    </dl>
+</li>
+
+
+
+<li class="bot-nav-10">
+    <dl>
+        <dt>信息公开</dt>
+        
+        <dd><a href="https://xxgk.szu.edu.cn/cw_zcjsf1/ndbmys.htm" target="blank">预决算公开</a></dd>
+        <dd><a href="http://www.lib.szu.edu.cn/" target="blank">图书馆</a></dd>
+        <dd><a href="http://sugh.szu.edu.cn/" target="blank">总医院</a></dd>
+ <dd><a href="https://sch.szu.edu.cn/hnyycmsweb/" target="blank">附属华南医院</a></dd>
+        <dd><a href="http://bidding.szu.edu.cn/" target="blank">招标采购</a></dd>
+        <dd><a href="http://edf.szu.edu.cn/" target="blank">深大基金会</a></dd>
+        <dd><a href="http://szunews.ihwrm.com/" target="blank">深圳大学报</a></dd>
+        <dd><a href="https://weibo.com/u/7671203007" target="blank">深大广播电台</a></dd>
+        
+    </dl>
+</li>
+
+
+
+<li class="bot-nav-12">
+    <dl>
+        <dt>角色入口</dt>
+        
+        <dd><A href="jsrk/xs.htm">学生</A></dd>
+        <dd><A href="jsrk/jg.htm">教工</A></dd>
+        <dd><A href="jsrk/xy.htm">校友</A></dd>
+        <dd><A href="jsrk/ks.htm">考生</A></dd>
+        <dd><A href="jsrk/fk.htm">访客</A></dd>
+        
+    </dl>
+</li>
+
+</UL>
+</div>
+                </div>
+                <div class="row-bottom">
+                    <div class="txt"><!-- 版权内容请在本组件"内容配置-版权"处填写 -->
+<p>粤海校区：深圳市南山区南海大道3688号</p><p>丽湖校区：深圳市南山区学苑大道1066号</p><p>咨询、建议及投诉电话：0755-26536114</p><p>版权所有©️深圳大学　　<a href="https://beian.miit.gov.cn/" target="_self" style="color: rgb(200, 157, 170);">粤ICP备11018045号</a></p><div style="padding: 20px 0px; width: 300px;"><a href="" target="_blank" style="height: 20px; line-height: 20px; text-decoration: none; display: inline-block;"><img src="/__local/D/02/89/DC0A46FC5B15B3363FFA78CF6C7_C267B386_4B38.png?e=.png" /><p style="margin: 0px 0px 0px 5px; height: 20px; color: rgb(200, 157, 170); line-height: 20px; float: right;">粤公网安备 44030502007936号</p></a></div>
+
+</div>
+                            <div class="qr">
+            <img src="images/20/10/19/1wsambz0t9/szu-bili.jpg" border="0" style="     display: block;     margin: 0 auto">
+            <p style=" color: #c89daa; line-height: 35px">官方bilibili平台</p>
+    </div>  
+    <div class="qr">
+            <img src="images/20/10/19/1wsambz0t9/szu-dy.jpg" border="0" style="     display: block;     margin: 0 auto">
+            <p style=" color: #c89daa; line-height: 35px">官方抖音号</p>
+    </div>  
+    <div class="qr">
+            <img src="images/20/10/19/1wsambz0t9/szu-wx.jpg" border="0" style="     display: block;     margin: 0 auto">
+            <p style=" color: #c89daa; line-height: 35px">官方微博</p>
+    </div>  
+    <div class="qr">
+            <img src="images/ff.png" border="0" style="     display: block;     margin: 0 auto">
+            <p style=" color: #c89daa; line-height: 35px">官方微信公众号</p>
+    </div>    
+  
+                </div>
+            </div>
+        </div>
+        <!-- footerend -->
+    </div>
+ 
+    
+    
+        <script src="js/bdtxk.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/bdtxk.easing.js"></script>
+    <script src="js/bdtxk.mousewheel.js"></script>
+    
+    
+    <script src="js/lib.js"></script>
+    <link href="css/slick.css" rel="stylesheet">
+    <link href="css/swiper.css" rel="stylesheet">
+    <script type="text/javascript" src="js/slick.min.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>    
+    <script src="js/bdtxk.roundabout.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.ss1 .roundabout_box ul').roundabout({
+                duration: 1000,
+                minScale: 0.4,
+                autoplay: true,
+                autoplayDuration: 5000,
+                minOpacity: 0,
+                maxOpacity: 1,
+                reflect: true,
+                startingChild: 3,
+                autoplayInitialDelay: 5000,
+                autoplayPauseOnHover: true,
+                enableDrag: true
+            });
+            $('.ss2 .roundabout_box ul').roundabout({
+                duration: 1000,
+                minScale: 0.4,
+                autoplay: true,
+                autoplayDuration: 5000,
+                minOpacity: 0,
+                maxOpacity: 1,
+                reflect: true,
+                startingChild: 3,
+                autoplayInitialDelay: 5000,
+                autoplayPauseOnHover: true,
+                enableDrag: true
+            });
+           
+        });
+        document.ontouchmove = function(e) {
+　　 e.preventDefault();
+}
+    </script>
+    <script>
+        $(function() {
+         w = $(window).width();
+        if(w>1200){
+            $('video').each(function() {
+                src = $(this).data('src');
+                $(this).attr('src', src);
+            })
+            
+            }
+            
+
+            // 滚动下一屏
+
+                                
+                                
+                                //     $(window).bind('mousewheel', function(event, delta, deltaX, deltaY) {
+                                //         var scrollTop = $(window).scrollTop();
+                                //         if (scrollTop == 0 && $('.fix-top').hasClass('fixed') && deltaY >= 0) {
+                                //                 $('.fix-top').removeClass('fixed');
+                                //                 setTimeout(function() {
+                                //                         $(window).scrollTop(0);
+                                //                         $('body').removeClass('fixed');
+                                //                 }, 300);
+                                //         }
+                                //         if (!$('.fix-top').hasClass('fixed') && deltaY < 0) {
+                                //                 $('.fix-top').addClass('fixed');
+                                //                 $('body').addClass('fixed');
+                                //                 setTimeout(function() {
+                                //                         $(window).scrollTop(5);
+                                //                         $('body').removeClass('fixed');
+                                //                         $(window).scrollTop(0);
+                                //                 }, 300);
+                                //         }
+                                // });                                
+                                
+                                
+                                
+        $(window).bind('mousewheel', function(event, delta, deltaX, deltaY) {
+        var scrollTop = $(window).scrollTop();
+        if (scrollTop == 0 && $('.fix-top').hasClass('fixed') && deltaY >= 0) {
+            $('.fix-top').removeClass('fixed');
+            $('body').removeClass('fixedok');
+            setTimeout(function() {
+                $(window).scrollTop(0);
+                $('body').removeClass('fixed');
+            }, 300);
+        }
+        if (!$('.fix-top').hasClass('fixed') && deltaY < 0) {
+            $('.fix-top').addClass('fixed');
+            $('body').addClass('fixed');
+            setTimeout(function() {
+                $(window).scrollTop(5);
+                $('body').removeClass('fixed');
+                
+                $(window).scrollTop(0);
+            }, 300);            
+            setTimeout(function() {
+                
+                $('body').addClass('fixedok');
+
+            }, 800);
+        }
+    });
+            var win_w = $(window).width();
+            if (win_w > 767) {
+
+                $('.row-a4-con .col-l').hover(function() {
+                    var $parent = $(this).parents('.row-a4-con');
+                    $parent.addClass('open');
+                    var width = $(this).find('.item').width();
+                    $(this).find('.item').width(width);
+
+                    $(this).find('.slick-education').css({
+                        width: '200%'
+                    });
+
+                    $parent.find('.con-bg').css({
+                        'margin-left': 2 * width + 20
+                    });
+
+                    $parent.find('.col-r .scroll-con').css({
+                        "transform": "translateX(" + (2 * width + 20) + "px)"
+                    });
+
+                }, function() {
+                    var $parent = $(this).parents('.row-a4-con');
+                    $parent.removeClass('open');
+
+                    $(this).find('.slick-education').css({
+                        width: '100%'
+                    });
+
+                    $parent.find('.con-bg').css({
+                        'margin-left': 0
+                    });
+
+                    $parent.find('.col-r .scroll-con').css({
+                        "transform": "translateX(" + 0 + "px)"
+                    });
+
+
+                });
+
+            }
+
+            $(window).scrollTop(0);
+        });
+    </script>
+    <!-- 侧边导航 -->
+    <script>
+        $(".banner .list01 li").hover(function() {
+            $('.banner .list01').removeClass('d0');
+            $('.banner .list01').removeClass('d1');
+            $('.banner .list01').removeClass('d2');
+            $('.banner .list01').removeClass('d3');
+            $('.banner .list01').removeClass('d4');
+            var i = $(this).index('.li01');
+            $('.banner .list01').addClass('d' + i);
+        }, function() {
+            $('.banner .list01').removeClass('d0');
+            $('.banner .list01').removeClass('d1');
+            $('.banner .list01').removeClass('d2');
+            $('.banner .list01').removeClass('d3');
+            $('.banner .list01').removeClass('d4');
+            $('.banner .list01').addClass('d00');
+
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.slick-notice').slick({
+                dots: false,
+                arrows: true,
+                autoplay: true,
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                responsive: [{
+                    breakpoint: 760,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    }
+                }]
+            });
+            // 教育教学
+            // $('.slick-education').slick({
+            //  dots: true,
+            //  arrows: false,
+            //  autoplay: true,
+            //  infinite: true,
+            //  slidesToShow: 2,
+            //  slidesToScroll: 1
+            // });
+            // 科学研究
+            // $('.m-taber1 .slick-for').slick({
+            //     slidesToShow: 1,
+            //     slidesToScroll: 1,
+            //     dots: false,
+            //     arrows: false,
+            //     fade: true,
+            //     asNavFor: '.m-taber1 .slick-nav'
+            // });
+            // $('.m-taber1 .slick-nav').slick({
+            //     slidesToShow: 3,
+            //     slidesToScroll: 1,
+            //     asNavFor: '.m-taber1 .slick-for',
+            //     dots: false,
+            //     arrows: false,
+            //     centerMode: true,
+            //     centerPadding: '0',
+            //     focusOnSelect: true
+            // });
+            // $('.m-taber2 .slick-for').slick({
+            //     slidesToShow: 1,
+            //     slidesToScroll: 1,
+            //     dots: false,
+            //     arrows: false,
+            //     fade: true,
+            //     asNavFor: '.m-taber2 .slick-nav'
+            // });
+            // $('.m-taber2 .slick-nav').slick({
+            //     slidesToShow: 3,
+            //     slidesToScroll: 1,
+            //     asNavFor: '.m-taber2 .slick-for',
+            //     dots: false,
+            //     arrows: false,
+            //     centerMode: true,
+            //     centerPadding: '0',
+            //     focusOnSelect: true
+            // });
+            // $('.m-taber3 .slick-for').slick({
+            //     slidesToShow: 1,
+            //     slidesToScroll: 1,
+            //     dots: false,
+            //     arrows: false,
+            //     fade: true,
+            //     asNavFor: '.m-taber3 .slick-nav'
+            // });
+            // $('.m-taber3 .slick-nav').slick({
+            //     slidesToShow: 3,
+            //     slidesToScroll: 1,
+            //     asNavFor: '.m-taber3 .slick-for',
+            //     dots: false,
+            //     arrows: false,
+            //     centerMode: true,
+            //     centerPadding: '0',
+            //     focusOnSelect: true
+            // });
+            // $('.m-taber4 .slick-for').slick({
+            //     slidesToShow: 1,
+            //     slidesToScroll: 1,
+            //     dots: false,
+            //     arrows: false,
+            //     fade: true,
+            //     asNavFor: '.m-taber4 .slick-nav'
+            // });
+            // $('.m-taber4 .slick-nav').slick({
+            //     slidesToShow: 3,
+            //     slidesToScroll: 1,
+            //     asNavFor: '.m-taber4 .slick-for',
+            //     dots: false,
+            //     arrows: false,
+            //     centerMode: true,
+            //     centerPadding: '0',
+            //     focusOnSelect: true
+            // });
+            // 交流合作
+            // $('.slick-pic').slick({
+            //  dots: false,
+            //  arrows: false,
+            //  autoplay: true,
+            //  infinite: true,
+            //  slidesToShow: 1,
+            //  slidesToScroll: 1
+            // });
+
+
+            $('.m-txts1-1').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                arrows: false,
+                fade: true,
+                autoplay: false,
+            });
+            $('.m-txts1-2').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                arrows: false,
+                fade: true,
+                autoplay: false,
+            });
+
+            $('.img-slick1-1').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                arrows: true,
+                fade: true,
+                asNavFor: '.img-slick2-1',
+                autoplay: false,
+            });
+            $('.img-slick2-1').slick({
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                asNavFor: '.img-slick1-1',
+                dots: false,
+                arrows: false,
+                focusOnSelect: true,
+                autoplay: false,
+                centerMode: true,
+                responsive: [{
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                    }
+                }]
+            });
+
+            $('.img-slick1-2').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                arrows: true,
+                fade: true,
+                asNavFor: '.img-slick2-2',
+                autoplay: false,
+            });
+            $('.img-slick2-2').slick({
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                asNavFor: '.img-slick1-2',
+                dots: false,
+                arrows: false,
+                focusOnSelect: true,
+                autoplay: false,
+                centerMode: true,
+                responsive: [{
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                    }
+                }]
+            });
+
+            $('.img-slick2 .slick-center').prev('.item').addClass('slick-next');
+            $('.img-slick2 .slick-center').next('.item').addClass('slick-next');
+
+            $('.img-slick2-1').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+
+
+                $('.m-txts1-1').slick('slickGoTo', nextSlide);
+
+                setTimeout(function() {
+
+                    $('.img-slick2-1 .item').removeClass('slick-next');
+
+                    $('.img-slick2-1 .slick-center').prev('.item').addClass('slick-next');
+                    $('.img-slick2-1 .slick-center').next('.item').addClass('slick-next');
+
+
+                }, 10);
+
+            });
+
+            
+            $('.img-slick2-2').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+
+                $('.m-txts1-2').slick('slickGoTo', nextSlide);
+
+                setTimeout(function() {
+
+                    $('.img-slick2-2 .item').removeClass('slick-next');
+
+                    $('.img-slick2-2 .slick-center').prev('.item').addClass('slick-next');
+                    $('.img-slick2-2 .slick-center').next('.item').addClass('slick-next');
+
+
+                }, 10);
+
+            });
+
+            $('.slick-pic').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                arrows: false,
+                fade: true,
+                asNavFor: '.ul-list4',
+                autoplay: false,
+            });
+            $('.ul-list4').slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                asNavFor: '.slick-pic',
+                dots: false,
+                arrows: false,
+                focusOnSelect: true,
+                autoplay: false,
+            });
+            $('.ul-list4 .item').mouseover(function() {
+                var index = $(this).data('index')
+                $('.ul-list4').slick('slickGoTo', index);
+                $('.slick-pic').slick('slickGoTo', index);
+            });
+            // 视频播放
+            /*
+            $('.m-video .play').click(function() {
+                $(this).siblings("video")[0].play();
+                $(this).siblings("video").attr({
+                    'controls': true
+                });
+                $(this).fadeOut();
+                var self = this;
+                $(this).siblings("video")[0].addEventListener('pause', function() {
+                    $(self).fadeIn();
+                    $(self).siblings("video").attr({
+                        'controls': false
+                    });
+                });
+            });
+            */
+
+            // 媒体交大
+            $('.m-slick').slick({
+                dots: false,
+                arrows: true,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            });
+        });
+    </script>
+    <!-- banner -->
+   
+
+<script>  
+ // 计时器  
+ var timerFun = function() {  
+ if ($('.banner').hasClass('s1')) {  
+ $('.banner .bannerslick').slick('slickGoTo', 1);  
+ $('.banner').removeClass('s1').addClass('s2');  
+ } else if ($('.banner').hasClass('s2')) {  
+ $('.banner .bannerslick').slick('slickGoTo', 2);  
+ $('.banner').removeClass('s2').addClass('s3');  
+ } else {  
+ $('.banner .bannerslick').slick('slickGoTo', 0);  
+ $('.banner').removeClass('s3').addClass('s1');  
+ }  
+ }  
+ var timer = setInterval(timerFun, 25000);  
+ $('.bannerslick').slick({  
+ dots: false,  
+ arrows: false,  
+ slidesToShow: 1,  
+ slidesToScroll: 1,  
+ autoplay: false,  
+ autoplaySpeed: 4900,  
+ });  
+ $('.bannerslick').on('beforeChange', function(a, b, index) {  
+ $('.banner').removeClass('ss1 ss2 ss3').addClass('ss' + (index + 1));  
+ });  
+ $('.bannerslick').on('afterChange', function(a, b, index) {  
+ clearInterval(timer);  
+ timer = null;  
+ $('.banner').removeClass('s1 s2 s3').addClass('s' + (index + 1));  
+ timer = setInterval(timerFun, 25000);  
+ });  
+ $('.banner .ani-01').click(function() {  
+ $('.banner .bannerslick').slick('slickGoTo', 0);  
+ });  
+ $('.banner .ani-02').click(function() {  
+ $('.banner .bannerslick').slick('slickGoTo', 1);  
+ });  
+ $('.banner .ani-03').click(function() {  
+ $('.banner .bannerslick').slick('slickGoTo', 2);  
+ });  
+ </script> 
+    <!-- 可移动头部 -->
+    <script>
+        var topBegin = $(".header").offset().top; //获取导航栏（class='header'）离视口的高度 
+        
+        $(window).scroll(function() { //scroll事件
+            var win_top = $(this).scrollTop(); //获取滚动条位置
+            var _top = $(".header").offset().top; //获取当前导航栏距视口高度
+            if (win_top >= _top) {
+                $(".header").addClass("sfixed"); //添加sfixed类， 改变定位属性
+            }
+            if (win_top < topBegin) { //因为导航栏距视口高度在定位发生后是变化的 ，
+                //所以当导航栏回到原位置时保持先前状态需要将滚动条位置与最先前的导航栏位置进行对比
+                $(".headerl").removeClass("sfixed");
+            }
+            $(".headerl").toggleClass("sfixed");
+            // if (win_top > 100) {
+            //  $('.header').css('background-color', '#fff');
+            //  $('.header').addClass('on1');
+            //  $('.logo img').attr('src', 'images/logo_03.png');
+            // } else {
+            //  $('.header').css('background-color', 'initial');
+            //  $('.header').removeClass('on1');
+            //  $('.logo img').attr('src', 'images/logo_04.png');
+            // }
+        })
+        scrollFun();
+    </script>
+    <!-- 招生信息伸缩 -->
+    <script>
+        $(document).ready(function() {
+            $('.m-list1 .tit').click(function() {
+                $(this).parents('li').addClass('on').siblings('li').removeClass('on');
+            })
+
+
+            // $('#v1').attr('muted','false');
+        });
+    </script>
+
+
+
+<script>
+
+    var videoSwiper = new Swiper('.video-scroll', {
+      spaceBetween: 0,
+      centeredSlides: true,
+      effect:'fade',
+      speed:800,
+      loop:true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.video-page',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.video-next',
+        prevEl: '.video-prev',
+      },
+      on:{
+        init: function(swiper){
+            if($(".video-scroll .swiper-slide-active").find(".videosrc").text().indexOf(".mp4")!=-1){
+                $(".swiper-slide-active video").attr("src",$(".video-scroll .swiper-slide-active").find(".videosrc").text())
+                var boxVideo = $(".swiper-slide-active video")[0]
+                setTimeout(function(){
+                //$(".swiper-slide-active .banner-img").show();
+                boxVideo.play();
+
+                $(".swiper-slide-active .video-video").show();
+                //$(".swiper-slide-active .video-img").hide();
+                    videoSwiper.autoplay.stop();
+                    boxVideo.addEventListener('ended', function () { 
+                        videoSwiper.autoplay.start();
+                        videoSwiper.slideNext();
+                    }, false);
+                },500);
+            }
+
+        },
+        transitionStart: function(swiper){
+                //$(".swiper-slide-active .banner-img").show();
+            if($(".video-scroll .swiper-slide-active").find(".videosrc").text().indexOf(".mp4")!=-1){
+              setTimeout(function(){
+                videoSwiper.autoplay.stop();
+              },1000);
+                $(".swiper-slide-active video").attr("src",$(".video-scroll .swiper-slide-active").find(".videosrc").text())
+
+
+                var boxVideo = $(".swiper-slide-active video")[0]
+
+
+                boxVideo.play();
+  //boxVideo.currentTime=0;
+
+                $(".swiper-slide-active .video-video").show();
+                //$(".swiper-slide-active .video-img").hide();
+                boxVideo.addEventListener('ended', function () { 
+                    videoSwiper.autoplay.start();
+                    videoSwiper.slideNext();
+                    boxVideo.pause();
+                }, false);
+            }
+        }
+    },
+    });
+
+</script>
+
+<script>
+
+var alla = document.getElementsByTagName("a");
+for(var i=0;i<alla.length;i++){
+ if(alla[i].href=="javascript:;"){
+   alla[i].className +=" vself";
+ }else if(alla[i].href=="#"){
+   alla[i].className +=" vself";
+ }else if(alla[i].href=="javascript:void(0);"){
+   alla[i].className +=" vself";
+ }else if(alla[i].href==""){
+   alla[i].className +=" vself";
+ }else{
+   alla[i].setAttribute("target","blank");
+ }
+}
+
+</script>
+
+</body></html>
