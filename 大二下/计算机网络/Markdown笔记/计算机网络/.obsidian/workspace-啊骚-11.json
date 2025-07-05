@@ -1,0 +1,228 @@
+{
+  "main": {
+    "id": "3bbd2fe360418c40",
+    "type": "split",
+    "children": [
+      {
+        "id": "b974aa35c0fcfb8f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3c299bdeb50bc210",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "未整理错题.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未整理错题"
+            }
+          },
+          {
+            "id": "bd9258428d66a959",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "期末总结.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "期末总结"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4c4c01a360f77791",
+    "type": "split",
+    "children": [
+      {
+        "id": "6b26ef06149e2f90",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "71408f3679503c30",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "809247cba25cb5f1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "b4a82b25da5529be",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c7b50f2379061248",
+    "type": "split",
+    "children": [
+      {
+        "id": "038d6230464c42c6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2ae21b155fe1ed8f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "期末总结.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "期末总结 的反向链接列表"
+            }
+          },
+          {
+            "id": "6ecd5fda393570f2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          },
+          {
+            "id": "fa1f971894a84fce",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "b2adc445af18c070",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "remotely-save:Remotely Save": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false
+    }
+  },
+  "active": "bd9258428d66a959",
+  "lastOpenFiles": [
+    "未整理错题.md",
+    "期末总结.md",
+    "标准分类.md",
+    "第四章 网络层/网络层与IP协议.md",
+    "第四章 网络层/网络层简要概述.md",
+    "第三章 传输层/TCP窗口和流量控制、拥塞控制.md",
+    "第三章 传输层/TCP滑动窗口与确认重传机制.md",
+    "第三章 传输层/TCP.md",
+    "第三章 传输层/四个定时器.md",
+    "第二章 应用层/Web服务 & HTTP协议.md",
+    "第三章 传输层/UDP.md",
+    "第三章 传输层/过渡问题.md",
+    "第三章 传输层/传输层协议 TCP or UDP.md",
+    "第三章 传输层/传输层.md",
+    "网络应用的体系结构及其特点.md",
+    "未命名.md",
+    "未命名 1.md",
+    "第二章 应用层/易错练习.md",
+    "第二章 应用层/域名解析服务 & DNS协议.md",
+    "第二章 应用层/文件传输服务 & FTP、TFTP协议.md",
+    "第二章 应用层/电子邮件服务 & STMP协议.md",
+    "第二章 应用层/应用层原理.md",
+    "怎么理解“可靠”？.md",
+    "Image/信道划分.png",
+    "Image/通信方式.png",
+    "Image/帧组成.png",
+    "第五章 链路层&物理层/局域网.md",
+    "第五章 链路层&物理层/物理层.md",
+    "第五章 链路层&物理层/链路层.md",
+    "Image/单向传播时延.png",
+    "Image/练习1.png",
+    "Image/单帧停止等待协议.png",
+    "Image/单帧停止等待时延.png",
+    "Image/物理层和链路层区别.png",
+    "Image/物理链路和数据链路.png",
+    "Image/传递过程.png",
+    "第五章 链路层&物理层",
+    "第四章 网络层"
+  ]
+}
